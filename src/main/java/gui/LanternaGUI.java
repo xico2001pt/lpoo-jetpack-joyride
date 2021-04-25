@@ -74,7 +74,7 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawObject(Element object) {
+    public void drawElement(Element element) {
         // TODO
     }
 

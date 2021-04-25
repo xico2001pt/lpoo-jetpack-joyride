@@ -1,13 +1,11 @@
 package model.elements;
 
+import model.Matrix;
 import model.Position;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Coin extends Element {
 
     public Coin(Position position) {
-        super(position, new ArrayList<>(Arrays.asList(Arrays.asList('C'))));
+        super(position, new Matrix<Character> (1, 1, 'C'));
     }
 }

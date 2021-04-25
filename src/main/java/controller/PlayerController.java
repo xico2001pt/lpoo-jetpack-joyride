@@ -29,9 +29,7 @@ public class PlayerController {
     }
 
     public void doAction(GUI.ACTION action) {
-        switch (action) {
-            case UP -> movePlayerUp();
-            case DOWN -> movePlayerDown();
-        }
+        if (action == GUI.ACTION.UP) movePlayerUp();
+        else if (action == GUI.ACTION.DOWN) movePlayerDown();
     }
 }

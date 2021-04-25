@@ -1,5 +1,6 @@
 package model.elements;
 
+import model.Matrix;
 import model.Position;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ public class Player extends Element {
     private int nCoins;
 
     public Player(Position position) {
-        super(position, new ArrayList<>(Arrays.asList(Arrays.asList('C'))));
+        super(position, new Matrix<Character> (1, 1, 'P'));
         this.lives = 1;
         this.nCoins = 0;
     }

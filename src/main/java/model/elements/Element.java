@@ -1,19 +1,20 @@
 package model.elements;
 
+import model.Matrix;
 import model.Position;
 
 import java.util.List;
 
 public abstract class Element {
     Position position;
-    List<List<Character>> image;
+    Matrix<Character> image;
 
-    public Element(Position position, List<List<Character>> image) {
+    public Element(Position position, Matrix<Character> image) {
         this.position = position;
         this.image = image;
     }
 
-    public List<List<Character>> getImage() {
+    public Matrix<Character> getImage() {
         return image;
     }
 
