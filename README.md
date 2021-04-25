@@ -6,7 +6,7 @@
 
 ## Ideas
 
-- model.objects.Object
+- model.elements.Element
   - Obstacle
     - EnergyWall
     - Laser
