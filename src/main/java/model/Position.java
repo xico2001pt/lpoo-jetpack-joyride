@@ -27,4 +27,12 @@ public class Position {
     public Position getLeft() {
         return new Position(x - 1, y);
     }
+
+    public Position getRight() {
+        return new Position(x + 1, y);
+    }
+
+    public Position getIncrementedPosition(int xIncrement, int yIncrement) {
+        return new Position(x + xIncrement, yIncrement);
+    }
 }
