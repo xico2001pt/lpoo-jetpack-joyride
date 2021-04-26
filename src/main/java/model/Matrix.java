@@ -28,6 +28,15 @@ public class Matrix<T> {
         this.matrix.get(row).set(column, value);
     }
 
+    public int getNumberRows() {
+        return matrix.size();
+    }
+
+    public int getNumberCol(int row) {
+        return matrix.get(row).size();
+    }
+
+
     // Apenas para debug
     public void print() {
         for (List<T> list : this.matrix) {
