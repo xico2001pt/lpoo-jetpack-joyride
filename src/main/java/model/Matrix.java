@@ -32,8 +32,8 @@ public class Matrix<T> {
         return matrix.size();
     }
 
-    public int getNumberCol(int row) {
-        return matrix.get(row).size();
+    public int getNumberCol() {
+        return matrix.get(0).size();
     }
 
 
