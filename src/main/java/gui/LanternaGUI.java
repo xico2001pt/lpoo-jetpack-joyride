@@ -8,6 +8,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import model.Matrix;
 import model.Position;
 import model.elements.Element;
 
@@ -19,11 +20,16 @@ import java.net.URL;
 
 public class LanternaGUI implements GUI {
     private final TerminalScreen screen;
+    private final int width, height; // TODO: SEE IF IS ANOTHER WAY TO GET THIS VALUES
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
         AWTTerminalFontConfiguration fontConfig = loadSquareFont();
         Terminal terminal = createTerminal(width, height, fontConfig);
         screen = createScreen(terminal);
+
+        // TODO: SEE IF IS ANOTHER WAY TO GET THIS VALUES
+        this.width = width;
+        this.height = height;
     }
 
     private TerminalScreen createScreen(Terminal terminal) throws IOException {
@@ -75,7 +81,20 @@ public class LanternaGUI implements GUI {
 
     @Override
     public void drawElement(Element element) {
-        // TODO
+        Matrix<Character> image = element.getImage();
+        Position position = element.getPosition();
+
+        int minRow = Math.max(0, position.getX());
+        int maxRow = Math.min(width, position.getX() + image.getNumberRows());
+        int minCol = Math.max(0, position.getY());
+        int maxCol = Math.min(height, position.getY() + image.getNumberCol());
+
+        for (int row = minRow; row < maxRow; row++) {
+            for (int col = minCol; col < maxCol; col++) {
+
+                drawCharacter(position.getIncrementedPosition(row, col), image.getValue(row, col));
+            }
+        }
     }
 
     @Override
