@@ -22,7 +22,7 @@ public class Game {
     private static void createRandomLevel(int width, int height) throws FontFormatException, IOException, URISyntaxException {
         GUI gui = new LanternaGUI(width, height);
 
-        Arena arena = new RandomArenaBuilder(width - 2, height - 4).createArena();
+        Arena arena = new RandomArenaBuilder(width, height).createArena();
         ArenaViewer viewer = new ArenaViewer(gui);
         ArenaController controller = new ArenaController(arena);
 
