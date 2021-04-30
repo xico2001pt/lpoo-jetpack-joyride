@@ -2,7 +2,6 @@ import controller.ArenaController;
 import gui.GUI;
 import gui.LanternaGUI;
 import model.arena.Arena;
-import model.arena.ArenaBuilder;
 import model.arena.RandomArenaBuilder;
 import viewer.ArenaViewer;
 

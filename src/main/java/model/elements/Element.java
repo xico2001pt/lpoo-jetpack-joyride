@@ -3,8 +3,6 @@ package model.elements;
 import model.Matrix;
 import model.Position;
 
-import java.util.List;
-
 public abstract class Element {
     Position position;
     Matrix<Character> image;
