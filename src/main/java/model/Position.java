@@ -33,6 +33,6 @@ public class Position {
     }
 
     public Position getIncrementedPosition(int xIncrement, int yIncrement) {
-        return new Position(x + xIncrement, yIncrement);
+        return new Position(x + xIncrement, y + yIncrement);
     }
 }
