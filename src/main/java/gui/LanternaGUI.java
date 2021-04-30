@@ -2,6 +2,7 @@ package gui;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
@@ -28,6 +29,7 @@ public class LanternaGUI implements GUI {
         screen = createScreen(terminal);
 
         // TODO: SEE IF IS ANOTHER WAY TO GET THIS VALUES
+        // Arena attributes
         this.width = width;
         this.height = height;
     }
@@ -65,6 +67,13 @@ public class LanternaGUI implements GUI {
         return fontConfig;
     }
 
+    public int getTerminalWidth() {
+        return screen.getTerminalSize().getColumns();
+    }
+
+    public int getTerminalHeight() {
+        return screen.getTerminalSize().getRows();
+    }
 
     @Override
     public ACTION getNextAction() throws IOException {
@@ -84,22 +93,28 @@ public class LanternaGUI implements GUI {
         Matrix<Character> image = element.getImage();
         Position position = element.getPosition();
 
-        int minRow = Math.max(0, position.getX());
-        int maxRow = Math.min(width, position.getX() + image.getNumberRows());
-        int minCol = Math.max(0, position.getY());
-        int maxCol = Math.min(height, position.getY() + image.getNumberCol());
+        int infoWidth = (getTerminalWidth() - width) / 2;
+        int infoHeight = (getTerminalHeight() - height) / 2;
 
-        for (int row = minRow; row < maxRow; row++) {
-            for (int col = minCol; col < maxCol; col++) {
+        int minRow = Math.max(0, position.getX()) + infoHeight;
+        int maxRow = Math.min(width, position.getX() + image.getNumberRows()) - infoHeight;
+        int minCol = Math.max(0, position.getY()) + infoWidth;
+        int maxCol = Math.min(height, position.getY() + image.getNumberCol()) - infoWidth;
 
-                drawCharacter(position.getIncrementedPosition(row, col), image.getValue(row, col));
-            }
-        }
+        for (int row = minRow; row < maxRow; row++)
+            for (int col = minCol; col < maxCol; col++)
+                drawCharacter(new Position(row, col), image.getValue(row - minRow, col - minCol));
     }
 
     @Override
     public void drawCharacter(Position position, Character c) {
         screen.setCharacter(position.getX(), position.getY(), TextCharacter.fromCharacter(c)[0]);
+    }
+
+    @Override
+    public void drawText(Position position, String text) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.putString(position.getX(), position.getY(), text);
     }
 
     @Override

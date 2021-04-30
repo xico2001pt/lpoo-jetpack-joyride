@@ -12,7 +12,13 @@ public interface GUI {
 
     void drawCharacter(Position position, Character c);
 
+    void drawText(Position position, String text);;
+
     void clear();
+
+    int getTerminalWidth();
+
+    int getTerminalHeight();
 
     void refresh() throws IOException;
 
