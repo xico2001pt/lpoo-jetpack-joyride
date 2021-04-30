@@ -25,5 +25,33 @@ public class ElementController {
         // TODO:
         // Collisions
         // Coins and obstacles
+
+        element.setPosition(position);
+
+        if (checkCollision(element, arena.getPlayer())) {
+            if (element instanceof Coin) {
+                arena.getCoins().remove(element);
+                arena.getPlayer().setCoins(arena.getPlayer().getCoins() + 1);
+            } else if (element instanceof Obstacle) {
+                arena.getObstacles().remove(element);
+                arena.getPlayer().setLives(arena.getPlayer().getLives() - 1);
+            }
+        }
+    }
+
+    private boolean checkCollision(Element a, Element b) {
+        return checkBoxCollision(a, b) && checkImageCollision(a, b);
+    }
+
+    private boolean checkBoxCollision(Element a, Element b) {
+        return !(a.getPosition().getX() + a.getImage().getNumberCol() < b.getPosition().getX() ||
+                a.getPosition().getX() > b.getPosition().getX() + b.getImage().getNumberCol() ||
+                a.getPosition().getY() < b.getPosition().getY() + b.getImage().getNumberRows() ||
+                a.getPosition().getY() + a.getImage().getNumberRows() > b.getPosition().getY());
+    }
+
+    private boolean checkImageCollision(Element a, Element b) {
+        // TODO
+        return true;
     }
 }

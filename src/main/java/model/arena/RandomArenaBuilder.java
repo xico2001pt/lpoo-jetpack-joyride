@@ -3,6 +3,8 @@ package model.arena;
 import model.Position;
 import model.elements.Coin;
 import model.elements.Player;
+import model.elements.obstacles.EnergyWall;
+import model.elements.obstacles.Laser;
 import model.elements.obstacles.Obstacle;
 
 import java.util.ArrayList;
@@ -21,8 +23,8 @@ public class RandomArenaBuilder extends ArenaBuilder {
 
         this.rng = new Random();
 
-        this.nextCoinInst = generateInstant(0, generateInstant(100, 1000));
-        this.nextObstacleInst = generateInstant(0, generateInstant(100, 1000));
+        this.nextCoinInst = generateInstant(0, generateInstant(0, 10));
+        this.nextObstacleInst = generateInstant(0, generateInstant(0, 10));
     }
 
     @Override
@@ -31,8 +33,12 @@ public class RandomArenaBuilder extends ArenaBuilder {
         List<Coin> coins = new ArrayList<>();
 
         if (instant >= nextCoinInst) {
+            // Add coins
             coins.add(generateCoin());
-            coins.add(generateCoin());
+            //coins.add(generateCoin());
+
+            // Generate new instant
+            nextCoinInst = generateInstant(instant + 2, instant + generateInstant(2, 10));
         }
 
         return coins;
@@ -44,8 +50,12 @@ public class RandomArenaBuilder extends ArenaBuilder {
         List<Obstacle> obstacles = new ArrayList<>();
 
         if (instant >= nextObstacleInst) {
+            // Add obstacle
             obstacles.add(generateObstacle());
-            obstacles.add(generateObstacle());
+            //obstacles.add(generateObstacle());
+
+            // Generate new instant
+            nextObstacleInst = generateInstant(instant + 20, instant + generateInstant(20, 30));
         }
 
         return obstacles;
@@ -57,17 +67,23 @@ public class RandomArenaBuilder extends ArenaBuilder {
     }
 
     private long generateInstant(long lower, long upper) {
-        // TODO
-        return 0;
+        return rng.nextLong() * (upper - lower) + lower;
     }
 
     private Coin generateCoin() {
-        // TODO
-        return null;
+        return new Coin(new Position(getWidth() - 1, rng.nextInt(getHeight())));
     }
 
     private Obstacle generateObstacle() {
-        // TODO
+        int type = rng.nextInt(2);
+
+        switch (type) {
+            case 0:
+                return new Laser(new Position(getWidth() - 1, rng.nextInt(getHeight())));  // TODO: GERAR HEIGHT COM MAIS CUIDADO
+            case 1:
+                return new EnergyWall(new Position(getWidth() - 1, rng.nextInt(getHeight()))); // TODO: same
+        }
+
         return null;
     }
 }

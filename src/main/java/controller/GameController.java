@@ -8,4 +8,8 @@ public abstract class GameController {
     public GameController(Arena arena) {
         this.arena = arena;
     }
+
+    public Arena getArena() {
+        return arena;
+    }
 }

@@ -16,7 +16,10 @@ public abstract class ArenaBuilder {
     }
 
     public Arena createArena() {
-        return new Arena(width, height, this);
+        Arena arena = new Arena(width, height, this);
+        arena.setPlayer(createPlayer());
+
+        return arena;
     }
 
     public abstract List<Coin> getCoins(long instant);

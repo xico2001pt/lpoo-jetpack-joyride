@@ -2,10 +2,11 @@ package model.elements.obstacles;
 
 import model.Matrix;
 import model.Position;
+import model.elements.ImageLibrary;
 
 public class Laser extends Obstacle {
 
     public Laser(Position position) {
-        super(position, new Matrix<Character>(1, 1));
+        super(position, ImageLibrary.getLaser1Image());
     }
 }

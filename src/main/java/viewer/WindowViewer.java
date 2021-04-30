@@ -9,24 +9,20 @@ import java.io.IOException;
 
 public class WindowViewer {
     private final GUI gui;
-
+    private final ArenaViewer arenaViewer;
 
     public WindowViewer(GUI gui) {
         this.gui = gui;
+        this.arenaViewer = new ArenaViewer(gui);
     }
 
     public void draw(Arena arena) throws IOException {
         gui.clear();
 
-        drawArena(arena);
+        arenaViewer.draw(arena);
         drawInfo(arena.getPlayer());
 
         gui.refresh();
-    }
-
-    private void drawArena(Arena arena) throws IOException {
-        ArenaViewer arenaViewer = new ArenaViewer(gui);
-        arenaViewer.draw(arena);
     }
 
     private void drawInfo(Player player) {

@@ -4,6 +4,7 @@ import model.elements.Coin;
 import model.elements.Player;
 import model.elements.obstacles.Obstacle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Arena {
@@ -20,7 +21,21 @@ public class Arena {
         this.width = width;
         this.height = height;
         this.supplier = supplier;
+
+        this.obstacles = new ArrayList<>();
+        this.coins = new ArrayList<>();
+
     }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public ArenaBuilder getSupplier() { return supplier; }
 
     public List<Obstacle> getObstacles() {
         return obstacles;
@@ -34,4 +49,19 @@ public class Arena {
         return player;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void addCoins(List<Coin> coins) {
+        this.coins.addAll(coins);
+    }
+
+    public void addObstacles(List<Obstacle> obstacles) {
+        this.obstacles.addAll(obstacles);
+    }
+
+    public void removeObstacle() {
+        // TODO
+    }
 }
