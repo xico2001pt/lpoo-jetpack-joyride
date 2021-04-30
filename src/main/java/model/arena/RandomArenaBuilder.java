@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static java.lang.Math.abs;
+
 public class RandomArenaBuilder extends ArenaBuilder {
     private final Random rng;
 
@@ -67,7 +69,7 @@ public class RandomArenaBuilder extends ArenaBuilder {
     }
 
     private long generateInstant(long lower, long upper) {
-        return rng.nextLong() * (upper - lower) + lower;
+        return abs(rng.nextLong()) % (upper - lower + 1) + lower;
     }
 
     private Coin generateCoin() {

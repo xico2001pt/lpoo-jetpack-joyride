@@ -12,17 +12,17 @@ public final class ImageLibrary {
     }
 
     public static Matrix<Character> getLaser1Image() {
-        Matrix<Character> matrix = new Matrix<>(1, 7, '-');
+        Matrix<Character> matrix = new Matrix<>(7, 1, '-');
         matrix.setValue(0, 0, '|');
-        matrix.setValue(0, 6, '|');
+        matrix.setValue(6, 0, '|');
 
         return matrix;
     }
 
     public static Matrix<Character> getLaser2Image() {
-        Matrix<Character> matrix = new Matrix<>(5, 1, '|');
+        Matrix<Character> matrix = new Matrix<>(1, 5, '|');
         matrix.setValue(0, 0, '-');
-        matrix.setValue(6, 0, '-');
+        matrix.setValue(0, 4, '-');
 
         return matrix;
     }
