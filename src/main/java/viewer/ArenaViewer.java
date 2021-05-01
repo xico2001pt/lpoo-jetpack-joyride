@@ -15,13 +15,9 @@ public class ArenaViewer {
     }
 
     public void draw(Arena arena) throws IOException {
-        gui.clear();
         drawElements(arena.getObstacles(), new ElementViewer());
         drawElements(arena.getCoins(), new ElementViewer());
         drawElement(arena.getPlayer(), new ElementViewer());
-        gui.refresh();
-
-        // TODO: remove gui commands
     }
 
     void drawElements(List<? extends Element> elements, ElementViewer viewer) {

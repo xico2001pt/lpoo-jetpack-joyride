@@ -12,9 +12,9 @@ public class ArenaController extends GameController {
     private final PlayerController playerController;
     private final ElementController elementController;
 
-    private final ArenaViewer viewer;
+    private final WindowViewer viewer;
 
-    public ArenaController(Arena arena, ArenaViewer viewer) {
+    public ArenaController(Arena arena, WindowViewer viewer) {
         super(arena);
 
         this.playerController = new PlayerController(arena);
@@ -28,7 +28,7 @@ public class ArenaController extends GameController {
         while (getArena().getPlayer().getLives() > 0) {
             System.out.println(frames);
             viewer.draw(getArena());
-            GUI.ACTION action = viewer.getNextAction();
+            GUI.ACTION action = viewer.getArenaViewer().getNextAction();
 
             if (action == GUI.ACTION.QUIT) break;
 

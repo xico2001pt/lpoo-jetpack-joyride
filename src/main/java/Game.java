@@ -24,7 +24,7 @@ public class Game {
         Arena arena = new RandomArenaBuilder(width, height).createArena();
 
         //WindowViewer viewer = new WindowViewer(gui);
-        ArenaController controller = new ArenaController(arena, new ArenaViewer(gui));
+        ArenaController controller = new ArenaController(arena, new WindowViewer(gui));
 
         //viewer.draw(arena);
 

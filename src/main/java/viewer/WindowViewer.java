@@ -29,4 +29,8 @@ public class WindowViewer {
         gui.drawText(new Position(0, 0), "Lives: " + player.getLives());
         gui.drawText(new Position(gui.getTerminalWidth()/2, 0), "Coins: " + player.getCoins());
     }
+
+    public ArenaViewer getArenaViewer() {
+        return arenaViewer;
+    }
 }

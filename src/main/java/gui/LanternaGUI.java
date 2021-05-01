@@ -45,7 +45,7 @@ public class LanternaGUI implements GUI {
     }
 
     private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfig) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(width, height + 1);
+        TerminalSize terminalSize = new TerminalSize(width + 2, height + 2);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
@@ -96,14 +96,21 @@ public class LanternaGUI implements GUI {
         int infoWidth = (getTerminalWidth() - width) / 2;
         int infoHeight = (getTerminalHeight() - height) / 2;
 
-        int minRow = Math.max(0, position.getX()) + infoHeight;
-        int maxRow = Math.min(width, position.getX() + image.getNumberRows()) - infoHeight;
-        int minCol = Math.max(0, position.getY()) + infoWidth;
-        int maxCol = Math.min(height, position.getY() + image.getNumberCol()) - infoWidth;
+        int minRow = Math.max(0, position.getX()) + infoWidth;
+        int maxRow = Math.min(width - infoWidth, position.getX() + infoWidth + image.getNumberRows()) ;
+        int minCol = Math.max(0, position.getY()) + infoHeight;
+        int maxCol = Math.min(height - infoHeight, position.getY() + infoHeight + image.getNumberCol());
 
         for (int row = minRow; row < maxRow; row++)
-            for (int col = minCol; col < maxCol; col++)
-                drawCharacter(new Position(row, col), image.getValue(row - minRow, col - minCol));
+            for (int col = minCol; col < maxCol; col++) {
+
+                if (minRow == infoWidth) {
+                    drawCharacter(new Position(row, col), image.getValue(row - minRow - position.getX(), col - minCol));
+                }
+                else {
+                    drawCharacter(new Position(row, col), image.getValue(row - minRow , col - minCol));
+                }
+            }
     }
 
     @Override
