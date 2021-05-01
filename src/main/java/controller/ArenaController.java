@@ -38,5 +38,7 @@ public class ArenaController extends GameController {
             getArena().addObstacles(arenaBuilder.getObstacles(frames));
             frames++;
         }
+
+        viewer.close();
     }
 }

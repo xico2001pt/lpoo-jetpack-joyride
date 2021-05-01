@@ -33,4 +33,8 @@ public class WindowViewer {
     public ArenaViewer getArenaViewer() {
         return arenaViewer;
     }
+
+    public void close() throws IOException {
+        gui.close();
+    }
 }
