@@ -25,8 +25,8 @@ public class RandomArenaBuilder extends ArenaBuilder {
 
         this.rng = new Random();
 
-        this.nextCoinInst = generateInstant(0, generateInstant(0, 10));
-        this.nextObstacleInst = generateInstant(0, generateInstant(0, 10));
+        this.nextCoinInst = generateInstant(20, generateInstant(200, 1000));
+        this.nextObstacleInst = generateInstant(20, generateInstant(200, 1000));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class RandomArenaBuilder extends ArenaBuilder {
             //coins.add(generateCoin());
 
             // Generate new instant
-            nextCoinInst = generateInstant(instant + 2, instant + generateInstant(2, 10));
+            nextCoinInst = generateInstant(instant + 200, instant + generateInstant(500, 2000));
         }
 
         return coins;
@@ -57,7 +57,7 @@ public class RandomArenaBuilder extends ArenaBuilder {
             //obstacles.add(generateObstacle());
 
             // Generate new instant
-            nextObstacleInst = generateInstant(instant + 20, instant + generateInstant(20, 30));
+            nextObstacleInst = generateInstant(instant + 500, instant + generateInstant(1000, 2000));
         }
 
         return obstacles;

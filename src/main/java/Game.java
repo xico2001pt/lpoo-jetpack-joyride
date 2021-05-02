@@ -29,6 +29,6 @@ public class Game {
         //viewer.draw(arena);
 
 
-        controller.start();
+        controller.start(60);
     }
 }

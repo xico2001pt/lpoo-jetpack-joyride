@@ -7,6 +7,7 @@ import gui.GUI;
 import viewer.WindowViewer;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class ArenaController extends GameController {
     private final PlayerController playerController;
@@ -22,11 +23,14 @@ public class ArenaController extends GameController {
         this.viewer = viewer;
     }
 
-    public void start() throws IOException {
-        int frames = 0;
+    public void start(int fps) throws IOException {
+        long millisecondsPerFrame = 1000 / fps;
+        long initialInstant = new Date().getTime(), loopInstant, actualInstant;
+
         ArenaBuilder arenaBuilder = getArena().getSupplier();
         while (getArena().getPlayer().getLives() > 0) {
-            System.out.println(frames);
+            System.out.println(millisecondsPerFrame);
+            loopInstant = new Date().getTime();
             viewer.draw(getArena());
             GUI.ACTION action = viewer.getArenaViewer().getNextAction();
 
@@ -34,9 +38,14 @@ public class ArenaController extends GameController {
 
             playerController.doAction(action);
             elementController.moveElements();
-            getArena().addCoins(arenaBuilder.getCoins(frames));
-            getArena().addObstacles(arenaBuilder.getObstacles(frames));
-            frames++;
+
+            actualInstant = new Date().getTime() - initialInstant;
+            getArena().addCoins(arenaBuilder.getCoins(actualInstant));
+            getArena().addObstacles(arenaBuilder.getObstacles(actualInstant));
+
+            do {
+                actualInstant = new Date().getTime();
+            } while (actualInstant - loopInstant < millisecondsPerFrame);
         }
 
         viewer.close();
