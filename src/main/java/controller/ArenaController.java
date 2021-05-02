@@ -29,7 +29,6 @@ public class ArenaController extends GameController {
 
         ArenaBuilder arenaBuilder = getArena().getSupplier();
         while (getArena().getPlayer().getLives() > 0) {
-            System.out.println(millisecondsPerFrame);
             loopInstant = new Date().getTime();
             viewer.draw(getArena());
             GUI.ACTION action = viewer.getArenaViewer().getNextAction();
