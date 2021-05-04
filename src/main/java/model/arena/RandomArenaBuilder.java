@@ -30,34 +30,34 @@ public class RandomArenaBuilder extends ArenaBuilder {
     }
 
     @Override
-    public List<Coin> getCoins(long instant) {
+    public List<Coin> getCoins() {
         // TODO: IMPROVE
         List<Coin> coins = new ArrayList<>();
 
-        if (instant >= nextCoinInst) {
+        if (getInstant() >= nextCoinInst) {
             // Add coins
             coins.add(generateCoin());
             //coins.add(generateCoin());
 
             // Generate new instant
-            nextCoinInst = generateInstant(instant + 200, instant + generateInstant(500, 2000));
+            nextCoinInst = generateInstant(getInstant() + 200, getInstant() + generateInstant(500, 2000));
         }
 
         return coins;
     }
 
     @Override
-    public List<Obstacle> getObstacles(long instant) {
+    public List<Obstacle> getObstacles() {
         // TODO: IMPROVE
         List<Obstacle> obstacles = new ArrayList<>();
 
-        if (instant >= nextObstacleInst) {
+        if (getInstant() >= nextObstacleInst) {
             // Add obstacle
             obstacles.add(generateObstacle());
             //obstacles.add(generateObstacle());
 
             // Generate new instant
-            nextObstacleInst = generateInstant(instant + 500, instant + generateInstant(1000, 2000));
+            nextObstacleInst = generateInstant(getInstant() + 500, getInstant() + generateInstant(1000, 2000));
         }
 
         return obstacles;

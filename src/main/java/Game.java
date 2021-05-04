@@ -2,6 +2,7 @@ import controller.ArenaController;
 import gui.GUI;
 import gui.LanternaGUI;
 import model.arena.Arena;
+import model.arena.ArenaBuilder;
 import model.arena.RandomArenaBuilder;
 import viewer.ArenaViewer;
 import viewer.WindowViewer;
@@ -21,14 +22,10 @@ public class Game {
 
     private static void createRandomLevel(int width, int height) throws FontFormatException, IOException, URISyntaxException {
         GUI gui = new LanternaGUI(width, height);
-        Arena arena = new RandomArenaBuilder(width, height).createArena();
+        ArenaBuilder arenaBuilder = new RandomArenaBuilder(width, height);
 
-        //WindowViewer viewer = new WindowViewer(gui);
-        ArenaController controller = new ArenaController(arena, new WindowViewer(gui));
+        ArenaController controller = new ArenaController(arenaBuilder, new WindowViewer(gui));
 
-        //viewer.draw(arena);
-
-
-        controller.start(60);
+        controller.start(30);
     }
 }
