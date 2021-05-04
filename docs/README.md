@@ -10,23 +10,23 @@ This project was developed by:
 2. [Implemented features](#implemented-features)
 3. [Planned features](#planned-features)
 4. [Design](#design)
-    1. 
-    2.
+    1. blabla 
+    2. blabla
     
 5. [Code smells and refactoring techniques](#code-smells)
 6. [Testing](#testing)
 
 
-#Description
+## Description
 
 
-#Implemented features
+## Implemented features
 
 
-#Planned features
+## Planned features
 
 
-#Design
+## Design
 ### i. Name here
 #### Problem in context
 
@@ -38,15 +38,7 @@ This project was developed by:
 
 
 
-#Code smells and refactoring techniques
+## Code smells and refactoring techniques
 
 
-#Testing
-
-
-
-
-
-
-
-
+## Testing
