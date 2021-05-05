@@ -26,6 +26,6 @@ public class Game {
 
         ArenaController controller = new ArenaController(arenaBuilder, new WindowViewer(gui), gui);
 
-        controller.start(30);
+        controller.start(60);
     }
 }

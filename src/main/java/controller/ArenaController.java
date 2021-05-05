@@ -61,7 +61,7 @@ public class ArenaController extends GameController {
         getArena().addObstacles(arenaBuilder.getObstacles());
 
         playerController.doAction(action);
-        elementController.moveElements();
+        elementController.moveElements(elapsed);
         handleCollisions();
     }
 
