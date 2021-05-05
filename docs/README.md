@@ -10,11 +10,11 @@ This project was developed by:
 2. [Implemented features](#implemented-features)
 3. [Planned features](#planned-features)
 4. [Design](#design)
-    1. Arena Builder
-    2. Game Loop
-    3. Movement Strategy
-    4. States
-    5. Power Ups
+    1. [Arena Builder](#i. Arena Builder)
+    2. [Game Loop](#ii. Game Loop)
+    3. [Movement Strategy](#iii. Movement Strategy)
+    4. [States](#iv. States)
+    5. [Power Ups](#v. Power Ups)
 5. [Code smells and refactoring techniques](#code-smells)
 6. [Testing](#testing)
 
@@ -23,17 +23,14 @@ In this game, the Player's primary goal is to travel as far as possible, while c
 
 ## Implemented features
 
-Element's behaviour:
-   - Movable objects
+- [x] Movable Objects:
+  - [x] Player
+  - [x] Coins
+  - [x] Obstacles (Laser and EnergyWall)
 
-- Objects:
-   - Coins
-   - Obstacles (Laser and EnergyWall)
-   
-- Arena Builder: we created a random arena builder (RandomArenaBuilder)
-- Information bar: we created a window that has the player's information and, inside it, is the arena where the game happens
-- Collection of coins
-- Collisions
+- [x] Arena Builder - we created a random arena builder (RandomArenaBuilder)
+- [x] Information bar - we created a window that has the player's information and, inside it, is the arena where the game runs
+- [x] Collisions
 
 ## Planned features
 
@@ -48,7 +45,7 @@ Element's behaviour:
 - [ ] Life system: player gains lives throughout the game (when 10 coins are collected perhaps)
 - [ ] Menus
 - [ ] Levels:
-    - [ ] Increase the difficulty linearly throughout a playthrough
+    - [ ] Increase the difficulty linearly throughout a play through
     - [ ] Improve Random Infinite 
     - [ ] Pre-built Levels
     - [ ] Score (Distance)
@@ -69,15 +66,13 @@ To solve this problem, we implemented an Abstract Factory pattern which, dependi
 
 #### Implementation
 
-To implement the Abstract Factory we created an abstract class, ArenaBuilder, that specifies what each arena must be able to create (player, coins, obstacles, etc). Then, various options of building an arena can implement/override the methods of the abstract class accordingly, RandomArenaBuilder.
-If later we wanted to add new methods to create arenas, we only need to specify the target platform when the application starts. This way, the wanted arena builder is instanciated and used throughout the rest of the program, not having to worry with the specific type in use.
+To implement the Abstract Factory we created an abstract class, ArenaBuilder, that specifies what each arena must be able to create (player, coins, obstacles, etc). Then, various options of building an arena can implement/override the methods of the abstract class accordingly, RandomArenaBuilder. If later we wanted to add new methods to create arenas, we only need to specify the target platform when the application starts. This way, the wanted arena builder is instantiated and used throughout the rest of the program, not having to worry with the specific type in use.
 
 ![](./images/factory_pattern.png)
 
 #### Consequences
 
-By using the Abstract Factory, each target platform has its own isolated concrete class, which can be implemented differently. 
-In addition, it makes exchanging product families easy, only needing to call a different constructor at the start of the program, since they extend the same abstract class.
+By using the Abstract Factory, each target platform has its own isolated concrete class, which can be implemented differently. In addition, it makes exchanging product families easy, only needing to call a different constructor at the start of the program, since they extend the same abstract class.
 
 ### ii. Game Loop
 #### Problem in context
@@ -91,7 +86,8 @@ A game loop runs continuously during the gameplay. Each turn of the loop, it pro
 #### Implementation
 
 To implement the Game Loop pattern we created a class, GameLoop, that contains the three main methods stated above, and some other utility functions.
-TODO
+
+> TODO: UML
 
 #### Consequences
 
@@ -106,13 +102,12 @@ This information could be placed in model, in each object's class, but it would 
 
 #### The pattern
 
-To solve this problem we used the Strategy Pattern. 
-This pattern allows us to isolate the distinct movements into classes away from the object, making them interchangeable. 
-With this, we are able to separate the movement algorithm from the objects, so we can easily switch their behaviors and add new ones.
+To solve this problem we used the Strategy Pattern. This pattern allows us to isolate the distinct movements into classes away from the object, making them interchangeable. With this, we are able to separate the movement algorithm from the objects, so we can easily switch their behaviors and add new ones.
 
 #### Implementation
 
-TODO
+> TODO
+>
 
 #### Consequences
 
@@ -126,17 +121,17 @@ To switch from different states smoothly as the game proceeded. This is useful f
 
 #### The pattern
 
-To implement the different states of the game, we used the State Pattern.
-This pattern allows the implementation of each state as subclass. If so, we can switch from different states by only switching to another class.
+To implement the different states of the game, we used the State Pattern. This pattern allows the implementation of each state as subclass. If so, we can switch from different states by only switching to another class.
 
 #### Implementation
 
-TODO
+> TODO
+>
 
 #### Consequences
 
 This pattern facilitates the creation of more states for the game and changes to the ones already created.
-The creation of different states can give us freedom to differentiate behaviours depending on the actual stage in the game.
+The creation of different states can give us freedom to differentiate behaviors depending on the actual stage in the game.
 
 ### v. Power Ups
 #### Problem in context
@@ -145,18 +140,23 @@ The player may have different attributes/stats throughout the game.
 
 #### The pattern
 
-To implement the power-ups we used the Command Pattern. This pattern consists of deriving power-ups from an abstract class while
-modifying a common function, *execute* in our case, so that they can have a different results, change different attributes and/or
-change the Player's state.
+To implement the power-ups we used the Command Pattern. This pattern consists of deriving power-ups from an abstract class while modifying a common function, *execute* in our case, so that they can have a different results, change different attributes and/or change the Player's state.
 
 #### Implementation
 
-TODO
+> TODO
+>
 
 #### Consequences
 
 This pattern eases the management and creation of the power-ups.
 
+> TODO: Perfect
+
 ## Code smells and refactoring techniques
 
+> TODO
+
 ## Testing
+
+> TODO
