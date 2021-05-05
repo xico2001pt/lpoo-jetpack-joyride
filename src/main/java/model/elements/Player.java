@@ -8,7 +8,7 @@ public class Player extends Element {
 
     public Player(Position position) {
         super(position, ImageLibrary.getPlayerImage());
-        this.lives = 1;
+        this.lives = 3;
         this.nCoins = 0;
     }
 

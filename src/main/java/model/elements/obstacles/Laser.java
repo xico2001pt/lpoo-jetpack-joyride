@@ -7,6 +7,6 @@ import model.elements.ImageLibrary;
 public class Laser extends Obstacle {
 
     public Laser(Position position) {
-        super(position, ImageLibrary.getLaser1Image());
+        super(position, ImageLibrary.getLaser2Image());
     }
 }
