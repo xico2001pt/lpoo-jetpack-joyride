@@ -15,14 +15,16 @@ public class ArenaController extends GameController {
     private final PlayerController playerController;
     private final ElementController elementController;
     private final WindowViewer viewer;
+    private final GUI gui;
 
-    public ArenaController(ArenaBuilder arenaBuilder, WindowViewer viewer) {
+    public ArenaController(ArenaBuilder arenaBuilder, WindowViewer viewer, GUI gui) {
         super(arenaBuilder.createArena());
 
         this.arenaBuilder = arenaBuilder;
         this.playerController = new PlayerController(getArena());
         this.elementController = new ElementController(getArena());
         this.viewer = viewer;
+        this.gui = gui;
     }
 
     public void start(int fps) throws IOException {
@@ -50,7 +52,7 @@ public class ArenaController extends GameController {
     }
 
     private GUI.ACTION processInput() throws IOException {
-        return viewer.getArenaViewer().getNextAction();
+        return gui.getNextAction();
     }
 
     private void update(GUI.ACTION action, long elapsed) {

@@ -28,8 +28,4 @@ public class ArenaViewer {
     void drawElement(Element element, ElementViewer viewer) {
         viewer.drawElement(element, gui);
     }
-
-    public GUI.ACTION getNextAction() throws IOException {
-        return gui.getNextAction();
-    }
 }
