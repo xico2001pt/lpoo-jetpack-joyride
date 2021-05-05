@@ -10,12 +10,12 @@ This project was developed by:
 2. [Implemented features](#implemented-features)
 3. [Planned features](#planned-features)
 4. [Design](#design)
-    1. [Arena Builder](#i. Arena Builder)
-    2. [Game Loop](#ii. Game Loop)
-    3. [Movement Strategy](#iii. Movement Strategy)
-    4. [States](#iv. States)
-    5. [Power Ups](#v. Power Ups)
-5. [Code smells and refactoring techniques](#code-smells)
+    1. [Arena Builder](#i-arena-builder)
+    2. [Game Loop](#ii-game-loop)
+    3. [Movement Strategy](#iii-movement-strategy)
+    4. [States](#iv-states)
+    5. [Power Ups](#v-power-ups)
+5. [Code smells and refactoring techniques](#code-smells-and-refactoring-techniques)
 6. [Testing](#testing)
 
 ## Description
