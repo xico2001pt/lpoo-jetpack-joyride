@@ -6,11 +6,11 @@ import java.util.List;
 public class Matrix<T> {
     private final List<List<T>> matrix;
 
-    public Matrix(int nRows, int nColumns) {
-        this(nRows, nColumns, null);
+    public Matrix(int nColumns, int nRows) {
+        this(nColumns, nRows, null);
     }
 
-    public Matrix(int nRows, int nColumns, T initializer) {
+    public Matrix(int nColumns, int nRows, T initializer) {
         this.matrix = new ArrayList<>();
         for (int i = 0; i < nRows; ++i) {
             List<T> list = new ArrayList<>();
@@ -20,11 +20,11 @@ public class Matrix<T> {
         }
     }
 
-    public T getValue(int row, int column) {
+    public T getValue(int column, int row) {
         return this.matrix.get(row).get(column);
     }
 
-    public void setValue(int row, int column, T value) {
+    public void setValue(int column, int row, T value) {
         this.matrix.get(row).set(column, value);
     }
 

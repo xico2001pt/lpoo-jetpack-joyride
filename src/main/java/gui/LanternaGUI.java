@@ -97,15 +97,14 @@ public class LanternaGUI implements GUI {
         int infoWidth = (getTerminalWidth() - width) / 2;
         int infoHeight = (getTerminalHeight() - height) / 2;
 
-        int minRow = Math.max(0, position.getY()) + infoWidth;
-        int maxRow = Math.min(getTerminalWidth() - infoWidth, position.getY() + infoWidth + image.getNumberCol());
-        int minCol = Math.max(0, position.getX()) + infoHeight;
-        int maxCol = Math.min(getTerminalHeight() - infoHeight, position.getX() + infoHeight + image.getNumberRows());
+        int minRow = Math.max(0, position.getY()) + infoHeight;
+        int maxRow = Math.min(height, position.getY() + image.getNumberRows()) + infoHeight;
+        int minCol = Math.max(0, position.getX()) + infoWidth;
+        int maxCol = Math.min(width, position.getX() + image.getNumberCol()) + infoWidth;
 
-        for (int row = minRow; row < maxRow; row++)
-            for (int col = minCol; col < maxCol; col++) {
+        for (int row = minRow; row < maxRow; ++row)
+            for (int col = minCol; col < maxCol; ++col)
                 drawCharacter(new Position(col, row), image.getValue(col - minCol, row - minRow));
-            }
     }
 
     @Override
