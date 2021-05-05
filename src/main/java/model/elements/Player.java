@@ -2,6 +2,8 @@ package model.elements;
 
 import model.Position;
 
+import java.util.Objects;
+
 public class Player extends Element {
     private int lives;
     private int nCoins;
@@ -26,5 +28,14 @@ public class Player extends Element {
 
     public void setCoins(int coins) {
         nCoins = coins;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Player player = (Player) o;
+        return lives == player.lives && nCoins == player.nCoins;
     }
 }

@@ -22,7 +22,6 @@ public class Arena {
 
         this.obstacles = new ArrayList<>();
         this.coins = new ArrayList<>();
-
     }
 
     public int getHeight() {

@@ -16,27 +16,36 @@ class PositionTest {
 
     @Test
     void getLeft() {
-        assertEquals(4, position.getLeft().getX());
+        Position p = position.getLeft();
+        assertEquals(4, p.getX());
+        assertEquals(2, p.getY());
     }
 
     @Test
     void getRight() {
-        assertEquals(6, position.getRight().getX());
+        Position p = position.getRight();
+        assertEquals(6, p.getX());
+        assertEquals(2, p.getY());
     }
 
     @Test
     void getUp() {
-        assertEquals(1, position.getUp().getY());
+        Position p = position.getUp();
+        assertEquals(5, p.getX());
+        assertEquals(1, p.getY());
     }
 
     @Test
     void getDown() {
-        assertEquals(3, position.getDown().getY());
+        Position p = position.getDown();
+        assertEquals(5, p.getX());
+        assertEquals(3, p.getY());
     }
 
     @Test
     void getIncrementedPosition() {
-        assertEquals(8, position.getIncrementedPosition(3, 0).getX());
-        assertEquals(1, position.getIncrementedPosition(3, -1).getY());
+        Position p = position.getIncrementedPosition(3,-1);
+        assertEquals(8, p.getX());
+        assertEquals(1, p.getY());
     }
 }
