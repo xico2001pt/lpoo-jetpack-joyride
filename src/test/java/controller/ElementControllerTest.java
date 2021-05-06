@@ -2,6 +2,7 @@ package controller;
 
 import model.Position;
 import model.arena.Arena;
+import model.elements.Coin;
 import model.elements.obstacles.Laser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,16 +28,26 @@ class ElementControllerTest {
 
         controller.moveElements(0);
 
-        assertNotEquals(new Position(5, 5), laser.getPosition());
+        assertEquals(new Position(5, 5), laser.getPosition());
     }
 
     @Test
-    void moveElements() {
+    void moveElementsLaser() {
         Laser laser = new Laser(new Position(5, 5));
         arena.addObstacles(Arrays.asList(laser));
 
         controller.moveElements(110);
 
-        assertNotEquals(new Position(4, 5), laser.getPosition());
+        assertEquals(new Position(4, 5), laser.getPosition());
+    }
+
+    @Test
+    void moveElementsCoin() {
+        Coin coin = new Coin(new Position(2, 3));
+        arena.addCoins(Arrays.asList(coin));
+
+        controller.moveElements(150);
+
+        assertEquals(new Position(1, 3), coin.getPosition());
     }
 }

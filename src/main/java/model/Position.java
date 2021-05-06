@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Position {
     private final int x, y;
 
@@ -34,5 +36,18 @@ public class Position {
 
     public Position getIncrementedPosition(int xIncrement, int yIncrement) {
         return new Position(x + xIncrement, y + yIncrement);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return x == position.x && y == position.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }
