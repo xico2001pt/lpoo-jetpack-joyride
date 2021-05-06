@@ -1,6 +1,5 @@
 package model.elements;
 
-import model.Matrix;
 import model.Position;
 
 public class Coin extends Element {

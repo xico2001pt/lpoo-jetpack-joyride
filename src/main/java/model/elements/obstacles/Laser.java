@@ -1,6 +1,5 @@
 package model.elements.obstacles;
 
-import model.Matrix;
 import model.Position;
 import model.elements.ImageLibrary;
 
