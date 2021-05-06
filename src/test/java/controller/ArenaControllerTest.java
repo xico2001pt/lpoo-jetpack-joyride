@@ -33,7 +33,7 @@ class ArenaControllerTest {
         Mockito.when(arenaBuilder.createArena()).thenReturn(arena);
         ArenaController controller = new ArenaController(arenaBuilder);
 
-        controller.handleCollisions();
+        controller.updateArena();
 
         assertEquals(arena.getPlayer().getLives(), initial_lives - 1);
     }
@@ -50,7 +50,7 @@ class ArenaControllerTest {
         Mockito.when(arenaBuilder.createArena()).thenReturn(arena);
         ArenaController controller = new ArenaController(arenaBuilder);
 
-        controller.handleCollisions();
+        controller.updateArena();
 
         assertEquals(arena.getPlayer().getLives(), initial_lives);
         assertEquals(arena.getPlayer().getCoins(), initial_coins + 1);
@@ -70,7 +70,7 @@ class ArenaControllerTest {
         Mockito.when(arenaBuilder.createArena()).thenReturn(arena);
         ArenaController controller = new ArenaController(arenaBuilder);
 
-        controller.handleCollisions();
+        controller.updateArena();
 
         assertEquals(arena.getPlayer().getLives(), initial_lives);
         assertEquals(arena.getPlayer().getCoins(), initial_coins);
