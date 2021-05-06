@@ -56,7 +56,11 @@ public class Arena {
         this.obstacles.addAll(obstacles);
     }
 
-    public void removeObstacle() {
-        // TODO
+    public void popObstacle() {
+        if (this.obstacles.size() > 0) this.obstacles.remove(0);
+    }
+
+    public void popCoin() {
+        if (this.coins.size() > 0) this.coins.remove(0);
     }
 }

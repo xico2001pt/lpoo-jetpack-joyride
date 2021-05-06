@@ -5,9 +5,11 @@ import model.arena.ArenaBuilder;
 import model.elements.Coin;
 import model.elements.Element;
 import model.elements.obstacles.Obstacle;
+import viewer.ElementViewer;
 import viewer.WindowViewer;
 
 import java.io.IOException;
+import java.util.List;
 
 public class ArenaController extends GameController {
     private final ArenaBuilder arenaBuilder;
@@ -18,7 +20,22 @@ public class ArenaController extends GameController {
         this.arenaBuilder = arenaBuilder;
     }
 
-    public void handleCollisions() {
+    @Override
+    public void updateArena() {
+        handleCollisions();
+        removeOutOfBoundariesElements(getArena().getCoins());
+        removeOutOfBoundariesElements(getArena().getObstacles());
+    }
+
+    private void removeOutOfBoundariesElements(List<? extends Element> elements) {
+        for (int i = elements.size() - 1; i >= 0; --i) {
+            if (elements.get(i).getPosition().getX() + elements.get(i).getImage().getNumberCol() < 0) {
+                elements.remove(i);
+            }
+        }
+    }
+
+    private void handleCollisions() {
         // TODO: code smell. talvez criar obstacle cotroller e coin controller?
         for (Obstacle obstacle: getArena().getObstacles()) {
             if (checkElementCollision(obstacle, getArena().getPlayer())) {

@@ -2,6 +2,9 @@ package controller;
 
 import model.arena.Arena;
 import model.arena.ArenaBuilder;
+import model.elements.Element;
+
+import java.util.List;
 
 public abstract class GameController {
     private final Arena arena;
@@ -20,5 +23,5 @@ public abstract class GameController {
         return arenaBuilder;
     }
 
-    public abstract void handleCollisions();
+    public abstract void updateArena();
 }

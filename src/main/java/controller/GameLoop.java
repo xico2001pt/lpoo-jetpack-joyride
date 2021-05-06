@@ -65,7 +65,7 @@ public class GameLoop {
 
         playerController.doAction(action);
         elementController.moveElements(elapsed);
-        gameController.handleCollisions();
+        gameController.updateArena();
 
         if (gameController.getArena().getPlayer().getLives() <= 0) running = false;
     }
