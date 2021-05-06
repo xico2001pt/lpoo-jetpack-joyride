@@ -31,11 +31,11 @@ public abstract class Element {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Element element = (Element) o;
-        return position.equals(element.position) && image.equals(element.image);
+        return position.equals(element.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, image);
+        return Objects.hash(position);
     }
 }
