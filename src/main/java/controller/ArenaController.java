@@ -1,15 +1,17 @@
 package controller;
 
-import gui.GUI;
 import model.arena.ArenaBuilder;
 import model.elements.Coin;
 import model.elements.Element;
 import model.elements.obstacles.Obstacle;
+<<<<<<< HEAD
 import viewer.ElementViewer;
 import viewer.WindowViewer;
 
 import java.io.IOException;
 import java.util.List;
+=======
+>>>>>>> 3c7e2e853062c9fb4934eb8a07053fa2d178ee9f
 
 public class ArenaController extends GameController {
     private final ArenaBuilder arenaBuilder;

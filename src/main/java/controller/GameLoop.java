@@ -2,7 +2,6 @@ package controller;
 
 import gui.GUI;
 import viewer.WindowViewer;
-import model.arena.Arena;
 
 import java.io.IOException;
 

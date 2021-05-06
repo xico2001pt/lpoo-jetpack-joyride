@@ -2,8 +2,6 @@ package model.elements;
 
 import model.Position;
 
-import java.util.Objects;
-
 public class Player extends Element {
     private int lives;
     private int nCoins;

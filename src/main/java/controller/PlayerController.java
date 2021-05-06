@@ -3,10 +3,6 @@ package controller;
 import gui.GUI;
 import model.Position;
 import model.arena.Arena;
-import model.elements.Player;
-import model.elements.Coin;
-import model.elements.Element;
-import model.elements.obstacles.Obstacle;
 
 public class PlayerController {
     private final Arena arena;
