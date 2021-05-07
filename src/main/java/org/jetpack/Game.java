@@ -2,6 +2,7 @@ package org.jetpack;
 
 import org.jetpack.controller.ArenaController;
 import org.jetpack.controller.GameLoop;
+import org.jetpack.controller.state.ArenaState;
 import org.jetpack.gui.GUI;
 import org.jetpack.gui.LanternaGUI;
 import org.jetpack.model.arena.ArenaBuilder;
@@ -23,10 +24,8 @@ public class Game {
 
     private static void createRandomLevel(int width, int height) throws FontFormatException, IOException, URISyntaxException {
         GUI gui = new LanternaGUI(width, height);
-        ArenaBuilder arenaBuilder = new RandomArenaBuilder(width, height);
-        ArenaController controller = new ArenaController(arenaBuilder);
 
-        GameLoop gameLoop = new GameLoop(60, controller, new WindowViewer(gui), gui);
+        GameLoop gameLoop = new GameLoop(60, gui);
 
         gameLoop.run();
     }

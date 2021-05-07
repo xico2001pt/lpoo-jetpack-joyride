@@ -11,19 +11,24 @@ import org.jetpack.viewer.WindowViewer;
 import java.util.List;
 
 public class ArenaController {
-
     private final Arena arena;
     private final ArenaBuilder arenaBuilder;
     private final PlayerController playerController;
     private final ElementController elementController;
-    private final WindowViewer windowViewer;
 
     public ArenaController(ArenaBuilder arenaBuilder) {
         this.arenaBuilder = arenaBuilder;
         this.arena = arenaBuilder.createArena();
         this.playerController = new PlayerController(arena);
         this.elementController = new ElementController(arena);
-        this.windowViewer = new WindowViewer(gui);
+    }
+
+    public Arena getArena() {
+        return this.arena;
+    }
+
+    public ArenaBuilder getArenaBuilder() {
+        return this.arenaBuilder;
     }
 
     public void updateArena(GUI.ACTION action, long elapsed) {

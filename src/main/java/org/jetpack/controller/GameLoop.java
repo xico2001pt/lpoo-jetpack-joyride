@@ -1,22 +1,24 @@
 package org.jetpack.controller;
 
-import org.jetpack.controller.state.State;
+import org.jetpack.controller.state.ArenaState;
+import org.jetpack.controller.state.GameState;
+import org.jetpack.controller.state.MainMenuState;
 import org.jetpack.gui.GUI;
-import org.jetpack.viewer.WindowViewer;
+import org.jetpack.model.arena.RandomArenaBuilder;
 
 import java.io.IOException;
 
 public class GameLoop {
     private final int FPS;
+    private final GUI gui;
+    private GameState currentGameState;
     private boolean running;
-    private GUI gui;
-    private State currentState;
 
-    public GameLoop(State initialState, int FPS, GUI gui) {
+    public GameLoop(int FPS, GUI gui) {
         this.FPS = FPS;
-        this.running = false;
         this.gui = gui;
-        this.currentState = initialState;
+        this.currentGameState = new MainMenuState(this, gui);
+        this.running = false;
     }
 
     public void run() throws IOException {
@@ -29,9 +31,9 @@ public class GameLoop {
             elapsedInstants = currentInstant - lastInstant;
 
             GUI.ACTION action = processInput();
-            if (action == GUI.ACTION.QUIT) running = false;
-            update(action, elapsedInstants);
-            render();
+            if (action == GUI.ACTION.QUIT) running = false;  // TODO: To be deleted soon
+            this.currentGameState.update(action, elapsedInstants);
+            this.currentGameState.render();
 
             lastInstant = currentInstant;
             try {
@@ -41,23 +43,18 @@ public class GameLoop {
             }
         }
 
-        windowViewer.close();
+        gui.close();
+    }
+
+    public void setGameState(GameState state) {
+        this.currentGameState = state;
+    }
+
+    public void stop() {
+        this.running = false;
     }
 
     private GUI.ACTION processInput() throws IOException {
         return gui.getNextAction();
-    }
-
-    private void update(GUI.ACTION action, long elapsed) {
-        gameController.getArenaBuilder().incrementInstant(elapsed);
-        gameController.getArena().addCoins(gameController.getArenaBuilder().getCoins());
-        gameController.getArena().addObstacles(gameController.getArenaBuilder().getObstacles());
-        gameController.updateArena(action, elapsed);
-
-        if (gameController.getArena().getPlayer().getLives() <= 0) running = false;
-    }
-
-    private void render() throws IOException {
-        windowViewer.draw(gameController.getArena());
     }
 }

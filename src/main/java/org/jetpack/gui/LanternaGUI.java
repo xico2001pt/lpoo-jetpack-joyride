@@ -82,6 +82,7 @@ public class LanternaGUI implements GUI {
         if (keyStroke.getKeyType() == KeyType.EOF) return ACTION.QUIT;          // TODO: not working
         if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'q') return ACTION.QUIT;
         if (keyStroke.getKeyType() == KeyType.Escape) return ACTION.PAUSE;      // TODO
+        if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.ENTER;
 
         if (keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
         if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
