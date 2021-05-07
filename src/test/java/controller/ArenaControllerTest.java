@@ -1,5 +1,6 @@
 package controller;
 
+import gui.GUI;
 import model.Position;
 import model.arena.Arena;
 import model.arena.ArenaBuilder;
@@ -33,7 +34,7 @@ class ArenaControllerTest {
         Mockito.when(arenaBuilder.createArena()).thenReturn(arena);
         ArenaController controller = new ArenaController(arenaBuilder);
 
-        controller.updateArena();
+        controller.updateArena(GUI.ACTION.NONE, 1);
 
         assertEquals(arena.getPlayer().getLives(), initial_lives - 1);
     }
@@ -50,7 +51,7 @@ class ArenaControllerTest {
         Mockito.when(arenaBuilder.createArena()).thenReturn(arena);
         ArenaController controller = new ArenaController(arenaBuilder);
 
-        controller.updateArena();
+        controller.updateArena(GUI.ACTION.NONE, 1);
 
         assertEquals(arena.getPlayer().getLives(), initial_lives);
         assertEquals(arena.getPlayer().getCoins(), initial_coins + 1);
@@ -70,7 +71,7 @@ class ArenaControllerTest {
         Mockito.when(arenaBuilder.createArena()).thenReturn(arena);
         ArenaController controller = new ArenaController(arenaBuilder);
 
-        controller.updateArena();
+        controller.updateArena(GUI.ACTION.NONE, 1);
 
         assertEquals(arena.getPlayer().getLives(), initial_lives);
         assertEquals(arena.getPlayer().getCoins(), initial_coins);
