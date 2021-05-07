@@ -1,13 +1,8 @@
 package org.jetpack;
 
-import org.jetpack.controller.ArenaController;
 import org.jetpack.controller.GameLoop;
-import org.jetpack.controller.state.ArenaState;
 import org.jetpack.gui.GUI;
 import org.jetpack.gui.LanternaGUI;
-import org.jetpack.model.arena.ArenaBuilder;
-import org.jetpack.model.arena.RandomArenaBuilder;
-import org.jetpack.viewer.WindowViewer;
 
 import java.awt.*;
 import java.io.IOException;

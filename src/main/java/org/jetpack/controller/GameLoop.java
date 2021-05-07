@@ -1,10 +1,8 @@
 package org.jetpack.controller;
 
-import org.jetpack.controller.state.ArenaState;
 import org.jetpack.controller.state.GameState;
 import org.jetpack.controller.state.MainMenuState;
 import org.jetpack.gui.GUI;
-import org.jetpack.model.arena.RandomArenaBuilder;
 
 import java.io.IOException;
 

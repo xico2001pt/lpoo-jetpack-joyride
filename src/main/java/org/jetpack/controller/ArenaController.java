@@ -6,7 +6,6 @@ import org.jetpack.model.arena.ArenaBuilder;
 import org.jetpack.model.elements.Coin;
 import org.jetpack.model.elements.Element;
 import org.jetpack.model.elements.obstacles.Obstacle;
-import org.jetpack.viewer.WindowViewer;
 
 import java.util.List;
 
