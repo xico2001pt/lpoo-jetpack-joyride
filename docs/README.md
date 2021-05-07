@@ -11,7 +11,7 @@ This project was developed by:
 3. [Planned features](#planned-features)
 4. [Design](#design)
     1. [Arena Builder](#i-arena-builder)
-    2. [Game Loop](#ii-game-loop)
+    2. [org.jetpack.Game Loop](#ii-game-loop)
     3. [Movement Strategy](#iii-movement-strategy)
     4. [States](#iv-states)
     5. [Power Ups](#v-power-ups)
@@ -74,7 +74,7 @@ To implement the Abstract Factory we created an abstract class, ArenaBuilder, th
 
 By using the Abstract Factory, each target platform has its own isolated concrete class, which can be implemented differently. In addition, it makes exchanging product families easy, only needing to call a different constructor at the start of the program, since they extend the same abstract class.
 
-### ii. Game Loop
+### ii. org.jetpack.Game Loop
 #### Problem in context
 
 In order to control the main cycle of the game, we need a way to make sure the game runs properly, processes the input and renders accordingly with a certain amount of frames per seconds (that won't interfere in the game itself).
@@ -85,19 +85,19 @@ A game loop runs continuously during the gameplay. Each turn of the loop, it pro
 
 #### Implementation
 
-To implement the Game Loop pattern we created a class, GameLoop, that contains the three main methods stated above, and some other utility functions.
+To implement the org.jetpack.Game Loop pattern we created a class, GameLoop, that contains the three main methods stated above, and some other utility functions.
 
 ![](./images/game_Loop.png)
 
 #### Consequences
 
-The Game Loop pattern allow us to have more control in the way the game runs and separate each processing.
+The org.jetpack.Game Loop pattern allow us to have more control in the way the game runs and separate each processing.
 
 ### iii. Movement Strategy
 #### Problem in context
 
 In order for the objects to have different types of movement, we needed to specify their movement.
-This information could be placed in model, in each object's class, but it would be much to know about, and it would not concern the element itself.
+This information could be placed in org.jetpack.model, in each object's class, but it would be much to know about, and it would not concern the element itself.
 
 #### The pattern
 
