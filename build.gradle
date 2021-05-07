@@ -24,7 +24,7 @@ test {
 }
 
 application {
-    mainClass.set("Game")
+    mainClass.set('org.jetpack.Game')
 }
 
 pitest {
