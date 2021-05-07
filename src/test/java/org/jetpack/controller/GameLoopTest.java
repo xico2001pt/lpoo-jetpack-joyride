@@ -15,8 +15,7 @@ class GameLoopTest {
     void run() throws IOException {
         LanternaGUI gui = Mockito.mock(LanternaGUI.class);
         Mockito.when(gui.getNextAction()).thenReturn(GUI.ACTION.QUIT);
-        GameLoop gameLoop = new GameLoop(10, new ArenaController(new RandomArenaBuilder(10, 10)),
-                new WindowViewer(gui), gui);
+        GameLoop gameLoop = new GameLoop(10, gui);
 
         gameLoop.run();
         Mockito.verify(gui, Mockito.times(1)).getNextAction();
