@@ -10,9 +10,6 @@ public class GameLoop {
     private boolean running;
 
     private final GameController gameController;
-    private final PlayerController playerController;
-    private final ElementController elementController;
-
     private final WindowViewer windowViewer;
     private final GUI gui;
 
@@ -21,9 +18,6 @@ public class GameLoop {
         this.running = false;
 
         this.gameController = gameController;
-        this.playerController = new PlayerController(gameController.getArena());
-        this.elementController = new ElementController(gameController.getArena());
-
         this.windowViewer = windowViewer;
         this.gui = gui;
     }
@@ -61,10 +55,7 @@ public class GameLoop {
         gameController.getArenaBuilder().incrementInstant(elapsed);
         gameController.getArena().addCoins(gameController.getArenaBuilder().getCoins());
         gameController.getArena().addObstacles(gameController.getArenaBuilder().getObstacles());
-
-        playerController.doAction(action);
-        elementController.moveElements(elapsed);
-        gameController.updateArena();
+        gameController.updateArena(action, elapsed);
 
         if (gameController.getArena().getPlayer().getLives() <= 0) running = false;
     }

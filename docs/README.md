@@ -87,7 +87,7 @@ A game loop runs continuously during the gameplay. Each turn of the loop, it pro
 
 To implement the Game Loop pattern we created a class, GameLoop, that contains the three main methods stated above, and some other utility functions.
 
-> TODO: UML
+![](./images/game_Loop.png)
 
 #### Consequences
 
@@ -98,7 +98,6 @@ The Game Loop pattern allow us to have more control in the way the game runs and
 
 In order for the objects to have different types of movement, we needed to specify their movement.
 This information could be placed in model, in each object's class, but it would be much to know about, and it would not concern the element itself.
-
 
 #### The pattern
 

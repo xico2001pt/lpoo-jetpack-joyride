@@ -37,7 +37,6 @@ public class RandomArenaBuilder extends ArenaBuilder {
         if (getInstant() >= nextCoinInst) {
             // Add coins
             coins.add(generateCoin());
-            //coins.add(generateCoin());
 
             // Generate new instant
             nextCoinInst = generateInstant(getInstant() + 200, getInstant() + generateInstant(500, 2000));
@@ -54,7 +53,6 @@ public class RandomArenaBuilder extends ArenaBuilder {
         if (getInstant() >= nextObstacleInst) {
             // Add obstacle
             obstacles.add(generateObstacle());
-            //obstacles.add(generateObstacle());
 
             // Generate new instant
             nextObstacleInst = generateInstant(getInstant() + 500, getInstant() + generateInstant(1000, 2000));

@@ -1,5 +1,6 @@
 package controller;
 
+import gui.GUI;
 import model.arena.ArenaBuilder;
 import model.elements.Coin;
 import model.elements.Element;
@@ -7,16 +8,20 @@ import model.elements.obstacles.Obstacle;
 import java.util.List;
 
 public class ArenaController extends GameController {
-    private final ArenaBuilder arenaBuilder;
+    private final PlayerController playerController;
+    private final ElementController elementController;
 
     public ArenaController(ArenaBuilder arenaBuilder) {
         super(arenaBuilder);
-
-        this.arenaBuilder = arenaBuilder;
+        this.playerController = new PlayerController(getArena());
+        this.elementController = new ElementController(getArena());
     }
 
     @Override
-    public void updateArena() {
+    public void updateArena(GUI.ACTION action, long elapsed) {
+        playerController.doAction(action);
+        elementController.moveElements(elapsed);
+
         handleCollisions();
         removeOutOfBoundariesElements(getArena().getCoins());
         removeOutOfBoundariesElements(getArena().getObstacles());

@@ -25,13 +25,13 @@ public class WindowViewer {
         gui.refresh();
     }
 
+    public ArenaViewer getArenaViewer() {
+        return arenaViewer;
+    }
+
     private void drawInfo(Player player) {
         gui.drawText(new Position(0, 0), "Lives: " + player.getLives());
         gui.drawText(new Position(gui.getTerminalWidth()/2, 0), "Coins: " + player.getCoins());
-    }
-
-    public ArenaViewer getArenaViewer() {
-        return arenaViewer;
     }
 
     public void close() throws IOException {

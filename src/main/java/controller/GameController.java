@@ -1,10 +1,8 @@
 package controller;
 
+import gui.GUI;
 import model.arena.Arena;
 import model.arena.ArenaBuilder;
-import model.elements.Element;
-
-import java.util.List;
 
 public abstract class GameController {
     private final Arena arena;
@@ -23,5 +21,5 @@ public abstract class GameController {
         return arenaBuilder;
     }
 
-    public abstract void updateArena();
+    public abstract void updateArena(GUI.ACTION action, long elapsed);
 }
