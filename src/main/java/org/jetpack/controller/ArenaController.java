@@ -1,30 +1,38 @@
 package org.jetpack.controller;
 
 import org.jetpack.gui.GUI;
+import org.jetpack.model.arena.Arena;
 import org.jetpack.model.arena.ArenaBuilder;
 import org.jetpack.model.elements.Coin;
 import org.jetpack.model.elements.Element;
 import org.jetpack.model.elements.obstacles.Obstacle;
+import org.jetpack.viewer.WindowViewer;
+
 import java.util.List;
 
-public class ArenaController extends GameController {
+public class ArenaController {
+
+    private final Arena arena;
+    private final ArenaBuilder arenaBuilder;
     private final PlayerController playerController;
     private final ElementController elementController;
+    private final WindowViewer windowViewer;
 
     public ArenaController(ArenaBuilder arenaBuilder) {
-        super(arenaBuilder);
-        this.playerController = new PlayerController(getArena());
-        this.elementController = new ElementController(getArena());
+        this.arenaBuilder = arenaBuilder;
+        this.arena = arenaBuilder.createArena();
+        this.playerController = new PlayerController(arena);
+        this.elementController = new ElementController(arena);
+        this.windowViewer = new WindowViewer(gui);
     }
 
-    @Override
     public void updateArena(GUI.ACTION action, long elapsed) {
         playerController.doAction(action);
         elementController.moveElements(elapsed);
 
         handleCollisions();
-        removeOutOfBoundariesElements(getArena().getCoins());
-        removeOutOfBoundariesElements(getArena().getObstacles());
+        removeOutOfBoundariesElements(arena.getCoins());
+        removeOutOfBoundariesElements(arena.getObstacles());
     }
 
     private void removeOutOfBoundariesElements(List<? extends Element> elements) {
@@ -37,18 +45,18 @@ public class ArenaController extends GameController {
 
     private void handleCollisions() {
         // TODO: code smell. talvez criar obstacle cotroller e coin org.jetpack.controller?
-        for (Obstacle obstacle: getArena().getObstacles()) {
-            if (checkElementCollision(obstacle, getArena().getPlayer())) {
-                getArena().getObstacles().remove(obstacle);
-                getArena().getPlayer().setLives(getArena().getPlayer().getLives() - 1);
+        for (Obstacle obstacle: arena.getObstacles()) {
+            if (checkElementCollision(obstacle, arena.getPlayer())) {
+                arena.getObstacles().remove(obstacle);
+                arena.getPlayer().setLives(arena.getPlayer().getLives() - 1);
                 break;
             }
         }
 
-        for (Coin coin : getArena().getCoins()) {
-            if (checkElementCollision(coin, getArena().getPlayer())) {
-                getArena().getCoins().remove(coin);
-                getArena().getPlayer().setCoins(getArena().getPlayer().getCoins() + 1);
+        for (Coin coin : arena.getCoins()) {
+            if (checkElementCollision(coin, arena.getPlayer())) {
+                arena.getCoins().remove(coin);
+                arena.getPlayer().setCoins(arena.getPlayer().getCoins() + 1);
                 break;
             }
         }

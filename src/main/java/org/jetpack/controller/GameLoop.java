@@ -1,5 +1,6 @@
 package org.jetpack.controller;
 
+import org.jetpack.controller.state.State;
 import org.jetpack.gui.GUI;
 import org.jetpack.viewer.WindowViewer;
 
@@ -8,18 +9,14 @@ import java.io.IOException;
 public class GameLoop {
     private final int FPS;
     private boolean running;
+    private GUI gui;
+    private State currentState;
 
-    private final GameController gameController;
-    private final WindowViewer windowViewer;
-    private final GUI gui;
-
-    public GameLoop(int FPS, GameController gameController, WindowViewer windowViewer, GUI gui) {
+    public GameLoop(State initialState, int FPS, GUI gui) {
         this.FPS = FPS;
         this.running = false;
-
-        this.gameController = gameController;
-        this.windowViewer = windowViewer;
         this.gui = gui;
+        this.currentState = initialState;
     }
 
     public void run() throws IOException {
