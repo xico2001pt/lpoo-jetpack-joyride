@@ -158,4 +158,10 @@ This pattern eases the management and creation of the power-ups.
 
 ## Testing
 
-> TODO
+![](./testResults/tests.png)
+### Test Coverage
+![](./testResults/test_coverage.png)
+
+![](./testResults/pitest.png)
+
+[Link to the reports in HTML format](testResults/html)
