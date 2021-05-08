@@ -113,7 +113,7 @@ To solve this problem we used the Strategy Pattern. This pattern allows us to is
 With this pattern, we can eliminate the possibility of differentiating each behaviour with conditional statements and substitute them with classes that have different implementation accordingly.
 In this way, each object does not have to know its type of movement.
 
-### iv. States
+### iv. Game States
 #### Problem in context
 
 To switch from different states smoothly as the game proceeded. This is useful for the menus and power-ups in the game.
@@ -130,6 +130,7 @@ To implement the different states of the game, we used the State Pattern. This p
 
 This pattern facilitates the creation of more states for the game and changes to the ones already created.
 The creation of different states can give us freedom to differentiate behaviors depending on the actual stage in the game.
+Also, there's no need to use flags or complex if statements. However, this means that there will be more classes in the game.
 
 ### v. Power Ups
 #### Problem in context
@@ -153,7 +154,61 @@ This pattern eases the management and creation of the power-ups.
 
 ## Code smells and refactoring techniques
 
-> TODO
+### Bloaters
+
+#### Primitive Obsession and Data Clump
+
+Currently, the size of the arena is represented as two integers, which are used several times in different parts of the code.
+This code smell can be fixed by creating a class which will be responsible for managing these variables.
+
+#### Long Parameter List
+
+The method checkBoxCollision() has eight arguments, receiving two points and two dimensions.
+This issue can be solved by change the given parameters to classes that group the variables.
+
+### Object-Orientation Abusers
+
+#### Switch Statements
+
+The method responsible to interpret the user input has a lot of if statements to map each input key to an action.
+Unfortunately, it's not easy to solve this problem, as there are no obvious alternatives.
+
+The function responsible for generating random obstacles also has the same issue.
+
+### Change Preventers
+
+#### Parallel Inheritance Hierarchies
+
+As we are using the MVC architecture, this implies that almost every object from the Model should have a controller and viewer class.
+Each game state also need to have a correspondent controller and viewer. We thought a lot about this code smell and seems to be no easy fix for this problem without violating the SOLID principles.
+
+### Dispensables
+
+#### Comments
+
+As our project is still in the beginning, it has a lot of comments to help us to understand what we're doing (specially TODO's).
+This should (and will) be fixed in the final delivery.
+
+#### Duplicate Code
+
+Currently, we have a method that has a lot of code fragments which are identical, as we are still thinking about the structure of that specific part.
+We think that this can be fixed improving the code structure and creating generic methods. 
+
+#### Data Class
+
+Our game uses a data class to store the image (structure) of the various elements. We think that with this singleton our code is more organized.
+
+#### Speculative Generality
+
+We have some methods, like checkImageCollision() and some getters and setters, that are not being used, but were created to support anticipated future features.
+This will obviously be fixed until the final delivery, as these features will be implemented.
+
+### Couplers
+
+#### Message Chains
+
+The WindowViewer class calls methods of the ArenaViewer class, that will call some other methods of the ElementViewer class.
+This is a chain of calls that we would like to improve and simplify until the final delivery, by reviewing the structure of the code.
 
 ## Testing
 

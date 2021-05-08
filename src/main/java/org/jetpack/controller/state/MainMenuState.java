@@ -23,8 +23,8 @@ public class MainMenuState extends GameState {
     public void render() throws IOException {
         // The code below was used only to test
         getGui().clear();
-        getGui().drawText(new Position(1, 14), "This is supposed to be a Menu!");
-        getGui().drawText(new Position(5, 16), "Just press ENTER, dude");
+        getGui().drawText(new Position(5, 14), "this is the MAIN MENU");
+        getGui().drawText(new Position(7, 16), "please press ENTER");
         getGui().refresh();
     }
 }
