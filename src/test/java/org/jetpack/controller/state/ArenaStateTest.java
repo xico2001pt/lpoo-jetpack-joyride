@@ -22,7 +22,7 @@ class ArenaStateTest {
         Arena arena = new Arena(10, 10);
         arena.setPlayer(new Player(new Position(5, 5)));
         Mockito.when(arenaBuilder.createArena()).thenReturn(arena);
-        GUI gui = new LanternaGUI(30, 30);
+        GUI gui = Mockito.mock(GUI.class);
         GameLoop gameLoop = new GameLoop(30, gui);
 
         GameState arenaState = new ArenaState(gameLoop, gui, arenaBuilder);
