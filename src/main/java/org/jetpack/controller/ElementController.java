@@ -32,10 +32,6 @@ public class ElementController {
     }
 
     private void moveElement(Element element, Position position) {
-        // TODO:
-        // Collisions
-        // Coins and obstacles
-
         element.setPosition(position);
     }
 }

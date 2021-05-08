@@ -20,12 +20,6 @@ public class PlayerController {
     }
 
     private void movePlayer(Position position) {
-        // TODO: See position in arena
-        // setPosition for player
-        // - If coins, nCoins++
-        // - If obstacle, lives--
-        // - ...
-
         if (!canMove(position)) return;
 
         arena.getPlayer().setPosition(position);
