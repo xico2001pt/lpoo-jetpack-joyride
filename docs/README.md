@@ -62,17 +62,17 @@ To allow the creation of an Arena of multiple ways, randomly or by reading it fr
 
 #### The pattern
 
-To solve this problem, we implemented an Abstract Factory pattern which, depending on the what form of arena creation we want, it creates specific Arenas accordingly.
+To solve this problem, we implemented a Factory Method that creates specific Arenas depending on the what form of arena creation we want.
 
 #### Implementation
 
-To implement the Abstract Factory we created an abstract class, ArenaBuilder, that specifies what each arena must be able to create (player, coins, obstacles, etc). Then, various options of building an arena can implement/override the methods of the abstract class accordingly. If, for some reason, later we want to add new methods to create arenas, we only need to specify the target platform when the application starts. This way, the wanted arena builder is instantiated and used throughout the rest of the program, not having to worry with the specific type in use.
+To implement the Factory Method we created an abstract class, ArenaBuilder, that specifies what each arena must be able to create (player, coins, obstacles, etc). Then, various options of building an arena can implement/override the methods of the abstract class accordingly. If, for some reason, later we want to add new methods to create arenas, we only need to specify the target platform when the application starts. This way, the wanted arena builder is instantiated and used throughout the rest of the program, not having to worry with the specific type in use.
 
 ![](./images/factory_pattern.png)
 
 #### Consequences
 
-By using the Abstract Factory, each target platform has its own isolated concrete class, which can be implemented differently. In addition, it makes exchanging product families easy, only needing to call a different constructor at the start of the program, since they extend the same abstract class.
+By using the Factory Method, each target platform has its own isolated concrete class, which can be implemented differently. In addition, it makes exchanging product families easy, only needing to call a different constructor at the start of the program, since they extend the same abstract class.
 
 ### ii. Game Loop
 #### Problem in context
