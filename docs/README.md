@@ -124,8 +124,7 @@ To implement the different states of the game, we used the State Pattern. This p
 
 #### Implementation
 
-> TODO
->
+![](./images/states_pattern.png)
 
 #### Consequences
 
