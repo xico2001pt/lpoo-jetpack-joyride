@@ -62,11 +62,11 @@ To allow the creation of an Arena of multiple ways, randomly or by reading it fr
 
 #### The pattern
 
-To solve this problem, we implemented an Abstract Factory pattern which, depending on the what form of arena creation we want, it creates Arenas specific for it.
+To solve this problem, we implemented an Abstract Factory pattern which, depending on the what form of arena creation we want, it creates specific Arenas accordingly.
 
 #### Implementation
 
-To implement the Abstract Factory we created an abstract class, ArenaBuilder, that specifies what each arena must be able to create (player, coins, obstacles, etc). Then, various options of building an arena can implement/override the methods of the abstract class accordingly, RandomArenaBuilder. If later we wanted to add new methods to create arenas, we only need to specify the target platform when the application starts. This way, the wanted arena builder is instantiated and used throughout the rest of the program, not having to worry with the specific type in use.
+To implement the Abstract Factory we created an abstract class, ArenaBuilder, that specifies what each arena must be able to create (player, coins, obstacles, etc). Then, various options of building an arena can implement/override the methods of the abstract class accordingly. If, for some reason, later we want to add new methods to create arenas, we only need to specify the target platform when the application starts. This way, the wanted arena builder is instantiated and used throughout the rest of the program, not having to worry with the specific type in use.
 
 ![](./images/factory_pattern.png)
 
@@ -81,7 +81,7 @@ In order to control the main cycle of the game, we need a way to make sure the g
 
 #### The pattern
 
-A game loop runs continuously during the gameplay. Each turn of the loop, it processes user input without blocking, updates the game state, and renders the game. It tracks the passage of time to control the rate of gameplay.
+A game loop runs continuously during the gameplay. Each turn it processes the user input without blocking it, updates the game state and renders the game. It tracks the passage of time to control the rate of gameplay.
 
 #### Implementation
 
@@ -94,6 +94,9 @@ To implement the Game Loop pattern we created a class, GameLoop, that contains t
 The Game Loop pattern allow us to have more control in the way the game runs and separate each processing.
 
 ### iii. Movement Strategy
+
+> Not implemented yet!
+
 #### Problem in context
 
 In order for the objects to have different types of movement, we needed to specify their movement.
@@ -105,13 +108,11 @@ To solve this problem we used the Strategy Pattern. This pattern allows us to is
 
 #### Implementation
 
-> TODO
->
+> TODO: UML
 
 #### Consequences
 
-With this pattern, we can eliminate the possibility of differentiating each behaviour with conditional statements and substitute them with classes that have different implementation accordingly.
-In this way, each object does not have to know its type of movement.
+With this pattern, we can eliminate the possibility of differentiating each behavior with conditional statements and substitute them with classes that have different implementation accordingly. In this way, each object does not have to know its type of movement.
 
 ### iv. Game States
 #### Problem in context
@@ -120,7 +121,7 @@ To switch from different states smoothly as the game proceeded. This is useful f
 
 #### The pattern
 
-To implement the different states of the game, we used the State Pattern. This pattern allows the implementation of each state as subclass. If so, we can switch from different states by only switching to another class.
+To implement the different states of the game, we used the State Pattern. This pattern allows the implementation of each state as subclass. If so, we can switch from different states only by switching to another class/state.
 
 #### Implementation
 
@@ -129,10 +130,12 @@ To implement the different states of the game, we used the State Pattern. This p
 #### Consequences
 
 This pattern facilitates the creation of more states for the game and changes to the ones already created.
-The creation of different states can give us freedom to differentiate behaviors depending on the actual stage in the game.
-Also, there's no need to use flags or complex if statements. However, this means that there will be more classes in the game.
+The creation of different states gives us freedom to differentiate behaviors depending on the actual stage in the game. There's also no need to use flags or complex if statements, however, this means that there will be more classes in the game.
 
 ### v. Power Ups
+
+> Not implemented yet!
+
 #### Problem in context
 
 The player may have different attributes/stats throughout the game.
@@ -143,14 +146,11 @@ To implement the power-ups we used the Command Pattern. This pattern consists of
 
 #### Implementation
 
-> TODO
->
+> TODO: UML
 
 #### Consequences
 
-This pattern eases the management and creation of the power-ups.
-
-> TODO: Perfect
+> TODO
 
 ## Code smells and refactoring techniques
 
@@ -158,41 +158,33 @@ This pattern eases the management and creation of the power-ups.
 
 #### Primitive Obsession and Data Clump
 
-Currently, the size of the arena is represented as two integers, which are used several times in different parts of the code.
-This code smell can be fixed by creating a class which will be responsible for managing these variables.
+Currently, the size of the arena is represented as two integers, which are used several times in different parts of the code. This code smell can be fixed by creating a class which will be responsible for managing these variables.
 
 #### Long Parameter List
 
-The method checkBoxCollision() has eight arguments, receiving two points and two dimensions.
-This issue can be solved by change the given parameters to classes that group the variables.
+The method checkBoxCollision() has eight arguments, receiving two points and two dimensions. This issue can be solved by changing the given parameters to classes that'll group the variables.
 
 ### Object-Orientation Abusers
 
 #### Switch Statements
 
-The method responsible to interpret the user input has a lot of if statements to map each input key to an action.
-Unfortunately, it's not easy to solve this problem, as there are no obvious alternatives.
-
-The function responsible for generating random obstacles also has the same issue.
+The method responsible to interpret the user input has a lot of if statements to map each input key to an action. Unfortunately, it's not easy to solve this problem, as there are no obvious alternatives. The function responsible for generating random obstacles also has the same issue.
 
 ### Change Preventers
 
 #### Parallel Inheritance Hierarchies
 
-As we are using the MVC architecture, this implies that almost every object from the Model should have a controller and viewer class.
-Each game state also need to have a correspondent controller and viewer. We thought a lot about this code smell and seems to be no easy fix for this problem without violating the SOLID principles.
+As we are using the MVC architecture, this implies that almost every object from the Model should have a controller and viewer class. Each game state also need to have a correspondent controller and viewer. We thought a lot about this code smell and we haven't encountered an easy fix for this problem without violating the SOLID principles yet.
 
 ### Dispensables
 
 #### Comments
 
-As our project is still in the beginning, it has a lot of comments to help us to understand what we're doing (specially TODO's).
-This should (and will) be fixed in the final delivery.
+As our project is still in the beginning, it has a lot of comments to help us to understand what we're doing (especially TODO's). This should (and will) be fixed in the final delivery.
 
 #### Duplicate Code
 
-Currently, we have a method that has a lot of code fragments which are identical, as we are still thinking about the structure of that specific part.
-We think that this can be fixed improving the code structure and creating generic methods. 
+Currently, we have a method that has a lot of code fragments which are identical, as we are still thinking about the structure of that specific part. We think that this can be fixed improving the code structure and creating generic methods. 
 
 #### Data Class
 
@@ -200,15 +192,13 @@ Our game uses a data class to store the image (structure) of the various element
 
 #### Speculative Generality
 
-We have some methods, like checkImageCollision() and some getters and setters, that are not being used, but were created to support anticipated future features.
-This will obviously be fixed until the final delivery, as these features will be implemented.
+We have some methods, like checkImageCollision() and some getters and setters, that are not being used, but were created to support anticipated future features. This will obviously be fixed until the final delivery, as these features will be used/implemented.
 
 ### Couplers
 
 #### Message Chains
 
-The WindowViewer class calls methods of the ArenaViewer class, that will call some other methods of the ElementViewer class.
-This is a chain of calls that we would like to improve and simplify until the final delivery, by reviewing the structure of the code.
+The WindowViewer class calls methods of the ArenaViewer class, that will call some other methods of the ElementViewer class. This is a chain of calls that we would like to improve and simplify until the final delivery, by reviewing the structure of the code.
 
 ## Testing
 
