@@ -8,7 +8,7 @@ import org.jetpack.model.elements.obstacles.Obstacle;
 
 public class ElementController {
     private final Arena arena;
-    private long movementFrequency; // Milliseconds it takes to move an element
+    private final long movementFrequency; // Milliseconds it takes to move an element
     private long elapsed;
 
     public ElementController(Arena arena) {

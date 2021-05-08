@@ -2,10 +2,8 @@ package org.jetpack.controller;
 
 import org.jetpack.gui.GUI;
 import org.jetpack.gui.LanternaGUI;
-import org.jetpack.model.arena.RandomArenaBuilder;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.jetpack.viewer.WindowViewer;
 
 import java.io.IOException;
 

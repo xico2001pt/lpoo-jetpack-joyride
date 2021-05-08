@@ -12,7 +12,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 class ArenaViewerTest {
@@ -32,7 +31,7 @@ class ArenaViewerTest {
     }
 
     @Test
-    void drawObstacles() throws IOException {
+    void drawObstacles() {
         viewer.draw(arena);
 
         Mockito.verify(gui, Mockito.times(1)).drawElement(new Laser(new Position(4, 5)));
@@ -41,7 +40,7 @@ class ArenaViewerTest {
     }
 
     @Test
-    void drawCoins() throws IOException {
+    void drawCoins() {
         viewer.draw(arena);
 
         Mockito.verify(gui, Mockito.times(1)).drawElement(new Coin(new Position(1, 2)));
@@ -51,7 +50,7 @@ class ArenaViewerTest {
     }
 
     @Test
-    void drawPlayer() throws IOException {
+    void drawPlayer() {
         viewer.draw(arena);
 
         Mockito.verify(gui, Mockito.times(1)).drawElement(new Player(new Position(5, 8)));

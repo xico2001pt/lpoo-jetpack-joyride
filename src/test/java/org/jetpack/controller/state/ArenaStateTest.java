@@ -8,14 +8,11 @@ import org.jetpack.model.arena.Arena;
 import org.jetpack.model.arena.ArenaBuilder;
 import org.jetpack.model.elements.Player;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedConstruction;
 import org.mockito.Mockito;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ArenaStateTest {
 

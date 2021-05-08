@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public abstract class GameState {
 
-    private GameLoop gameLoop;
-    private GUI gui;
+    private final GameLoop gameLoop;
+    private final GUI gui;
 
     public GameState(GameLoop gameLoop, GUI gui) {
         this.gameLoop = gameLoop;

@@ -12,7 +12,7 @@ public interface GUI {
 
     void drawCharacter(Position position, Character c);
 
-    void drawText(Position position, String text);;
+    void drawText(Position position, String text);
 
     void clear();
 
