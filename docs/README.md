@@ -87,7 +87,7 @@ A game loop runs continuously during the gameplay. Each turn of the loop, it pro
 
 To implement the Game Loop pattern we created a class, GameLoop, that contains the three main methods stated above, and some other utility functions.
 
-![](./images/game_Loop.png)
+![](./images/game_loop.png)
 
 #### Consequences
 
