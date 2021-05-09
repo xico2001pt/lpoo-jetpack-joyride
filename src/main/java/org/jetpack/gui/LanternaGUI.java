@@ -2,6 +2,7 @@ package org.jetpack.gui;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
@@ -66,12 +67,24 @@ public class LanternaGUI implements GUI {
         return fontConfig;
     }
 
+    @Override
     public int getTerminalWidth() {
         return screen.getTerminalSize().getColumns();
     }
 
+    @Override
     public int getTerminalHeight() {
         return screen.getTerminalSize().getRows();
+    }
+
+    @Override
+    public int getArenaWidth() {
+        return width;
+    }
+
+    @Override
+    public int getArenaHeight() {
+        return height;
     }
 
     @Override
@@ -119,9 +132,18 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawText(Position position, String text) {
+    public void drawText(Position position, String text, String color) {
         TextGraphics tg = screen.newTextGraphics();
+        if (!color.equals(""))
+            tg.setBackgroundColor(TextColor.Factory.fromString(color));
         tg.putString(position.getX(), position.getY(), text);
+    }
+
+    @Override
+    public void color(int x, int y, String color) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setBackgroundColor(TextColor.Factory.fromString(color));
+        tg.putString(x, y, " ");
     }
 
     @Override

@@ -142,7 +142,7 @@ The player may have different attributes/stats throughout the game.
 
 #### The pattern
 
-To implement the power-ups we used the Command Pattern. This pattern consists of deriving power-ups from an abstract class while modifying a common function, *execute* in our case, so that they can have a different results, change different attributes and/or change the Player's state.
+To implement the power-ups we used the Command Pattern. This pattern consists of deriving power-ups from an abstract class while modifying a common function, *execute* in our case, so that they can have different results, change different attributes and/or change the Player's state.
 
 #### Implementation
 
@@ -168,7 +168,7 @@ The method checkBoxCollision() has eight arguments, receiving two points and two
 
 #### Switch Statements
 
-The method responsible to interpret the user input has a lot of if statements to map each input key to an action. Unfortunately, it's not easy to solve this problem, as there are no obvious alternatives. The function responsible for generating random obstacles also has the same issue.
+The method responsible to interpret the user's input has a lot of if statements to map each input key to an action. Unfortunately, it's not easy to solve this problem, as there are no obvious alternatives. The function responsible for generating random obstacles also has the same issue.
 
 ### Change Preventers
 

@@ -12,13 +12,19 @@ public interface GUI {
 
     void drawCharacter(Position position, Character c);
 
-    void drawText(Position position, String text);
+    void drawText(Position position, String text, String color);
 
     void clear();
 
     int getTerminalWidth();
 
     int getTerminalHeight();
+
+    int getArenaWidth();
+
+    int getArenaHeight();
+
+    void color(int x, int y, String color);
 
     void refresh() throws IOException;
 
