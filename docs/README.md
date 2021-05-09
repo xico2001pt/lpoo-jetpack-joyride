@@ -21,6 +21,8 @@ This project was developed by:
 ## Description
 In this game, the Player's primary goal is to travel as far as possible, while collecting coins, and avoiding hazards such as Energy Walls and Laser Beams.
 
+![](./images/gameplay.gif)
+
 ## Implemented features
 
 - [x] Movable Objects:
