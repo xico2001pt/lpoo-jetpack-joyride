@@ -1,15 +1,16 @@
 package org.jetpack.controller;
 
-import org.jetpack.controller.state.GameState;
-import org.jetpack.controller.state.MainMenuState;
+import org.jetpack.states.GameState;
+import org.jetpack.states.MainMenuState;
 import org.jetpack.gui.GUI;
+import org.jetpack.states.State;
 
 import java.io.IOException;
 
 public class GameLoop {
     private final int FPS;
     private final GUI gui;
-    private GameState currentGameState;
+    private State currentGameState;
     private boolean running;
 
     public GameLoop(int FPS, GUI gui) {
@@ -44,7 +45,7 @@ public class GameLoop {
         gui.close();
     }
 
-    public void setGameState(GameState state) {
+    public void setState(State state) {
         this.currentGameState = state;
     }
 

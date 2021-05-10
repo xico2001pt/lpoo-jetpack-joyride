@@ -6,25 +6,25 @@ import org.jetpack.model.elements.Element;
 
 import java.util.List;
 
-public class ArenaViewer {
-    private final GUI gui;
+public class ArenaViewer extends Viewer<Arena> {
 
-    public ArenaViewer(GUI gui) {
-        this.gui = gui;
+    public ArenaViewer(Arena arena) {
+        super(arena);
     }
 
-    public void draw(Arena arena) {
-        drawElements(arena.getObstacles(), new ElementViewer());
-        drawElements(arena.getCoins(), new ElementViewer());
-        drawElement(arena.getPlayer(), new ElementViewer());
+    @Override
+    public void drawElements(GUI gui) {
+        drawElements(gui, getModel().getObstacles(), new ElementViewer());
+        drawElements(gui, getModel().getCoins(), new ElementViewer());
+        drawElement(gui, getModel().getPlayer(), new ElementViewer());
     }
 
-    void drawElements(List<? extends Element> elements, ElementViewer viewer) {
-        for (Element element: elements)
-            drawElement(element, viewer);
+    private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer viewer) {
+        for (T element: elements)
+            drawElement(gui, element, viewer);
     }
 
-    void drawElement(Element element, ElementViewer viewer) {
+    private <T extends Element> void drawElement(GUI gui, T element, ElementViewer viewer) {
         viewer.drawElement(element, gui);
     }
 }

@@ -7,30 +7,26 @@ import org.jetpack.model.elements.Coin;
 import org.jetpack.model.elements.Element;
 import org.jetpack.model.elements.obstacles.Obstacle;
 
+import java.io.IOException;
 import java.util.List;
 
-public class ArenaController {
-    private final Arena arena;
+public class ArenaController extends GameController {
     private final ArenaBuilder arenaBuilder;
     private final PlayerController playerController;
     private final ElementController elementController;
 
     public ArenaController(ArenaBuilder arenaBuilder) {
+        super(arenaBuilder.createArena());
         this.arenaBuilder = arenaBuilder;
-        this.arena = arenaBuilder.createArena();
-        this.playerController = new PlayerController(arena);
-        this.elementController = new ElementController(arena);
-    }
-
-    public Arena getArena() {
-        return this.arena;
+        this.playerController = new PlayerController(getModel());
+        this.elementController = new ElementController(getModel());
     }
 
     public ArenaBuilder getArenaBuilder() {
         return this.arenaBuilder;
     }
 
-    public void updateArena(GUI.ACTION action, long elapsed) {
+    public void step(GameLoop gameLoop, GUI.ACTION action, long elapsed) throws IOException {
         playerController.doAction(action);
         elementController.moveElements(elapsed);
 
