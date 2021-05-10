@@ -2,6 +2,7 @@ package org.jetpack.model.arena;
 
 import org.jetpack.model.Position;
 import org.jetpack.model.elements.Coin;
+import org.jetpack.model.elements.ImageLibrary;
 import org.jetpack.model.elements.Player;
 import org.jetpack.model.elements.obstacles.EnergyWall;
 import org.jetpack.model.elements.obstacles.Laser;
@@ -79,9 +80,9 @@ public class RandomArenaBuilder extends ArenaBuilder {
 
         switch (type) {
             case 0:
-                return new Laser(new Position(getWidth() - 1, rng.nextInt(getHeight())));  // TODO: GERAR HEIGHT COM MAIS CUIDADO
+                return new Laser(new Position(getWidth() - 1, rng.nextInt(getHeight() - ImageLibrary.getLaser2Image().getNumberRows())));  // TODO: GERAR HEIGHT COM MAIS CUIDADO
             case 1:
-                return new EnergyWall(new Position(getWidth() - 1, rng.nextInt(getHeight()))); // TODO: same
+                return new EnergyWall(new Position(getWidth() - 1, rng.nextInt(getHeight() - ImageLibrary.getEnergyWall1Image().getNumberRows()))); // TODO: same
         }
 
         return null;

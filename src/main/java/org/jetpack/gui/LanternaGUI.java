@@ -118,32 +118,30 @@ public class LanternaGUI implements GUI {
         for (int row = minRow; row < maxRow; ++row) {
             for (int col = minCol; col < maxCol; ++col) {
                 if (minCol == infoWidth) {
-                    drawCharacter(new Position(col, row), image.getValue(col - minCol - position.getX(), row - minRow));
+                    drawCharacter(new Position(col, row), image.getValue(col - minCol - position.getX(), row - minRow), null);
                 } else {
-                    drawCharacter(new Position(col, row), image.getValue(col - minCol, row - minRow));
+                    drawCharacter(new Position(col, row), image.getValue(col - minCol, row - minRow), null);
                 }
             }
         }
     }
 
     @Override
-    public void drawCharacter(Position position, Character c) {
-        screen.setCharacter(position.getX(), position.getY(), TextCharacter.fromCharacter(c)[0]);
+    public void drawCharacter(Position position, Character c, String color) {
+        drawText(position, c.toString(), color);
     }
 
     @Override
     public void drawText(Position position, String text, String color) {
         TextGraphics tg = screen.newTextGraphics();
-        if (!color.equals(""))
+        if (color != null)
             tg.setBackgroundColor(TextColor.Factory.fromString(color));
         tg.putString(position.getX(), position.getY(), text);
     }
 
     @Override
-    public void color(int x, int y, String color) {
-        TextGraphics tg = screen.newTextGraphics();
-        tg.setBackgroundColor(TextColor.Factory.fromString(color));
-        tg.putString(x, y, " ");
+    public void color(Position position, String color) {
+        drawText(position, " ", color);
     }
 
     @Override

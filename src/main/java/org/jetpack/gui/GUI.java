@@ -10,9 +10,11 @@ public interface GUI {
 
     void drawElement(Element object);
 
-    void drawCharacter(Position position, Character c);
+    void drawCharacter(Position position, Character c, String color);
 
     void drawText(Position position, String text, String color);
+
+    void color(Position position, String color);
 
     void clear();
 
@@ -23,8 +25,6 @@ public interface GUI {
     int getArenaWidth();
 
     int getArenaHeight();
-
-    void color(int x, int y, String color);
 
     void refresh() throws IOException;
 

@@ -41,9 +41,9 @@ public class ArenaViewer extends Viewer<Arena> {
             for (int x = 0; x < gui.getTerminalHeight(); x++) {
 
                 if (y != 0 && (x < infoWidth || x >= gui.getTerminalWidth() - infoWidth))
-                    gui.color(x, y, "#303030");
+                    gui.color(new Position(x, y), "#303030");
                 if (x != 0 && (y < infoHeight || y >= gui.getTerminalHeight() - infoHeight))
-                    gui.color(x, y, "#303030");
+                    gui.color(new Position(x, y), "#303030");
             }
         }
 

@@ -19,6 +19,7 @@ public class ArenaController extends GameController {
         this.elementController = new ElementController(getModel());
     }
 
+    @Override
     public void update(GameLoop gameLoop, GUI.ACTION action, long elapsed) {
         if (getModel().getPlayer().getLives() <= 0 || action == GUI.ACTION.QUIT)
             gameLoop.stop();
