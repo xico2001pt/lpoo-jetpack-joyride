@@ -1,10 +1,10 @@
 package org.jetpack.states;
 
-import org.jetpack.controller.ArenaController;
+import org.jetpack.controller.game.ArenaController;
 import org.jetpack.controller.Controller;
 import org.jetpack.model.arena.Arena;
+import org.jetpack.viewer.game.ArenaViewer;
 import org.jetpack.viewer.Viewer;
-import org.jetpack.viewer.WindowViewer;
 
 public class ArenaState extends State<Arena> {
     public ArenaState(Arena arena) {
@@ -13,7 +13,7 @@ public class ArenaState extends State<Arena> {
 
     @Override
     protected Viewer<Arena> getViewer() {
-        return new WindowViewer(getModel());
+        return new ArenaViewer(getModel());
     }
 
     @Override

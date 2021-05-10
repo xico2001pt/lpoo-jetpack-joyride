@@ -2,6 +2,7 @@ package org.jetpack.viewer;
 
 import org.jetpack.gui.GUI;
 import org.jetpack.model.elements.Element;
+import org.jetpack.viewer.game.ElementViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

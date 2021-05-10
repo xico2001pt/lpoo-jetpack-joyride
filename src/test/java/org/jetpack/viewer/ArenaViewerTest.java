@@ -8,6 +8,7 @@ import org.jetpack.model.elements.Player;
 import org.jetpack.model.elements.obstacles.EnergyWall;
 import org.jetpack.model.elements.obstacles.Laser;
 import org.jetpack.model.elements.obstacles.Obstacle;
+import org.jetpack.viewer.game.ArenaViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

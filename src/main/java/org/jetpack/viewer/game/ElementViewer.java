@@ -1,4 +1,4 @@
-package org.jetpack.viewer;
+package org.jetpack.viewer.game;
 
 import org.jetpack.gui.GUI;
 import org.jetpack.model.elements.Element;

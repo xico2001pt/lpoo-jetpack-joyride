@@ -1,9 +1,9 @@
 package org.jetpack.controller;
 
-import org.jetpack.states.GameState;
+import org.jetpack.model.Menu;
+import org.jetpack.states.State;
 import org.jetpack.states.MainMenuState;
 import org.jetpack.gui.GUI;
-import org.jetpack.states.State;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ public class GameLoop {
     public GameLoop(int FPS, GUI gui) {
         this.FPS = FPS;
         this.gui = gui;
-        this.currentGameState = new MainMenuState(this, gui);
+        this.currentGameState = new MainMenuState(new Menu());
         this.running = false;
     }
 
@@ -29,10 +29,7 @@ public class GameLoop {
             currentInstant = System.currentTimeMillis();
             elapsedInstants = currentInstant - lastInstant;
 
-            GUI.ACTION action = processInput();
-            if (action == GUI.ACTION.QUIT) running = false;  // TODO: To be deleted soon
-            this.currentGameState.update(action, elapsedInstants);
-            this.currentGameState.render();
+            this.currentGameState.step(this, gui, elapsedInstants);
 
             lastInstant = currentInstant;
             try {

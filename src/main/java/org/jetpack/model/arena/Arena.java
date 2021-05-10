@@ -10,15 +10,17 @@ import java.util.List;
 public class Arena {
     private final int width;
     private final int height;
+    private final ArenaBuilder arenaBuilder;
 
     private Player player;
 
     private List<Obstacle> obstacles;
     private List<Coin> coins;
 
-    public Arena(int width, int height) {
+    public Arena(int width, int height, ArenaBuilder arenaBuilder) {
         this.width = width;
         this.height = height;
+        this.arenaBuilder = arenaBuilder;
 
         this.obstacles = new ArrayList<>();
         this.coins = new ArrayList<>();
@@ -30,6 +32,10 @@ public class Arena {
 
     public int getWidth() {
         return width;
+    }
+
+    public ArenaBuilder getArenaBuilder() {
+        return arenaBuilder;
     }
 
     public List<Obstacle> getObstacles() {

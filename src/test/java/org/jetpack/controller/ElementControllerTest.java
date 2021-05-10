@@ -1,5 +1,6 @@
 package org.jetpack.controller;
 
+import org.jetpack.controller.game.ElementController;
 import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
 import org.jetpack.model.elements.Coin;

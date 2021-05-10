@@ -16,5 +16,5 @@ public abstract class Controller<T> {
         return this.model;
     }
 
-    public abstract void step(GameLoop gameLoop, GUI.ACTION action, long elapsed) throws IOException;
+    public abstract void update(GameLoop gameLoop, GUI.ACTION action, long elapsed);
 }

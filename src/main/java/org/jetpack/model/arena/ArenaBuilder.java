@@ -20,7 +20,7 @@ public abstract class ArenaBuilder {
     }
 
     public Arena createArena() {
-        Arena arena = new Arena(width, height);
+        Arena arena = new Arena(width, height, this);
         arena.setPlayer(createPlayer());
 
         return arena;

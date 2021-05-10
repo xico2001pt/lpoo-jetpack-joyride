@@ -1,30 +1,32 @@
-package org.jetpack.controller;
+package org.jetpack.controller.game;
 
+import org.jetpack.controller.GameLoop;
+import org.jetpack.gui.GUI;
 import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
 import org.jetpack.model.elements.Coin;
 import org.jetpack.model.elements.Element;
 import org.jetpack.model.elements.obstacles.Obstacle;
 
-public class ElementController {
-    private final Arena arena;
+public class ElementController extends GameController {
     private final long movementFrequency; // Milliseconds it takes to move an element
     private long elapsed;
 
     public ElementController(Arena arena) {
-        this.arena = arena;
+        super(arena);
         this.movementFrequency = 100;
         this.elapsed = 0;
     }
 
-    public void moveElements(long elapsed) {
+    @Override
+    public void update(GameLoop gameLoop, GUI.ACTION action, long elapsed) {
         this.elapsed += elapsed;
 
         while (this.elapsed > movementFrequency) {
-            for (Obstacle obstacle: arena.getObstacles())
+            for (Obstacle obstacle: getModel().getObstacles())
                 moveElement(obstacle, obstacle.getPosition().getLeft());
 
-            for (Coin coin: arena.getCoins())
+            for (Coin coin: getModel().getCoins())
                 moveElement(coin, coin.getPosition().getLeft());
 
             this.elapsed -= movementFrequency;

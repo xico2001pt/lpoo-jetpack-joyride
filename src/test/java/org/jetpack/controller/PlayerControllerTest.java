@@ -1,5 +1,6 @@
 package org.jetpack.controller;
 
+import org.jetpack.controller.game.PlayerController;
 import org.jetpack.gui.GUI;
 import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;

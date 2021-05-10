@@ -1,6 +1,9 @@
 package org.jetpack.states;
 
+import org.jetpack.controller.Controller;
+import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
+import org.jetpack.viewer.Viewer;
 
 import java.io.IOException;
 
@@ -23,9 +26,9 @@ public abstract class State<T> {
         return model;
     }
 
-    public void step(Game game, GUI gui, long time) throws IOException {
+    public void step(GameLoop game, GUI gui, long time) throws IOException {
         GUI.ACTION action = gui.getNextAction();
-        controller.step(game, action, time);
+        controller.update(game, action, time);
         viewer.draw(gui);
     }
 }

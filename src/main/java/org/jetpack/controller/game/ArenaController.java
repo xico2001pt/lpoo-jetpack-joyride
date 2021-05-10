@@ -1,38 +1,38 @@
-package org.jetpack.controller;
+package org.jetpack.controller.game;
 
+import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
 import org.jetpack.model.arena.Arena;
-import org.jetpack.model.arena.ArenaBuilder;
 import org.jetpack.model.elements.Coin;
 import org.jetpack.model.elements.Element;
 import org.jetpack.model.elements.obstacles.Obstacle;
 
-import java.io.IOException;
 import java.util.List;
 
 public class ArenaController extends GameController {
-    private final ArenaBuilder arenaBuilder;
     private final PlayerController playerController;
     private final ElementController elementController;
 
-    public ArenaController(ArenaBuilder arenaBuilder) {
-        super(arenaBuilder.createArena());
-        this.arenaBuilder = arenaBuilder;
+    public ArenaController(Arena arena) {
+        super(arena);
         this.playerController = new PlayerController(getModel());
         this.elementController = new ElementController(getModel());
     }
 
-    public ArenaBuilder getArenaBuilder() {
-        return this.arenaBuilder;
-    }
+    public void update(GameLoop gameLoop, GUI.ACTION action, long elapsed) {
+        if (getModel().getPlayer().getLives() <= 0 || action == GUI.ACTION.QUIT)
+            gameLoop.stop();
 
-    public void step(GameLoop gameLoop, GUI.ACTION action, long elapsed) throws IOException {
-        playerController.doAction(action);
-        elementController.moveElements(elapsed);
+        getModel().getArenaBuilder().incrementInstant(elapsed);
+        getModel().addCoins(getModel().getArenaBuilder().getCoins());
+        getModel().addObstacles(getModel().getArenaBuilder().getObstacles());
+
+        playerController.update(gameLoop, action, elapsed);
+        elementController.update(gameLoop, action, elapsed);
 
         handleCollisions();
-        removeOutOfBoundariesElements(arena.getCoins());
-        removeOutOfBoundariesElements(arena.getObstacles());
+        removeOutOfBoundariesElements(getModel().getCoins());
+        removeOutOfBoundariesElements(getModel().getObstacles());
     }
 
     private void removeOutOfBoundariesElements(List<? extends Element> elements) {
@@ -45,18 +45,18 @@ public class ArenaController extends GameController {
 
     private void handleCollisions() {
         // TODO: code smell. talvez criar obstacle cotroller e coin org.jetpack.controller?
-        for (Obstacle obstacle: arena.getObstacles()) {
-            if (checkElementCollision(obstacle, arena.getPlayer())) {
-                arena.getObstacles().remove(obstacle);
-                arena.getPlayer().setLives(arena.getPlayer().getLives() - 1);
+        for (Obstacle obstacle: getModel().getObstacles()) {
+            if (checkElementCollision(obstacle, getModel().getPlayer())) {
+                getModel().getObstacles().remove(obstacle);
+                getModel().getPlayer().setLives(getModel().getPlayer().getLives() - 1);
                 break;
             }
         }
 
-        for (Coin coin : arena.getCoins()) {
-            if (checkElementCollision(coin, arena.getPlayer())) {
-                arena.getCoins().remove(coin);
-                arena.getPlayer().setCoins(arena.getPlayer().getCoins() + 1);
+        for (Coin coin : getModel().getCoins()) {
+            if (checkElementCollision(coin, getModel().getPlayer())) {
+                getModel().getCoins().remove(coin);
+                getModel().getPlayer().setCoins(getModel().getPlayer().getCoins() + 1);
                 break;
             }
         }

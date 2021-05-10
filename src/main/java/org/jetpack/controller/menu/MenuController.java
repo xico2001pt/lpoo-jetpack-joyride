@@ -1,10 +1,11 @@
-package org.jetpack.controller;
+package org.jetpack.controller.menu;
 
+import org.jetpack.controller.Controller;
+import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
 import org.jetpack.model.Menu;
 import org.jetpack.model.arena.RandomArenaBuilder;
 import org.jetpack.states.ArenaState;
-import org.jetpack.states.State;
 
 public class MenuController extends Controller<Menu> {
     public MenuController(Menu menu) {
@@ -12,7 +13,8 @@ public class MenuController extends Controller<Menu> {
     }
 
     @Override
-    public void step(GameLoop gameLoop, GUI.ACTION action, long elapsed) {
+    public void update(GameLoop gameLoop, GUI.ACTION action, long elapsed) {
+
         switch (action) {
             case UP:
                 getModel().previousEntry();
@@ -20,8 +22,8 @@ public class MenuController extends Controller<Menu> {
             case DOWN:
                 getModel().nextEntry();
                 break;
-            case SELECT:
-                if (getModel().isSelectedExit()) gameLoop.setState(null);
+            case ENTER:
+                if (getModel().isSelectedExit()) gameLoop.stop();
                 if (getModel().isSelectedStart()) gameLoop.setState(new ArenaState(new RandomArenaBuilder(30, 30).createArena()));
         }
     }
