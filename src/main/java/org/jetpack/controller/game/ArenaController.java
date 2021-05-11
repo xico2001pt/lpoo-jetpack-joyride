@@ -2,6 +2,7 @@ package org.jetpack.controller.game;
 
 import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
+import org.jetpack.model.Matrix;
 import org.jetpack.model.Menu;
 import org.jetpack.model.arena.Arena;
 import org.jetpack.model.elements.Coin;
@@ -9,7 +10,11 @@ import org.jetpack.model.elements.Element;
 import org.jetpack.model.elements.obstacles.Obstacle;
 import org.jetpack.states.MainMenuState;
 
+import java.awt.*;
 import java.util.List;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 public class ArenaController extends GameController {
     private final PlayerController playerController;
@@ -80,7 +85,24 @@ public class ArenaController extends GameController {
     }
 
     private boolean checkImageCollision(Element a, Element b) {
-        // TODO
+        Matrix<Character> imageA = a.getImage();
+        Matrix<Character> imageB = b.getImage();
+
+        int xMin = max(a.getPosition().getX(), b.getPosition().getX());
+        int xMax = min(a.getPosition().getX() + imageA.getNumberCol(), b.getPosition().getX() + imageB.getNumberCol());
+        int yMin = max(a.getPosition().getY(), b.getPosition().getY());
+        int yMax = min(a.getPosition().getY() + imageA.getNumberRows(), b.getPosition().getY() + imageB.getNumberRows());
+
+        for (int x = xMin; x < xMax; x++) {
+            for (int y = yMin; y < yMax; y++) {
+
+                if (imageA.getValue(x - a.getPosition().getX(), y - a.getPosition().getY()) != null
+                    && imageB.getValue(x - b.getPosition().getX(), y - b.getPosition().getY()) != null) {
+                    return false;
+                }
+            }
+        }
+
         return true;
     }
 }
