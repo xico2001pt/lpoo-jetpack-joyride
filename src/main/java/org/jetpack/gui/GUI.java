@@ -1,34 +1,34 @@
 package org.jetpack.gui;
 
+import org.jetpack.model.Matrix;
 import org.jetpack.model.Position;
-import org.jetpack.model.elements.Element;
 
 import java.io.IOException;
 
 public interface GUI {
-    ACTION getNextAction() throws IOException;
-
-    void drawElement(Element object);
-
-    void drawCharacter(Position position, Character c);
-
-    void drawText(Position position, String text, String color);
-
-    void clear();
+    enum ACTION { UP, DOWN, NONE, PAUSE, ENTER, QUIT }
 
     int getTerminalWidth();
 
     int getTerminalHeight();
 
-    int getArenaWidth();
+    ACTION getNextAction() throws IOException;
 
-    int getArenaHeight();
+    void drawImage(Position position, Matrix<Character> image);
 
-    void color(int x, int y, String color);
+    void drawText(Position position, String text, String color);
+
+    void drawRectangle(Position position, int width, int height, String color);
+
+    default boolean isOnScreen(Position position) {
+        boolean xFits = position.getX() >= 0 && position.getX() < getTerminalWidth();
+        boolean yFits = position.getY() >= 0 && position.getY() < getTerminalHeight();
+        return xFits && yFits;
+    }
+
+    void clear();
 
     void refresh() throws IOException;
 
     void close() throws IOException;
-
-    enum ACTION {UP, DOWN, NONE, PAUSE, ENTER, QUIT, SELECT}
 }

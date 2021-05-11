@@ -1,5 +1,6 @@
 package org.jetpack.viewer.menu;
 
+import org.jetpack.gui.ColorDatabase;
 import org.jetpack.gui.GUI;
 import org.jetpack.model.Menu;
 import org.jetpack.model.Position;
@@ -12,9 +13,9 @@ public class MenuViewer extends Viewer<Menu> {
 
     @Override
     public void drawModel(GUI gui) {
-        gui.drawText(new Position(5, 5), "Menu", "#FFFFFF");
+        gui.drawText(new Position(5, 5), "Menu", ColorDatabase.WHITE.getName());
         for (int i = 0; i < getModel().getNumberEntries(); i++)
             gui.drawText(new Position(5, 7 + i), getModel().getEntry(i),
-                        getModel().isSelected(i) ? "#FFD700" : "#FFFFFF");
+                        getModel().isSelected(i) ? ColorDatabase.GOLD.getName() : ColorDatabase.WHITE.getName());
         }
 }

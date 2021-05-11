@@ -1,5 +1,6 @@
 package org.jetpack.viewer.game;
 
+import org.jetpack.gui.ColorDatabase;
 import org.jetpack.gui.GUI;
 import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
@@ -29,25 +30,22 @@ public class ArenaViewer extends Viewer<Arena> {
     }
 
     private <T extends Element> void drawElement(GUI gui, T element, ElementViewer viewer) {
-        viewer.drawElement(element, gui);
+        int infoWidth = (gui.getTerminalWidth() - getModel().getWidth()) / 2;
+        int infoHeight = (gui.getTerminalHeight() - getModel().getHeight()) / 2;
+        viewer.drawElement(element, new Position(infoWidth, infoHeight), gui);
     }
 
     private void drawInfo(GUI gui, Player player) {
+        int infoWidth = (gui.getTerminalWidth() - getModel().getWidth()) / 2;
+        int infoHeight = (gui.getTerminalHeight() - getModel().getHeight()) / 2;
 
-        int infoWidth = (gui.getTerminalWidth() - gui.getArenaWidth()) / 2;
-        int infoHeight = (gui.getTerminalHeight() - gui.getArenaHeight()) / 2;
+        gui.drawRectangle(new Position(0, 0), gui.getTerminalWidth(), infoHeight, ColorDatabase.DARK_GREY.getName());
+        gui.drawRectangle(new Position(0, gui.getTerminalHeight() - infoHeight), gui.getTerminalWidth(), infoHeight, ColorDatabase.DARK_GREY.getName());
+        gui.drawRectangle(new Position(0, 1), infoWidth, gui.getTerminalHeight() - 1, ColorDatabase.DARK_GREY.getName());
+        gui.drawRectangle(new Position(gui.getTerminalWidth() - infoWidth, 1), infoWidth, gui.getTerminalHeight() - 1, ColorDatabase.DARK_GREY.getName());
 
-        for (int y = 0; y < gui.getTerminalWidth(); y++) {
-            for (int x = 0; x < gui.getTerminalHeight(); x++) {
 
-                if (y != 0 && (x < infoWidth || x >= gui.getTerminalWidth() - infoWidth))
-                    gui.color(x, y, "#303030");
-                if (x != 0 && (y < infoHeight || y >= gui.getTerminalHeight() - infoHeight))
-                    gui.color(x, y, "#303030");
-            }
-        }
-
-        gui.drawText(new Position(0, 0), "Lives: " + player.getLives(), "#303030");
-        gui.drawText(new Position(gui.getTerminalWidth()/2, 0), "Coins: " + player.getCoins(), "#303030");
+        gui.drawText(new Position(0, 0), "Lives: " + player.getLives(), ColorDatabase.DARK_GREY.getName());
+        gui.drawText(new Position(gui.getTerminalWidth()/2, 0), "Coins: " + player.getCoins(), ColorDatabase.DARK_GREY.getName());
     }
 }

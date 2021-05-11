@@ -38,6 +38,10 @@ public class Position {
         return new Position(x + xIncrement, y + yIncrement);
     }
 
+    public Position getIncrementedPosition(Position position) {
+        return new Position(x + position.getX(), y + position.getY());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
