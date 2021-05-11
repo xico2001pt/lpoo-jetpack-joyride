@@ -98,11 +98,11 @@ public class ArenaController extends GameController {
 
                 if (imageA.getValue(x - a.getPosition().getX(), y - a.getPosition().getY()) != null
                     && imageB.getValue(x - b.getPosition().getX(), y - b.getPosition().getY()) != null) {
-                    return false;
+                    return true;
                 }
             }
         }
 
-        return true;
+        return false;
     }
 }
