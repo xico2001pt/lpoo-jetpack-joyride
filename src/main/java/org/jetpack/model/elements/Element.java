@@ -2,16 +2,20 @@ package org.jetpack.model.elements;
 
 import org.jetpack.model.Matrix;
 import org.jetpack.model.Position;
+import org.jetpack.model.elements.movements.LinearMovement;
+import org.jetpack.model.elements.movements.MovementStrategy;
 
 import java.util.Objects;
 
 public abstract class Element {
     Position position;
     Matrix<Character> image;
+    MovementStrategy movement;
 
     public Element(Position position, Matrix<Character> image) {
         this.position = position;
         this.image = image;
+        this.movement = new LinearMovement();
     }
 
     public Matrix<Character> getImage() {
@@ -24,6 +28,14 @@ public abstract class Element {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    public void setMovement(MovementStrategy movement) {
+        this.movement = movement;
+    }
+
+    public MovementStrategy getMovement() {
+        return movement;
     }
 
     @Override

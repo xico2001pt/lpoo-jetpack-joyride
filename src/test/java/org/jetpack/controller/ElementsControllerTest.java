@@ -1,6 +1,6 @@
 package org.jetpack.controller;
 
-import org.jetpack.controller.game.ElementController;
+import org.jetpack.controller.game.ElementsController;
 import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
 import org.jetpack.model.elements.Coin;
@@ -12,14 +12,14 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ElementControllerTest {
-    private ElementController controller;
+class ElementsControllerTest {
+    private ElementsController controller;
     private Arena arena;
 
     @BeforeEach
     void setUp() {
         arena = new Arena(10, 10);
-        controller = new ElementController(arena);
+        controller = new ElementsController(arena);
     }
 
     @Test

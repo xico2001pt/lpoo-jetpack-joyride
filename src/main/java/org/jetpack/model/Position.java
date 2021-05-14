@@ -50,8 +50,8 @@ public class Position {
         return x == position.x && y == position.y;
     }
 
-    @Override
+    /*@Override
     public int hashCode() {
         return Objects.hash(x, y);
-    }
+    }*/
 }

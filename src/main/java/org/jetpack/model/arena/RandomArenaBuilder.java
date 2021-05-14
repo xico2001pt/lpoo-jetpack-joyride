@@ -6,6 +6,7 @@ import org.jetpack.model.elements.ImageLibrary;
 import org.jetpack.model.elements.Player;
 import org.jetpack.model.elements.obstacles.EnergyWall;
 import org.jetpack.model.elements.obstacles.Laser;
+import org.jetpack.model.elements.obstacles.Missile;
 import org.jetpack.model.elements.obstacles.Obstacle;
 
 import java.util.ArrayList;
@@ -76,13 +77,15 @@ public class RandomArenaBuilder extends ArenaBuilder {
     }
 
     private Obstacle generateObstacle() {
-        int type = rng.nextInt(2);
+        int type = rng.nextInt(5);
 
         switch (type) {
-            case 0:
-                return new Laser(new Position(getWidth() - 1, rng.nextInt(getHeight() - ImageLibrary.getLaser2Image().getNumberRows())));  // TODO: GERAR HEIGHT COM MAIS CUIDADO
-            case 1:
-                return new EnergyWall(new Position(getWidth() - 1, rng.nextInt(getHeight() - ImageLibrary.getEnergyWall1Image().getNumberRows()))); // TODO: same
+            case 0: case 1:
+                return new Laser(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getLaser2Image().getNumberRows())));  // TODO: GERAR HEIGHT COM MAIS CUIDADO
+            case 2: case 3:
+                return new EnergyWall(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getEnergyWall1Image().getNumberRows()))); // TODO: same
+            case 4:
+                return new Missile(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getMissileImage().getNumberRows())));
         }
 
         return null;

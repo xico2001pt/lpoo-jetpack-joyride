@@ -10,6 +10,7 @@ public final class ImageLibrary {
     private static Matrix<Character> laser2Image;
     private static Matrix<Character> energyWall1Image;
     private static Matrix<Character> energyWall2Image;
+    private static Matrix<Character> missileImage;
 
     public static Matrix<Character> getPlayerImage() {
         if (playerImage == null) playerImage = new Matrix<>(1, 1, 'P');
@@ -47,5 +48,13 @@ public final class ImageLibrary {
     public static Matrix<Character> getEnergyWall2Image() {
         if (energyWall2Image == null) energyWall2Image = new Matrix<>(5, 2, 'O');
         return energyWall2Image;
+    }
+
+    public static Matrix<Character> getMissileImage() {
+        if (missileImage == null) {
+            missileImage = new Matrix<>(2,1, '=');
+            missileImage.setValue(0,0,'<');
+        }
+        return missileImage;
     }
 }

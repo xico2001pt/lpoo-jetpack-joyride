@@ -24,7 +24,7 @@ public class MenuController extends Controller<Menu> {
                 break;
             case ENTER:
                 if (getModel().isSelectedExit()) gameLoop.stop();
-                if (getModel().isSelectedStart()) gameLoop.setState(new ArenaState(new RandomArenaBuilder(28, 28).createArena()));
+                if (getModel().isSelectedStart()) gameLoop.setState(new ArenaState(new RandomArenaBuilder(28, 18).createArena()));
         }
     }
 }

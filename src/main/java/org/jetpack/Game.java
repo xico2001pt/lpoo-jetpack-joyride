@@ -11,7 +11,7 @@ import java.net.URISyntaxException;
 public class Game {
     public static void main(String[] args) {
         try {
-            createRandomLevel(30, 30);
+            createRandomLevel(30, 20);
         } catch (FontFormatException | IOException | URISyntaxException e) {
             e.printStackTrace();
         }
