@@ -11,6 +11,7 @@ public final class ImageLibrary {
     private static Matrix<Character> energyWall1Image;
     private static Matrix<Character> energyWall2Image;
     private static Matrix<Character> missileImage;
+    private static Matrix<Character> zigZagImage;
 
     public static Matrix<Character> getPlayerImage() {
         if (playerImage == null) playerImage = new Matrix<>(1, 1, 'P');
@@ -56,5 +57,10 @@ public final class ImageLibrary {
             missileImage.setValue(0,0,'<');
         }
         return missileImage;
+    }
+
+    public static Matrix<Character> getZigZagImage() {
+        if (zigZagImage == null) zigZagImage = new Matrix<>(1,1,'#');
+        return zigZagImage;
     }
 }

@@ -1,6 +1,6 @@
 package org.jetpack.controller;
 
-import org.jetpack.model.Menu;
+import org.jetpack.model.menu.MainMenu;
 import org.jetpack.states.State;
 import org.jetpack.states.MainMenuState;
 import org.jetpack.gui.GUI;
@@ -16,7 +16,7 @@ public class GameLoop {
     public GameLoop(int FPS, GUI gui) {
         this.FPS = FPS;
         this.gui = gui;
-        this.currentGameState = new MainMenuState(new Menu());
+        this.currentGameState = new MainMenuState(new MainMenu());
         this.running = false;
     }
 
@@ -40,6 +40,10 @@ public class GameLoop {
         }
 
         gui.close();
+    }
+
+    public State getState() {
+        return this.currentGameState;
     }
 
     public void setState(State state) {

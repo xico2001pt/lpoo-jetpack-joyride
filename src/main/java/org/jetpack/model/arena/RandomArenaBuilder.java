@@ -4,10 +4,7 @@ import org.jetpack.model.Position;
 import org.jetpack.model.elements.Coin;
 import org.jetpack.model.elements.ImageLibrary;
 import org.jetpack.model.elements.Player;
-import org.jetpack.model.elements.obstacles.EnergyWall;
-import org.jetpack.model.elements.obstacles.Laser;
-import org.jetpack.model.elements.obstacles.Missile;
-import org.jetpack.model.elements.obstacles.Obstacle;
+import org.jetpack.model.elements.obstacles.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +38,7 @@ public class RandomArenaBuilder extends ArenaBuilder {
             coins.add(generateCoin());
 
             // Generate new instant
-            nextCoinInst = generateInstant(getInstant() + 200, getInstant() + generateInstant(500, 2000));
+            nextCoinInst = generateInstant(getInstant() + 1000, getInstant() + generateInstant(1500, 2000));
         }
 
         return coins;
@@ -77,7 +74,7 @@ public class RandomArenaBuilder extends ArenaBuilder {
     }
 
     private Obstacle generateObstacle() {
-        int type = rng.nextInt(5);
+        int type = rng.nextInt(6);
 
         switch (type) {
             case 0: case 1:
@@ -86,6 +83,8 @@ public class RandomArenaBuilder extends ArenaBuilder {
                 return new EnergyWall(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getEnergyWall1Image().getNumberRows()))); // TODO: same
             case 4:
                 return new Missile(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getMissileImage().getNumberRows())));
+            case 5:
+                return new ZigZag(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getZigZagImage().getNumberRows())));
         }
 
         return null;
