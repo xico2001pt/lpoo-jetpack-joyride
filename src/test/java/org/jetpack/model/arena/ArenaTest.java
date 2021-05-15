@@ -8,6 +8,7 @@ import org.jetpack.model.elements.obstacles.Laser;
 import org.jetpack.model.elements.obstacles.Obstacle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,9 @@ class ArenaTest {
 
     @BeforeEach
     void setUp() {
-        arena = new Arena(20, 20);
+
+        ArenaBuilder builder = Mockito.mock(ArenaBuilder.class);
+        arena = new Arena(20, 20, builder);
     }
 
     @Test
@@ -46,10 +49,5 @@ class ArenaTest {
         obstacles.add(new Laser(new Position(15,15)));
         arena.addObstacles(obstacles);
         assertEquals(obstacles, arena.getObstacles());
-    }
-
-    @Test
-    void removeObstacle() {
-        // TODO
     }
 }

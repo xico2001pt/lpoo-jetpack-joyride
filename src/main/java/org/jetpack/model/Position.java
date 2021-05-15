@@ -1,7 +1,5 @@
 package org.jetpack.model;
 
-import java.util.Objects;
-
 public class Position {
     private final int x, y;
 
@@ -49,9 +47,4 @@ public class Position {
         Position position = (Position) o;
         return x == position.x && y == position.y;
     }
-
-    /*@Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }*/
 }

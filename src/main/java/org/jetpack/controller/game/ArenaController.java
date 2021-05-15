@@ -51,7 +51,7 @@ public class ArenaController extends GameController {
     }
 
     private void handleCollisions() {
-        // TODO: code smell. talvez criar obstacle cotroller e coin org.jetpack.controller?
+        // TODO: code smell. talvez criar obstacle cotroller e coin controller?
         for (Obstacle obstacle: getModel().getObstacles()) {
             if (CollisionController.checkElementCollision(obstacle, getModel().getPlayer())) {
                 getModel().getObstacles().remove(obstacle);

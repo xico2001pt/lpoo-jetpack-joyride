@@ -18,11 +18,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ArenaControllerTest {
     private Arena arena;
+    private GameLoop gameLoop;
+
     @BeforeEach
     void setUp() {
-        arena = new Arena(10, 10);
+        ArenaBuilder builder = Mockito.mock(ArenaBuilder.class);
+        arena = new Arena(10, 10, builder);
         Player player = new Player(new Position(5, 5));
         arena.setPlayer(player);
+        gameLoop = Mockito.mock(GameLoop.class);
     }
 
     @Test
@@ -31,11 +35,9 @@ class ArenaControllerTest {
         arena.addObstacles(Arrays.asList(laser));
 
         int initial_lives = arena.getPlayer().getLives();
-        ArenaBuilder arenaBuilder = Mockito.mock(ArenaBuilder.class);
-        Mockito.when(arenaBuilder.createArena()).thenReturn(arena);
-        ArenaController controller = new ArenaController(arenaBuilder);
+        ArenaController controller = new ArenaController(arena);
 
-        controller.updateArena(GUI.ACTION.NONE, 1);
+        controller.update(gameLoop, GUI.ACTION.NONE, 1);
 
         assertEquals(arena.getPlayer().getLives(), initial_lives - 1);
     }
@@ -48,11 +50,9 @@ class ArenaControllerTest {
         int initial_lives = arena.getPlayer().getLives();
         int initial_coins = arena.getPlayer().getCoins();
 
-        ArenaBuilder arenaBuilder = Mockito.mock(ArenaBuilder.class);
-        Mockito.when(arenaBuilder.createArena()).thenReturn(arena);
-        ArenaController controller = new ArenaController(arenaBuilder);
+        ArenaController controller = new ArenaController(arena);
 
-        controller.updateArena(GUI.ACTION.NONE, 1);
+        controller.update(gameLoop, GUI.ACTION.NONE, 1);
 
         assertEquals(arena.getPlayer().getLives(), initial_lives);
         assertEquals(arena.getPlayer().getCoins(), initial_coins + 1);
@@ -68,11 +68,9 @@ class ArenaControllerTest {
         int initial_lives = arena.getPlayer().getLives();
         int initial_coins = arena.getPlayer().getCoins();
 
-        ArenaBuilder arenaBuilder = Mockito.mock(ArenaBuilder.class);
-        Mockito.when(arenaBuilder.createArena()).thenReturn(arena);
-        ArenaController controller = new ArenaController(arenaBuilder);
+        ArenaController controller = new ArenaController(arena);
 
-        controller.updateArena(GUI.ACTION.NONE, 1);
+        controller.update(gameLoop, GUI.ACTION.NONE, 1);
 
         assertEquals(arena.getPlayer().getLives(), initial_lives);
         assertEquals(arena.getPlayer().getCoins(), initial_coins);

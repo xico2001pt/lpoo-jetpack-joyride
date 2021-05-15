@@ -1,3 +1,4 @@
+/*
 package org.jetpack.viewer;
 
 import org.jetpack.gui.GUI;
@@ -57,4 +58,4 @@ class ArenaViewerTest {
         Mockito.verify(gui, Mockito.times(1)).drawElement(new Player(new Position(5, 8)));
         Mockito.verify(gui, Mockito.times(1)).drawElement(Mockito.any(Player.class));
     }
-}
+}*/

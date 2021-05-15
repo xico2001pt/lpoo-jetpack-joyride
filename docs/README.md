@@ -160,11 +160,11 @@ To implement the power-ups we used the Command Pattern. This pattern consists of
 
 #### Primitive Obsession and Data Clump
 
-Currently, the size of the arena is represented as two integers, which are used several times in different parts of the code. This code smell can be fixed by creating a class which will be responsible for managing these variables.
+- [x] Currently, the size of the arena is represented as two integers, which are used several times in different parts of the code. This code smell can be fixed by creating a class which will be responsible for managing these variables.
 
 #### Long Parameter List
 
-The method checkBoxCollision() has eight arguments, receiving two points and two dimensions. This issue can be solved by changing the given parameters to classes that'll group the variables.
+- [x]  The method checkBoxCollision() has eight arguments, receiving two points and two dimensions. This issue can be solved by changing the given parameters to classes that'll group the variables.
 
 ### Object-Orientation Abusers
 
