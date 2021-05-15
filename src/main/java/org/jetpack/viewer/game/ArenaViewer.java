@@ -45,7 +45,7 @@ public class ArenaViewer extends Viewer<Arena> {
         gui.drawRectangle(new Position(gui.getTerminalWidth() - infoWidth, 1), infoWidth, gui.getTerminalHeight() - 1, ColorDatabase.DARK_GREY.getName());
 
 
-        gui.drawText(new Position(0, 0), "Lives: " + player.getLives(), ColorDatabase.DARK_GREY.getName());
-        gui.drawText(new Position(gui.getTerminalWidth()/2, 0), "Coins: " + player.getCoins(), ColorDatabase.DARK_GREY.getName());
+        gui.drawText(new Position(0, 0), "Lives: " + player.getLives(), ColorDatabase.RED.getName());
+        gui.drawText(new Position(gui.getTerminalWidth()/2, 0), "Coins: " + player.getCoins(), ColorDatabase.RED.getName());
     }
 }
