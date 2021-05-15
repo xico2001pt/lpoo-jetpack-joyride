@@ -1,6 +1,8 @@
 package org.jetpack.controller.game;
 
+import org.jetpack.model.Dimensions;
 import org.jetpack.model.Matrix;
+import org.jetpack.model.Position;
 import org.jetpack.model.elements.Element;
 
 import static java.lang.Math.max;
@@ -9,20 +11,17 @@ import static java.lang.Math.min;
 public final class CollisionController {
 
     public static boolean checkElementCollision(Element a, Element b) {
-        int x1 = a.getPosition().getX(), y1 = a.getPosition().getY();
-        int width1 = a.getImage().getNumberCol(), height1 = a.getImage().getNumberRows();
+        Dimensions dimensionsA = new Dimensions(a.getImage().getNumberCol(), a.getImage().getNumberRows());
+        Dimensions dimensionsB = new Dimensions(b.getImage().getNumberCol(), b.getImage().getNumberRows());
 
-        int x2 = b.getPosition().getX(), y2 = b.getPosition().getY();
-        int width2 = b.getImage().getNumberCol(), height2 = b.getImage().getNumberRows();
-
-        return checkBoxCollision(x1, y1, width1, height1, x2, y2, width2, height2) && checkImageCollision(a, b);
+        return checkBoxCollision(a.getPosition(), dimensionsA, b.getPosition(), dimensionsB) && checkImageCollision(a, b);
     }
 
-    static boolean checkBoxCollision(int x1, int y1, int width1, int height1, int x2, int y2, int width2, int height2) {
-        return  x1 < x2 + width2  &&
-                x1 + width1 > x2  &&
-                y1 < y2 + height2 &&
-                y1 + height1 > y2;
+    static boolean checkBoxCollision(Position pos1, Dimensions d1, Position pos2, Dimensions d2) {
+        return  pos1.getX() < pos2.getX() + d2.getWidth()  &&
+                pos1.getX() + d1.getWidth() > pos2.getX()  &&
+                pos1.getY() < pos2.getY() + d2.getHeight() &&
+                pos1.getY() + d1.getHeight() > pos2.getY();
     }
 
     static boolean checkImageCollision(Element a, Element b) {
