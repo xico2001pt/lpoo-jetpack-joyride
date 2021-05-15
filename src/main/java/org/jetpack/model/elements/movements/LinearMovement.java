@@ -5,6 +5,7 @@ import org.jetpack.model.arena.Arena;
 
 public class LinearMovement extends MovementStrategy {
 
+    @Override
     public Position move(Position position, Arena arena) {
         return position.getLeft();
     }

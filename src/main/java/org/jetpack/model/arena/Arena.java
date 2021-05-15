@@ -1,6 +1,7 @@
 package org.jetpack.model.arena;
 
 import org.jetpack.controller.game.CollisionController;
+import org.jetpack.model.Dimensions;
 import org.jetpack.model.elements.Coin;
 import org.jetpack.model.elements.Element;
 import org.jetpack.model.elements.Player;
@@ -10,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Arena {
-    private final int width;
-    private final int height;
+    private final Dimensions dimensions;
     private final ArenaBuilder arenaBuilder;
 
     private Player player;
@@ -20,8 +20,7 @@ public class Arena {
     private List<Coin> coins;
 
     public Arena(int width, int height, ArenaBuilder arenaBuilder) {
-        this.width = width;
-        this.height = height;
+        this.dimensions = new Dimensions(width, height);
         this.arenaBuilder = arenaBuilder;
 
         this.obstacles = new ArrayList<>();
@@ -29,11 +28,11 @@ public class Arena {
     }
 
     public int getHeight() {
-        return height;
+        return dimensions.getHeight();
     }
 
     public int getWidth() {
-        return width;
+        return dimensions.getWidth();
     }
 
     public ArenaBuilder getArenaBuilder() {

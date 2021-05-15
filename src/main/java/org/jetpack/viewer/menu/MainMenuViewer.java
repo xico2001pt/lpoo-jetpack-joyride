@@ -13,9 +13,9 @@ public class MainMenuViewer extends Viewer<MainMenu> {
 
     @Override
     public void drawModel(GUI gui) {
-        gui.drawText(new Position(5, 5), "Menu", ColorDatabase.WHITE.getName());
+        gui.drawText(new Position(5, 4), "Menu", ColorDatabase.BLACK.getName());
         for (int i = 0; i < getModel().getNumberEntries(); i++)
             gui.drawText(new Position(5, 7 + i), getModel().getEntry(i),
-                        getModel().isSelected(i) ? ColorDatabase.GOLD.getName() : ColorDatabase.WHITE.getName());
+                        getModel().isSelected(i) ? ColorDatabase.RED.getName() : ColorDatabase.BLACK.getName());
         }
 }
