@@ -12,15 +12,11 @@ public abstract class State<T> {
     private final Controller<T> controller;
     private final Viewer<T> viewer;
 
-    public State(T model) {
+    public State(T model, Controller<T> controller, Viewer<T> viewer) {
         this.model = model;
-        this.viewer = getViewer();
-        this.controller = getController();
+        this.viewer = viewer;
+        this.controller = controller;
     }
-
-    protected abstract Viewer<T> getViewer();
-
-    protected abstract Controller<T> getController();
 
     public T getModel() {
         return model;

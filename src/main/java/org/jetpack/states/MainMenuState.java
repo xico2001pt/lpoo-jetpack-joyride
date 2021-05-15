@@ -8,16 +8,6 @@ import org.jetpack.viewer.menu.MainMenuViewer;
 
 public class MainMenuState extends State<MainMenu> {
     public MainMenuState(MainMenu menu) {
-        super(menu);
-    }
-
-    @Override
-    protected Viewer<MainMenu> getViewer() {
-        return new MainMenuViewer(getModel());
-    }
-
-    @Override
-    protected Controller<MainMenu> getController() {
-        return new MainMenuController(getModel());
+        super(menu,new MainMenuController(menu), new MainMenuViewer(menu));
     }
 }
