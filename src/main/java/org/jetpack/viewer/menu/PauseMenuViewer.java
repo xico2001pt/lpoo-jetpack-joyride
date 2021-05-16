@@ -13,9 +13,9 @@ public class PauseMenuViewer extends Viewer<PauseMenu> {
 
     @Override
     public void drawModel(GUI gui) {
-        gui.drawText(new Position(5, 4), "Menu", ColorDatabase.GOLD.getName());
+        gui.drawText(new Position(5, 5), "Paused", ColorDatabase.DARK_GOLD.getName());
         for (int i = 0; i < getModel().getNumberEntries(); i++)
-            gui.drawText(new Position(5, 7 + i), getModel().getEntry(i),
+            gui.drawText(new Position(5, 8 + i), getModel().getEntry(i),
                     getModel().isSelected(i) ? ColorDatabase.RED.getName() : ColorDatabase.WHITE.getName());
     }
 }

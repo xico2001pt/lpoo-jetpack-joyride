@@ -46,6 +46,6 @@ public class ArenaViewer extends Viewer<Arena> {
 
 
         gui.drawText(new Position(0, 0), "Lives: " + player.getLives(), ColorDatabase.RED.getName());
-        gui.drawText(new Position(gui.getTerminalWidth()/2, 0), "Coins: " + player.getCoins(), ColorDatabase.RED.getName());
+        gui.drawText(new Position(gui.getTerminalWidth()/2, 0), "Coins: " + player.getCoins(), ColorDatabase.GOLD.getName());
     }
 }

@@ -1,12 +1,15 @@
 package org.jetpack.gui;
 
 public enum ColorDatabase {
-    WHITE("#ffffff"),
+    WHITE("#FFFFFF"),
     BLACK("#000000"),
-    RED("#ff0000"),
-    GOLD("#ffd700"),
+    RED("#FF0000"),
+    GOLD("#FFD700"),
     DARK_GREY("#303030"),
 
+    SILVER("#CDCDCD"),
+
+    DARK_GOLD("#D4AF37"),
     GHOST_WHITE("#FBFBFF"),
     SHINY_RED("#FF331F"),
     PALE_BLUE("#657ED4"),
