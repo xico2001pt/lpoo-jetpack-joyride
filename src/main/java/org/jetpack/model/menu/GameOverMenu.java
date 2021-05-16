@@ -3,8 +3,11 @@ package org.jetpack.model.menu;
 import java.util.Arrays;
 
 public class GameOverMenu extends Menu {
-    public GameOverMenu() {
+    long score;
+
+    public GameOverMenu(long score) {
         super(Arrays.asList("Play Again", "Exit"));
+        this.score = score;
     }
 
     public boolean isSelectedStart() {
@@ -13,5 +16,9 @@ public class GameOverMenu extends Menu {
 
     public boolean isSelectedExit() {
         return isSelected(1);
+    }
+
+    public long getScore() {
+        return score;
     }
 }
