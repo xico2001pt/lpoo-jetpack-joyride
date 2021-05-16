@@ -2,6 +2,8 @@ package org.jetpack.model.elements;
 
 import org.jetpack.model.Matrix;
 
+import java.awt.*;
+
 public final class ImageLibrary {
 
     private static Matrix<Character> playerImage;
@@ -62,5 +64,12 @@ public final class ImageLibrary {
     public static Matrix<Character> getZigZagImage() {
         if (zigZagImage == null) zigZagImage = new Matrix<>(1,1,'#');
         return zigZagImage;
+    }
+
+    public static Matrix<Character> getStaticLaserImage(Dimension dimension) {
+        Matrix<Character> staticLaser = new Matrix<>(dimension.width, dimension.height,'X');
+        staticLaser.setValue(0, 0, 'o');
+        staticLaser.setValue(dimension.width - 1, 0, 'o');
+        return staticLaser;
     }
 }

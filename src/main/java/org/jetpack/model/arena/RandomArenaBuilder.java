@@ -6,6 +6,7 @@ import org.jetpack.model.elements.ImageLibrary;
 import org.jetpack.model.elements.Player;
 import org.jetpack.model.elements.obstacles.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -74,17 +75,19 @@ public class RandomArenaBuilder extends ArenaBuilder {
     }
 
     private Obstacle generateObstacle() {
-        int type = rng.nextInt(6);
+        int type = rng.nextInt(7);
 
         switch (type) {
             case 0: case 1:
-                return new Laser(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getLaser2Image().getNumberRows())));  // TODO: GERAR HEIGHT COM MAIS CUIDADO
+                return new Laser(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getLaser2Image().getNumberRows())));
             case 2: case 3:
-                return new EnergyWall(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getEnergyWall1Image().getNumberRows()))); // TODO: same
+                return new EnergyWall(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getEnergyWall1Image().getNumberRows())));
             case 4:
                 return new Missile(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getMissileImage().getNumberRows())));
             case 5:
                 return new ZigZag(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getZigZagImage().getNumberRows())));
+            case 6:
+                return new StaticLaser(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getStaticLaserImage(new Dimension(getWidth(), 1)).getNumberRows())), new Dimension(getWidth(), 1));
         }
 
         return null;
