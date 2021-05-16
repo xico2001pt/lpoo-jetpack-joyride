@@ -2,12 +2,14 @@ package org.jetpack.controller.game;
 
 import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
+import org.jetpack.model.menu.GameOverMenu;
 import org.jetpack.model.menu.MainMenu;
 import org.jetpack.model.menu.PauseMenu;
 import org.jetpack.model.arena.Arena;
 import org.jetpack.model.elements.Coin;
 import org.jetpack.model.elements.Element;
 import org.jetpack.model.elements.obstacles.Obstacle;
+import org.jetpack.states.GameOverMenuState;
 import org.jetpack.states.MainMenuState;
 import org.jetpack.states.PauseMenuState;
 
@@ -25,7 +27,9 @@ public class ArenaController extends GameController {
 
     @Override
     public void update(GameLoop gameLoop, GUI.ACTION action, long elapsed) {
-        if (getModel().getPlayer().getLives() <= 0 || action == GUI.ACTION.QUIT)
+        if (getModel().getPlayer().getLives() <= 0)
+            gameLoop.setState(new GameOverMenuState(new GameOverMenu()));
+        else if (action == GUI.ACTION.QUIT)
             gameLoop.setState(new MainMenuState(new MainMenu()));
         else if (action == GUI.ACTION.PAUSE)
             gameLoop.setState(new PauseMenuState(new PauseMenu(), gameLoop.getState()));
