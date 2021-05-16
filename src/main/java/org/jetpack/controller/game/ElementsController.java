@@ -2,11 +2,8 @@ package org.jetpack.controller.game;
 
 import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
-import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
-import org.jetpack.model.elements.Coin;
 import org.jetpack.model.elements.Element;
-import org.jetpack.model.elements.obstacles.Obstacle;
 
 import java.util.List;
 

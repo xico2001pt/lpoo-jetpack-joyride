@@ -1,9 +1,6 @@
 package org.jetpack.controller;
 
-import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
-
-import java.io.IOException;
 
 public abstract class Controller<T> {
     private final T model;

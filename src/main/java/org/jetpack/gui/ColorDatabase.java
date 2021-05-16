@@ -5,7 +5,13 @@ public enum ColorDatabase {
     BLACK("#000000"),
     RED("#ff0000"),
     GOLD("#ffd700"),
-    DARK_GREY("#303030");
+    DARK_GREY("#303030"),
+
+    GHOST_WHITE("#FBFBFF"),
+    SHINY_RED("#FF331F"),
+    PALE_BLUE("#657ED4"),
+    SATURATED_BLUE("#3626A7"),
+    VERY_DARK_GREY("#0D0106");
 
     private final String name;
 
