@@ -14,6 +14,7 @@ public final class ImageLibrary {
     private static Matrix<Character> energyWall2Image;
     private static Matrix<Character> missileImage;
     private static Matrix<Character> zigZagImage;
+    private static Matrix<Character> staticLaserImage;
 
     public static Matrix<Character> getPlayerImage() {
         if (playerImage == null) playerImage = new Matrix<>(1, 1, 'P');
@@ -67,9 +68,11 @@ public final class ImageLibrary {
     }
 
     public static Matrix<Character> getStaticLaserImage(Dimension dimension) {
-        Matrix<Character> staticLaser = new Matrix<>(dimension.width, dimension.height,'X');
-        staticLaser.setValue(0, 0, 'o');
-        staticLaser.setValue(dimension.width - 1, 0, 'o');
-        return staticLaser;
+        if (staticLaserImage == null) {
+            staticLaserImage = new Matrix<>(dimension.width, dimension.height,'X');
+            staticLaserImage.setValue(0, 0, 'o');
+            staticLaserImage.setValue(dimension.width - 1, 0, 'o');
+        }
+        return staticLaserImage;
     }
 }

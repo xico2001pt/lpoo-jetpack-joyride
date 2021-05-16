@@ -14,11 +14,13 @@ public interface GUI {
 
     ACTION getNextAction() throws IOException;
 
-    void drawImage(Position position, Matrix<Character> image);
+    void drawImage(Position position, Matrix<Character> image, String color);
 
     void drawText(Position position, String text, String color);
 
     void drawRectangle(Position position, int width, int height, String color);
+
+    void drawFillRectangle(Position position, int width, int height, String color);
 
     default boolean isOnScreen(Position position) {
         boolean xFits = position.getX() >= 0 && position.getX() < getTerminalWidth();

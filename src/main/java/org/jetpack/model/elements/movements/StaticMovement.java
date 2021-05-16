@@ -13,8 +13,8 @@ public class StaticMovement extends MovementStrategy {
     @Override
     public Position move(Position position, Arena arena) {
         counter++;
-        if (counter < 30) return new Position(arena.getWidth() - 1, position.getY());
-        else if (counter < 90) return new Position(0, position.getY());
+        if (counter < 20) return new Position(arena.getWidth() - 1, position.getY());
+        else if (counter < 40) return new Position(0, position.getY());
         return new Position(-9999, 0);
     }
 }

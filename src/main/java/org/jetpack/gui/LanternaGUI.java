@@ -1,5 +1,6 @@
 package org.jetpack.gui;
 
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -85,12 +86,16 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawImage(Position position, Matrix<Character> image) {
+    public void drawImage(Position position, Matrix<Character> image, String color) {
         TextGraphics tg = screen.newTextGraphics();
-        // TODO: tg.setForegroundColor(TextColor.Factory.fromString(color));
+        if (color != null)
+            tg.setForegroundColor(TextColor.Factory.fromString(color));
+
         for (int y = position.getY(); y < position.getY() + image.getNumberRows(); ++y) {
             for (int x = position.getX(); x < position.getX() + image.getNumberCol(); ++x) {
                 if (isOnScreen(new Position(x, y))) {
+                    // Every time it overrides the background color
+                    tg.setBackgroundColor(screen.getBackCharacter(x, y).getBackgroundColor());
                     tg.setCharacter(x, y, image.getValue(x - position.getX(), y - position.getY()));
                 }
             }
@@ -100,8 +105,7 @@ public class LanternaGUI implements GUI {
     @Override
     public void drawText(Position position, String text, String color) {
         TextGraphics tg = screen.newTextGraphics();
-        if (color != null)
-            tg.setForegroundColor(TextColor.Factory.fromString(color));
+        if (color != null) tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.setBackgroundColor(screen.getBackCharacter(position.getX(),position.getY()).getBackgroundColor());
         tg.putString(position.getX(), position.getY(), text);
     }
@@ -110,13 +114,14 @@ public class LanternaGUI implements GUI {
     public void drawRectangle(Position position, int width, int height, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setBackgroundColor(TextColor.Factory.fromString(color));
-        for (int y = position.getY(); y < position.getY() + height; ++y) {
-            for (int x = position.getX(); x < position.getX() + width; ++x) {
-                if (isOnScreen(new Position(x, y))) {
-                    tg.putString(x, y, " ");
-                }
-            }
-        }
+        tg.drawRectangle(new TerminalPosition(position.getX(), position.getY()), new TerminalSize(width, height), ' ');
+    }
+
+    @Override
+    public void drawFillRectangle(Position position, int width, int height, String color) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setBackgroundColor(TextColor.Factory.fromString(color));
+        tg.fillRectangle(new TerminalPosition(position.getX(), position.getY()), new TerminalSize(width, height), ' ');
     }
 
     @Override

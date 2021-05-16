@@ -18,34 +18,36 @@ public class ArenaViewer extends Viewer<Arena> {
 
     @Override
     public void drawModel(GUI gui) {
-        drawElements(gui, getModel().getObstacles(), new ElementViewer());
-        drawElements(gui, getModel().getCoins(), new ElementViewer());
-        drawElement(gui, getModel().getPlayer(), new ElementViewer());
+        gui.drawFillRectangle(new Position(1,1), getModel().getWidth(), getModel().getHeight(), ColorDatabase.BACK.getName());
+        drawElements(gui, getModel().getObstacles(), new ObstacleViewer());
+        drawElements(gui, getModel().getCoins(), new CoinViewer());
+        drawElement(gui, getModel().getPlayer(), new PlayerViewer());
         drawInfo(gui, getModel().getPlayer());
     }
 
-    private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer viewer) {
+    private <T extends Element> void drawElements(GUI gui, List<T> elements, ElementViewer<T> viewer) {
         for (T element: elements)
             drawElement(gui, element, viewer);
     }
 
-    private <T extends Element> void drawElement(GUI gui, T element, ElementViewer viewer) {
+    private <T extends Element> void drawElement(GUI gui, T element, ElementViewer<T> viewer) {
         int infoWidth = (gui.getTerminalWidth() - getModel().getWidth()) / 2;
         int infoHeight = (gui.getTerminalHeight() - getModel().getHeight()) / 2;
-        viewer.drawElement(element, new Position(infoWidth, infoHeight), gui);
+        viewer.drawElement(gui, element, new Position(infoWidth, infoHeight));
     }
 
     private void drawInfo(GUI gui, Player player) {
         int infoWidth = (gui.getTerminalWidth() - getModel().getWidth()) / 2;
         int infoHeight = (gui.getTerminalHeight() - getModel().getHeight()) / 2;
 
-        gui.drawRectangle(new Position(0, 0), gui.getTerminalWidth(), infoHeight, ColorDatabase.DARK_GREY.getName());
-        gui.drawRectangle(new Position(0, gui.getTerminalHeight() - infoHeight), gui.getTerminalWidth(), infoHeight, ColorDatabase.DARK_GREY.getName());
-        gui.drawRectangle(new Position(0, 1), infoWidth, gui.getTerminalHeight() - 1, ColorDatabase.DARK_GREY.getName());
-        gui.drawRectangle(new Position(gui.getTerminalWidth() - infoWidth, 1), infoWidth, gui.getTerminalHeight() - 1, ColorDatabase.DARK_GREY.getName());
+        /*gui.drawFillRectangle(new Position(0, 0), gui.getTerminalWidth(), infoHeight, ColorDatabase.INFO.getName());
+        gui.drawFillRectangle(new Position(0, gui.getTerminalHeight() - infoHeight), gui.getTerminalWidth(), infoHeight, ColorDatabase.INFO.getName());
+        gui.drawFillRectangle(new Position(0, 1), infoWidth, gui.getTerminalHeight() - 1, ColorDatabase.INFO.getName());
+        gui.drawFillRectangle(new Position(gui.getTerminalWidth() - infoWidth, 1), infoWidth, gui.getTerminalHeight() - 1, ColorDatabase.INFO.getName());*/
 
+        gui.drawRectangle(new Position(0, 0), gui.getTerminalWidth(), gui.getTerminalHeight(), ColorDatabase.INFO.getName());
 
-        gui.drawText(new Position(0, 0), "Lives: " + player.getLives(), ColorDatabase.RED.getName());
-        gui.drawText(new Position(gui.getTerminalWidth()/2, 0), "Coins: " + player.getCoins(), ColorDatabase.GOLD.getName());
+        gui.drawText(new Position(0, 0), "Lives: " + player.getLives(), ColorDatabase.INFOTEXT.getName());
+        gui.drawText(new Position(gui.getTerminalWidth()/2, 0), "Coins: " + player.getCoins(), ColorDatabase.INFOTEXT.getName());
     }
 }
