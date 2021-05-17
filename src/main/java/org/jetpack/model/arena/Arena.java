@@ -28,7 +28,7 @@ public class Arena {
     }
 
     public int getHeight() {
-        return dimension.width;
+        return dimension.height;
     }
 
     public int getWidth() {
