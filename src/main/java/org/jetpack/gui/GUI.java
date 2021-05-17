@@ -3,6 +3,7 @@ package org.jetpack.gui;
 import org.jetpack.model.Matrix;
 import org.jetpack.model.Position;
 
+import java.awt.*;
 import java.io.IOException;
 
 public interface GUI {
@@ -18,9 +19,9 @@ public interface GUI {
 
     void drawText(Position position, String text, String color);
 
-    void drawRectangle(Position position, int width, int height, int thickness, String color);
+    void drawRectangle(Position position, Dimension dimension, int thickness, String color);
 
-    void drawFillRectangle(Position position, int width, int height, String color);
+    void drawFillRectangle(Position position, Dimension dimension, String color);
 
     default boolean isOnScreen(Position position) {
         boolean xFits = position.getX() >= 0 && position.getX() < getTerminalWidth();

@@ -1,9 +1,10 @@
 package org.jetpack.controller.game;
 
-import org.jetpack.model.Dimensions;
 import org.jetpack.model.Matrix;
 import org.jetpack.model.Position;
 import org.jetpack.model.elements.Element;
+
+import java.awt.*;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -11,13 +12,13 @@ import static java.lang.Math.min;
 public final class CollisionController {
 
     public static boolean checkElementCollision(Element a, Element b) {
-        Dimensions dimensionsA = new Dimensions(a.getImage().getNumberCol(), a.getImage().getNumberRows());
-        Dimensions dimensionsB = new Dimensions(b.getImage().getNumberCol(), b.getImage().getNumberRows());
+        Dimension dimensionsA = new Dimension(a.getImage().getNumberCol(), a.getImage().getNumberRows());
+        Dimension dimensionsB = new Dimension(b.getImage().getNumberCol(), b.getImage().getNumberRows());
 
         return checkBoxCollision(a.getPosition(), dimensionsA, b.getPosition(), dimensionsB) && checkImageCollision(a, b);
     }
 
-    static boolean checkBoxCollision(Position pos1, Dimensions d1, Position pos2, Dimensions d2) {
+    static boolean checkBoxCollision(Position pos1, Dimension d1, Position pos2, Dimension d2) {
         return  pos1.getX() < pos2.getX() + d2.getWidth()  &&
                 pos1.getX() + d1.getWidth() > pos2.getX()  &&
                 pos1.getY() < pos2.getY() + d2.getHeight() &&

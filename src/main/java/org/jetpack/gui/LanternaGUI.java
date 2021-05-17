@@ -111,18 +111,18 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawRectangle(Position position, int width, int height, int thickness, String color) {
+    public void drawRectangle(Position position, Dimension dimension, int thickness, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setBackgroundColor(TextColor.Factory.fromString(color));
         for (int t = 0; t < thickness; ++t)
-            tg.drawRectangle(new TerminalPosition(position.getX() + t, position.getY() + t), new TerminalSize(width - 2*t, height - 2*t), ' ');
+            tg.drawRectangle(new TerminalPosition(position.getX() + t, position.getY() + t), new TerminalSize(dimension.width - 2*t, dimension.height - 2*t), ' ');
     }
 
     @Override
-    public void drawFillRectangle(Position position, int width, int height, String color) {
+    public void drawFillRectangle(Position position, Dimension dimension, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setBackgroundColor(TextColor.Factory.fromString(color));
-        tg.fillRectangle(new TerminalPosition(position.getX(), position.getY()), new TerminalSize(width, height), ' ');
+        tg.fillRectangle(new TerminalPosition(position.getX(), position.getY()), new TerminalSize(dimension.width, dimension.height), ' ');
     }
 
     @Override
