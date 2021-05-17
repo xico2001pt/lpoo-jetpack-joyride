@@ -18,7 +18,7 @@ public interface GUI {
 
     void drawText(Position position, String text, String color);
 
-    void drawRectangle(Position position, int width, int height, String color);
+    void drawRectangle(Position position, int width, int height, int thickness, String color);
 
     void drawFillRectangle(Position position, int width, int height, String color);
 
