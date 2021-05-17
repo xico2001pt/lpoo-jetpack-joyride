@@ -41,7 +41,7 @@ public abstract class ArenaBuilder {
         return this.dimension.height;
     }
 
-    protected long getInstant() {
+    public long getInstant() {
         return this.instant;
     }
 

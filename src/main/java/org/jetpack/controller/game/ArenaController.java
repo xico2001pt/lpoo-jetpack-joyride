@@ -28,7 +28,7 @@ public class ArenaController extends GameController {
     @Override
     public void update(GameLoop gameLoop, GUI.ACTION action, long elapsed) {
         if (getModel().getPlayer().getLives() <= 0)
-            gameLoop.setState(new GameOverMenuState(new GameOverMenu(elapsed)));
+            gameLoop.setState(new GameOverMenuState(new GameOverMenu(getModel().getArenaBuilder().getInstant()/1000)));
         else if (action == GUI.ACTION.QUIT)
             gameLoop.setState(new MainMenuState(new MainMenu()));
         else if (action == GUI.ACTION.PAUSE)
