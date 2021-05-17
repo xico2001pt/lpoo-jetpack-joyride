@@ -3,21 +3,23 @@ package org.jetpack.model.elements.movements;
 import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
-
 public class ZigZagMovement extends MovementStrategy {
-    private boolean up = true;
+    private boolean up;
+    private int counter;
+
+    public ZigZagMovement() {
+        this.up = true;
+        this.counter = 0;
+    }
 
     @Override
     public Position move(Position position, Arena arena) {
-        Position nextPosition;
-        if (up) {
-            nextPosition =  new Position(position.getLeft().getX(), max(position.getUp().getY(), 0));
-        } else {
-            nextPosition =  new Position(position.getLeft().getX(), min(position.getDown().getY(), arena.getHeight() - 1));
+        counter++;
+        if (counter % 5 == 0 || position.getY() == 0 || position.getY() == arena.getHeight() - 1) {
+            counter = 0;
+            up = !up;
         }
-        up = !up;
-        return nextPosition;
+        if (up) return new Position(position.getLeft().getX(), position.getUp().getY());
+        else return new Position(position.getLeft().getX(), position.getDown().getY());
     }
 }
