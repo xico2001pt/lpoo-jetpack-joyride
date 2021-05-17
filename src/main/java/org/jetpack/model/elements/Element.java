@@ -1,5 +1,6 @@
 package org.jetpack.model.elements;
 
+import org.jetpack.model.CharColor;
 import org.jetpack.model.Matrix;
 import org.jetpack.model.Position;
 import org.jetpack.model.elements.movements.LinearMovement;
@@ -9,16 +10,16 @@ import java.util.Objects;
 
 public abstract class Element {
     Position position;
-    Matrix<Character> image;
+    Matrix<CharColor> image;
     MovementStrategy movement;
 
-    public Element(Position position, Matrix<Character> image) {
+    public Element(Position position, Matrix<CharColor> image) {
         this.position = position;
         this.image = image;
         this.movement = new LinearMovement();
     }
 
-    public Matrix<Character> getImage() {
+    public Matrix<CharColor> getImage() {
         return image;
     }
 

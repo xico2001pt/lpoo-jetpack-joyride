@@ -10,6 +10,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import org.jetpack.model.CharColor;
 import org.jetpack.model.Matrix;
 import org.jetpack.model.Position;
 
@@ -86,17 +87,15 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
-    public void drawImage(Position position, Matrix<Character> image, String color) {
+    public void drawImage(Position position, Matrix<CharColor> image) {
         TextGraphics tg = screen.newTextGraphics();
-        if (color != null)
-            tg.setForegroundColor(TextColor.Factory.fromString(color));
-
         for (int y = position.getY(); y < position.getY() + image.getNumberRows(); ++y) {
             for (int x = position.getX(); x < position.getX() + image.getNumberCol(); ++x) {
                 if (isOnScreen(new Position(x, y))) {
                     // Every time it overrides the background color
                     tg.setBackgroundColor(screen.getBackCharacter(x, y).getBackgroundColor());
-                    tg.setCharacter(x, y, image.getValue(x - position.getX(), y - position.getY()));
+                    tg.setForegroundColor(TextColor.Factory.fromString(image.getValue(x - position.getX(), y - position.getY()).getColor()));
+                    tg.setCharacter(x, y, image.getValue(x - position.getX(), y - position.getY()).getCharacter());
                 }
             }
         }

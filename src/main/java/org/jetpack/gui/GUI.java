@@ -1,5 +1,6 @@
 package org.jetpack.gui;
 
+import org.jetpack.model.CharColor;
 import org.jetpack.model.Matrix;
 import org.jetpack.model.Position;
 
@@ -15,7 +16,7 @@ public interface GUI {
 
     ACTION getNextAction() throws IOException;
 
-    void drawImage(Position position, Matrix<Character> image, String color);
+    void drawImage(Position position, Matrix<CharColor> image);
 
     void drawText(Position position, String text, String color);
 

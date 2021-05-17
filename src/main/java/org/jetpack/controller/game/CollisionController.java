@@ -1,5 +1,6 @@
 package org.jetpack.controller.game;
 
+import org.jetpack.model.CharColor;
 import org.jetpack.model.Matrix;
 import org.jetpack.model.Position;
 import org.jetpack.model.elements.Element;
@@ -26,8 +27,8 @@ public final class CollisionController {
     }
 
     static boolean checkImageCollision(Element a, Element b) {
-        Matrix<Character> imageA = a.getImage();
-        Matrix<Character> imageB = b.getImage();
+        Matrix<CharColor> imageA = a.getImage();
+        Matrix<CharColor> imageB = b.getImage();
 
         int xMin = max(a.getPosition().getX(), b.getPosition().getX());
         int xMax = min(a.getPosition().getX() + imageA.getNumberCol(), b.getPosition().getX() + imageB.getNumberCol());

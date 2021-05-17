@@ -26,7 +26,9 @@ public enum ColorDatabase {
     BACK("#4C5B5C"),
     INFO("#404F4F"),
     COINS("#F8C425"),
-    INFOTEXT("#FFFFFF");
+    INFOTEXT("#FFFFFF"),
+
+    VIBRANT_GREEN("#7DB800");
 
     private final String name;
 

@@ -20,12 +20,12 @@ public class MainMenuViewer extends Viewer<MainMenu> {
         gui.drawRectangle(new Position(0,0), new Dimension(gui.getTerminalWidth(), gui.getTerminalHeight()), 1, ColorDatabase.INFO.getName());
         gui.drawFillRectangle(new Position(1,1), new Dimension(gui.getTerminalWidth() - 2, gui.getTerminalHeight() - 2), ColorDatabase.BACK.getName());
 
-        gui.drawText(new Position((gui.getTerminalWidth() - 11)/ 2, yInitial - 1), "-----------", ColorDatabase.GOLD.getName());
+        gui.drawText(new Position((gui.getTerminalWidth() - 11)/ 2, yInitial - 1), "+---------+", ColorDatabase.GOLD.getName());
         gui.drawText(new Position((gui.getTerminalWidth() - 11)/ 2, yInitial), "|", ColorDatabase.GOLD.getName());
         gui.drawText(new Position((gui.getTerminalWidth() - 11)/ 2 + 1, yInitial), " JETPACK ", ColorDatabase.SILVER.getName());
         gui.drawText(new Position((gui.getTerminalWidth() - 11)/ 2 + 10, yInitial), "|", ColorDatabase.GOLD.getName());
         gui.drawText(new Position((gui.getTerminalWidth() - 11)/ 2, yInitial + 1), "| JOYRIDE |", ColorDatabase.GOLD.getName());
-        gui.drawText(new Position((gui.getTerminalWidth() - 11)/ 2, yInitial + 2), "-----------", ColorDatabase.GOLD.getName());
+        gui.drawText(new Position((gui.getTerminalWidth() - 11)/ 2, yInitial + 2), "+---------+", ColorDatabase.GOLD.getName());
 
         gui.drawText(new Position((gui.getTerminalWidth() - 4)/ 2, yInitial + 4), "menu", ColorDatabase.DARK_GOLD.getName());
         for (int i = 0; i < getModel().getNumberEntries(); i++)
