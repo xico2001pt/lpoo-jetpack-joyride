@@ -17,7 +17,7 @@ public class GameOverMenuViewer extends Viewer<GameOverMenu> {
         int yInitial = (gui.getTerminalHeight() / 2) - 5;
         gui.drawText(new Position((gui.getTerminalWidth() - 15)/ 2, yInitial), "-- Game Over --", ColorDatabase.DARK_GOLD.getName());
 
-        gui.drawText(new Position((gui.getTerminalWidth() - 9)/ 2, yInitial + 2), "Score: " + String.valueOf(getModel().getScore()), ColorDatabase.WHITE.getName());
+        gui.drawText(new Position((gui.getTerminalWidth() - 9)/ 2, yInitial + 2), "Score: " + getModel().getScore(), ColorDatabase.WHITE.getName());
 
         for (int i = 0; i < getModel().getNumberEntries(); i++)
             gui.drawText(new Position((gui.getTerminalWidth() - getModel().getEntry(i).length())/ 2, yInitial + 5 + i),
