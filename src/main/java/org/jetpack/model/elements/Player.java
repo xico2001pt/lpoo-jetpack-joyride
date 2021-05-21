@@ -1,6 +1,7 @@
 package org.jetpack.model.elements;
 
 import org.jetpack.model.Position;
+import org.jetpack.model.elements.movements.DownMovement;
 
 public class Player extends Element {
     private int lives;
@@ -10,6 +11,7 @@ public class Player extends Element {
         super(position, ImageLibrary.getPlayerImage());
         this.lives = 3;
         this.nCoins = 0;
+        setMovement(new DownMovement());
     }
 
     public int getLives() {

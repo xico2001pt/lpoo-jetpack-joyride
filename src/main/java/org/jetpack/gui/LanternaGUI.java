@@ -10,11 +10,14 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
 import org.jetpack.model.CharColor;
 import org.jetpack.model.Matrix;
 import org.jetpack.model.Position;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -22,10 +25,12 @@ import java.net.URL;
 
 public class LanternaGUI implements GUI {
     private final TerminalScreen screen;
+    private boolean mousePressed;
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
         AWTTerminalFontConfiguration fontConfig = loadSquareFont();
         Terminal terminal = createTerminal(width, height, fontConfig);
+        this.mousePressed = false;
         screen = createScreen(terminal);
     }
 
@@ -45,6 +50,7 @@ public class LanternaGUI implements GUI {
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         Terminal terminal = terminalFactory.createTerminal();
+        ((AWTTerminalFrame)terminal).getComponent(0).addMouseListener(new LanternaMouseAdapter(this));
         return terminal;
     }
 
@@ -75,15 +81,17 @@ public class LanternaGUI implements GUI {
     public ACTION getNextAction() throws IOException {
         KeyStroke keyStroke = screen.pollInput();
 
-        if (keyStroke == null) return ACTION.NONE;
+        if (keyStroke == null) return (this.mousePressed ? ACTION.MOUSE_PRESSED : ACTION.NONE);
+
         if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'q') return ACTION.QUIT;
         if (keyStroke.getKeyType() == KeyType.Escape) return ACTION.PAUSE;
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.ENTER;
 
         if (keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
         if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
+        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == ' ') return ACTION.SPACE;
 
-        return ACTION.NONE;
+        return (this.mousePressed ? ACTION.MOUSE_PRESSED : ACTION.NONE);
     }
 
     @Override
@@ -94,7 +102,8 @@ public class LanternaGUI implements GUI {
                 if (isOnScreen(new Position(x, y))) {
                     // Every time it overrides the background color
                     tg.setBackgroundColor(screen.getBackCharacter(x, y).getBackgroundColor());
-                    tg.setForegroundColor(TextColor.Factory.fromString(image.getValue(x - position.getX(), y - position.getY()).getColor()));
+                    tg.setForegroundColor(TextColor.Factory.fromString(image.getValue(x - position.getX(),
+                            y - position.getY()).getColor()));
                     tg.setCharacter(x, y, image.getValue(x - position.getX(), y - position.getY()).getCharacter());
                 }
             }
@@ -137,5 +146,9 @@ public class LanternaGUI implements GUI {
     @Override
     public void close() throws IOException {
         screen.close();
+    }
+
+    public void changeMouseState(boolean isPressed) {
+        this.mousePressed = isPressed;
     }
 }
