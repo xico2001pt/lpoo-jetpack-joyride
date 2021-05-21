@@ -3,7 +3,7 @@ package org.jetpack.model.arena;
 import org.jetpack.controller.game.CollisionController;
 import org.jetpack.model.elements.Coin;
 import org.jetpack.model.elements.Element;
-import org.jetpack.model.elements.Player;
+import org.jetpack.model.elements.player.Player;
 import org.jetpack.model.elements.obstacles.Obstacle;
 
 import java.awt.*;

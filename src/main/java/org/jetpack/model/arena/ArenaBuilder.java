@@ -1,7 +1,7 @@
 package org.jetpack.model.arena;
 
 import org.jetpack.model.elements.Coin;
-import org.jetpack.model.elements.Player;
+import org.jetpack.model.elements.player.Player;
 import org.jetpack.model.elements.obstacles.Obstacle;
 
 import java.awt.*;

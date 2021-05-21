@@ -1,9 +1,8 @@
 package org.jetpack.viewer.game;
 
-import org.jetpack.gui.ColorDatabase;
 import org.jetpack.gui.GUI;
 import org.jetpack.model.Position;
-import org.jetpack.model.elements.Player;
+import org.jetpack.model.elements.player.Player;
 
 public class PlayerViewer implements ElementViewer<Player> {
     @Override

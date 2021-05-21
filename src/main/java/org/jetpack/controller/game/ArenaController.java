@@ -59,7 +59,7 @@ public class ArenaController extends GameController {
         for (Obstacle obstacle: getModel().getObstacles()) {
             if (CollisionController.checkElementCollision(obstacle, getModel().getPlayer())) {
                 getModel().getObstacles().remove(obstacle);
-                getModel().getPlayer().setLives(getModel().getPlayer().getLives() - 1);
+                getModel().getPlayer().takeDamage();
                 break;
             }
         }
@@ -67,7 +67,7 @@ public class ArenaController extends GameController {
         for (Coin coin : getModel().getCoins()) {
             if (CollisionController.checkElementCollision(coin, getModel().getPlayer())) {
                 getModel().getCoins().remove(coin);
-                getModel().getPlayer().setCoins(getModel().getPlayer().getCoins() + 1);
+                getModel().getPlayer().addCoin();
                 break;
             }
         }

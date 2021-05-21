@@ -5,7 +5,7 @@ import org.jetpack.gui.GUI;
 import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
 import org.jetpack.model.elements.Element;
-import org.jetpack.model.elements.Player;
+import org.jetpack.model.elements.player.Player;
 import org.jetpack.viewer.Viewer;
 
 import java.awt.*;

@@ -1,6 +1,6 @@
 package org.jetpack.model.arena;
 
-import org.jetpack.model.elements.Player;
+import org.jetpack.model.elements.player.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

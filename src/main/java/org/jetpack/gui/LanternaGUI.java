@@ -91,6 +91,10 @@ public class LanternaGUI implements GUI {
         if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
         if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == ' ') return ACTION.SPACE;
 
+        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == '1') return ACTION.POWER_UP1;
+        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == '2') return ACTION.POWER_UP2;
+        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == '3') return ACTION.POWER_UP3;
+
         return (this.mousePressed ? ACTION.MOUSE_PRESSED : ACTION.NONE);
     }
 

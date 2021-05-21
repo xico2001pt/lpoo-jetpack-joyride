@@ -5,7 +5,7 @@ import org.jetpack.gui.GUI;
 import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
 import org.jetpack.model.arena.ArenaBuilder;
-import org.jetpack.model.elements.Player;
+import org.jetpack.model.elements.player.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

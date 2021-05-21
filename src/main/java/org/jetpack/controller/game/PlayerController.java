@@ -4,9 +4,12 @@ import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
 import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
-import org.jetpack.model.elements.Player;
+import org.jetpack.model.elements.player.Player;
 import org.jetpack.model.elements.movements.DownMovement;
 import org.jetpack.model.elements.movements.UpMovement;
+import org.jetpack.model.elements.player.playerStates.DoubleCoinsState;
+import org.jetpack.model.elements.player.playerStates.ImmortalState;
+import org.jetpack.model.elements.player.playerStates.SlowDownState;
 
 public class PlayerController extends GameController {
     private final long movementFrequency; // Milliseconds it takes to move an element
@@ -21,14 +24,19 @@ public class PlayerController extends GameController {
 
     @Override
     public void update(GameLoop gameLoop, GUI.ACTION action, long elapsed) {
+
         counter += elapsed;
-
-        //System.out.println(action);
-
         Player player = getModel().getPlayer();
+
+        System.out.println(action);
+
+        if (action == GUI.ACTION.POWER_UP1) player.setState(new ImmortalState());
+        else if (action == GUI.ACTION.POWER_UP2) player.setState(new DoubleCoinsState());
+        else if (action == GUI.ACTION.POWER_UP3) player.setState(new SlowDownState());
         if (action == GUI.ACTION.MOUSE_PRESSED && actionBefore == GUI.ACTION.NONE) {
             counter = 0;
             player.setMovement(new UpMovement());
+
         }
         else if (action == GUI.ACTION.NONE && actionBefore == GUI.ACTION.MOUSE_PRESSED) {
             counter = 0;
@@ -39,6 +47,7 @@ public class PlayerController extends GameController {
             movePlayer(player.getMovement().move(player.getPosition(), getModel()));
             counter -= movementFrequency;
         }
+
         actionBefore = action;
     }
 
