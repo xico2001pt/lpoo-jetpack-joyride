@@ -36,23 +36,25 @@ In this game, the Player's primary goal is to travel as far as possible, while c
 
 ## Planned features
 
-- [ ]  Objects:
-    - [ ] Static obstacles
-    - [ ] Obstacle with different movements
+- [x]  Objects:
+    - [x] Static obstacles
+    - [x] Obstacle with different movements
 
-- [ ] Movements:
-    - [ ] Player falls with gravity
-    - [ ] Movements aside from going left (Obstacles)
+- [x] Movements:
+    - [x] Player falls with gravity
+    - [x] Movements aside from going left (Obstacles)
 
 - [ ] Life system: player gains lives throughout the game (when 10 coins are collected perhaps)
-- [ ] Menus
+- [x] Menus
 - [ ] Levels:
-    - [ ] Increase the difficulty linearly throughout a play through
+    - [x] Increase the difficulty linearly throughout a play through
     - [ ] Improve Random Infinite 
     - [ ] Pre-built Levels
-    - [ ] Score (Distance)
+    - [x] Score (Distance)
 - [ ] Power-ups:
-    - [ ] Shield
+    - [x] Double coins
+    - [x] Shield
+    - [x] Slow down time 
     - [ ] Zero Gravity
     - [ ] Nitro
 

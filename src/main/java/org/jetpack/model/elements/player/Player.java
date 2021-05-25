@@ -4,8 +4,7 @@ import org.jetpack.model.Position;
 import org.jetpack.model.elements.Element;
 import org.jetpack.model.elements.ImageLibrary;
 import org.jetpack.model.elements.movements.DownMovement;
-import org.jetpack.model.elements.player.playerStates.NormalState;
-import org.jetpack.model.elements.player.playerStates.PlayerState;
+import org.jetpack.model.elements.player.playerStates.*;
 
 public class Player extends Element {
     private int lives;
@@ -36,8 +35,18 @@ public class Player extends Element {
         nCoins += state.coinTaken();
     }
 
+    public boolean buyPowerUp() {
+        if (nCoins < 10) return false;
+        nCoins -= 10;
+        return true;
+    }
+
     public void setState(PlayerState state) {
+        setImage(state.getImage());
         this.state = state;
+    }
+    public PlayerState getState() {
+        return this.state;
     }
 
     @Override

@@ -11,11 +11,13 @@ public abstract class ArenaBuilder {
     private final Dimension dimension;
 
     private long instant;
+    protected float timeCoefficient;
 
     public ArenaBuilder(int width, int height) {
         this.dimension = new Dimension(width, height);
 
         this.instant = 0;
+        this.timeCoefficient = 2;
     }
 
     public Arena createArena() {
@@ -43,6 +45,11 @@ public abstract class ArenaBuilder {
 
     public long getInstant() {
         return this.instant;
+    }
+
+    public void setTimeCoefficient(float coefficient) {
+        this.timeCoefficient = coefficient;
+        System.out.println(this.timeCoefficient);
     }
 
     protected abstract Player createPlayer();

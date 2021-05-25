@@ -23,6 +23,10 @@ public abstract class Element {
         return image;
     }
 
+    public void setImage(Matrix<CharColor> image) {
+        this.image = image;
+    }
+
     public Position getPosition() {
         return position;
     }

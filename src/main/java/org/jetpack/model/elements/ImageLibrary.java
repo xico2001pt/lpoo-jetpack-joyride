@@ -9,6 +9,9 @@ import java.awt.*;
 public final class ImageLibrary {
 
     private static Matrix<CharColor> playerImage;
+    private static Matrix<CharColor> playerDoubleCoinStateImage;
+    private static Matrix<CharColor> playerImmortalStateImage;
+    private static Matrix<CharColor> playerSlowDownStateImage;
     private static Matrix<CharColor> coinImage;
     private static Matrix<CharColor> laser1Image;
     private static Matrix<CharColor> laser2Image;
@@ -21,6 +24,21 @@ public final class ImageLibrary {
     public static Matrix<CharColor> getPlayerImage() {
         if (playerImage == null) playerImage = new Matrix<>(1, 1, new CharColor('P', ColorDatabase.PLAYER.getName()));
         return playerImage;
+    }
+
+    public static Matrix<CharColor> getPlayerDoubleCoinStateImage() {
+        if (playerDoubleCoinStateImage == null) playerDoubleCoinStateImage = new Matrix<>(1, 1, new CharColor('P', ColorDatabase.COINS.getName()));
+        return playerDoubleCoinStateImage;
+    }
+
+    public static Matrix<CharColor> getPlayerImmortalStateImage() {
+        if (playerImmortalStateImage == null) playerImmortalStateImage = new Matrix<>(1, 1, new CharColor('P', ColorDatabase.INFO.getName()));
+        return playerImmortalStateImage;
+    }
+
+    public static Matrix<CharColor> getPlayerSlowDownStateImage() {
+        if (playerSlowDownStateImage == null) playerSlowDownStateImage = new Matrix<>(1, 1, new CharColor('P', ColorDatabase.VIBRANT_GREEN.getName()));
+        return playerSlowDownStateImage;
     }
 
     public static Matrix<CharColor> getCoinImage() {
@@ -73,6 +91,7 @@ public final class ImageLibrary {
         if (staticLaserImage == null) {
             staticLaserImage = new Matrix<>(dimension.width, dimension.height, new CharColor('X', ColorDatabase.OSBTACLES.getName()));
             staticLaserImage.setValue(0, 0, new CharColor('o', ColorDatabase.OSBTACLES.getName()));
+            staticLaserImage.setValue(dimension.width - 1, 0, new CharColor('o', ColorDatabase.OSBTACLES.getName()));
         }
         return staticLaserImage;
     }
