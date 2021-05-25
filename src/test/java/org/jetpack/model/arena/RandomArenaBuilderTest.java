@@ -34,13 +34,13 @@ class RandomArenaBuilderTest {
 
     @Test
     void getCoins() {
-        builder.incrementInstant(1000);
+        builder.incrementInstant(2000);
         assertTrue(builder.getCoins().size() > 0);
     }
 
     @Test
     void getObstacles() {
-        builder.incrementInstant(1000);
+        builder.incrementInstant(2000);
         assertTrue(builder.getObstacles().size() > 0);
     }
 
