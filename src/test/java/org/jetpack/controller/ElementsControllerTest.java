@@ -44,7 +44,7 @@ class ElementsControllerTest {
         Laser laser = new Laser(new Position(5, 5));
         arena.addObstacles(Arrays.asList(laser));
 
-        controller.update(gameLoop, GUI.ACTION.NONE, 110);
+        controller.update(gameLoop, GUI.ACTION.NONE, 210);
 
         assertEquals(new Position(4, 5), laser.getPosition());
     }
@@ -54,7 +54,7 @@ class ElementsControllerTest {
         Coin coin = new Coin(new Position(2, 3));
         arena.addCoins(Arrays.asList(coin));
 
-        controller.update(gameLoop, GUI.ACTION.NONE, 150);
+        controller.update(gameLoop, GUI.ACTION.NONE, 250);
 
         assertEquals(new Position(1, 3), coin.getPosition());
     }
