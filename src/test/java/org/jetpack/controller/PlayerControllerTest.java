@@ -14,45 +14,51 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerControllerTest {
     private GameLoop gameLoop;
+    private Arena arena;
+    private PlayerController controller;
 
     @BeforeEach
     void setUp() {
         gameLoop = Mockito.mock(GameLoop.class);
+        Player player = new Player(new Position(5, 5));
+        ArenaBuilder builder = Mockito.mock(ArenaBuilder.class);
+        arena = new Arena(10, 10, builder);
+        arena.setPlayer(player);
+        controller = new PlayerController(arena);
     }
 
     @Test
     void updateNone() {
 
-        Arena arena_mock = Mockito.mock(Arena.class);
-        PlayerController controller = new PlayerController(arena_mock);
-
         controller.update(gameLoop, GUI.ACTION.NONE, 0);
-        Mockito.verify(arena_mock, Mockito.times(0)).getPlayer();
+        assertEquals(new Position(5, 5), arena.getPlayer().getPosition());
     }
 
 
     @Test
-    void updateDown() {
+    void updateUp() {
 
-        Player player = new Player(new Position(5, 5));
-        ArenaBuilder builder = Mockito.mock(ArenaBuilder.class);
-        Arena arena = new Arena(10, 10, builder);
-        arena.setPlayer(player);
-        PlayerController controller = new PlayerController(arena);
-        controller.update(gameLoop, GUI.ACTION.DOWN, 0);
+        // Initialize actionBefore as NONE
+        controller.update(gameLoop, GUI.ACTION.NONE, 0);
+        // Initialize MOUSE PRESSED
+        controller.update(gameLoop, GUI.ACTION.MOUSE_PRESSED, 200);
+        // Start player's movement (up)
+        controller.update(gameLoop, GUI.ACTION.MOUSE_PRESSED, 200);
 
-        assertEquals(new Position(5, 6), arena.getPlayer().getPosition());
+        assertEquals(new Position(5, 4), arena.getPlayer().getPosition());
     }
 
     @Test
     void updateCannotMove() {
+        arena.getPlayer().setPosition(new Position(5, 0));
+        arena.setPlayer(arena.getPlayer());
 
-        Player player = new Player(new Position(5, 0));
-        ArenaBuilder builder = Mockito.mock(ArenaBuilder.class);
-        Arena arena = new Arena(10, 10, builder);
-        arena.setPlayer(player);
-        PlayerController controller = new PlayerController(arena);
-        controller.update(gameLoop, GUI.ACTION.UP, 0);
+        // Initialize actionBefore as NONE
+        controller.update(gameLoop, GUI.ACTION.NONE, 0);
+        // Initialize MOUSE PRESSED
+        controller.update(gameLoop, GUI.ACTION.MOUSE_PRESSED, 200);
+        // Start player's movement (up)
+        controller.update(gameLoop, GUI.ACTION.MOUSE_PRESSED, 200);
 
         assertEquals(new Position(5, 0), arena.getPlayer().getPosition());
     }
