@@ -8,6 +8,7 @@ import java.awt.*;
 
 public final class ImageLibrary {
 
+    private static Matrix<CharColor> jetpackJoyrideImage;
     private static Matrix<CharColor> playerImage;
     private static Matrix<CharColor> playerDoubleCoinStateImage;
     private static Matrix<CharColor> playerImmortalStateImage;
@@ -20,6 +21,29 @@ public final class ImageLibrary {
     private static Matrix<CharColor> missileImage;
     private static Matrix<CharColor> zigZagImage;
     private static Matrix<CharColor> staticLaserImage;
+
+    public static Matrix<CharColor> getJetpackJoyrideImage() {
+        if (jetpackJoyrideImage == null) {
+            jetpackJoyrideImage = new Matrix<>(11,4, new CharColor('-', ColorDatabase.GOLD.getName()));
+
+            jetpackJoyrideImage.setValue(0,0, new CharColor('+', ColorDatabase.GOLD.getName()));
+            jetpackJoyrideImage.setValue(10,0, new CharColor('+', ColorDatabase.GOLD.getName()));
+            jetpackJoyrideImage.setValue(0,3, new CharColor('+', ColorDatabase.GOLD.getName()));
+            jetpackJoyrideImage.setValue(10,3, new CharColor('+', ColorDatabase.GOLD.getName()));
+
+            jetpackJoyrideImage.setValue(0,1, new CharColor('|', ColorDatabase.GOLD.getName()));
+            jetpackJoyrideImage.setValue(0,2, new CharColor('|', ColorDatabase.GOLD.getName()));
+            jetpackJoyrideImage.setValue(10,1, new CharColor('|', ColorDatabase.GOLD.getName()));
+            jetpackJoyrideImage.setValue(10,2, new CharColor('|', ColorDatabase.GOLD.getName()));
+
+            String s = "JETPACK  ";
+            for (int i = 0; i < s.length(); ++i) jetpackJoyrideImage.setValue(i+1,1, new CharColor(s.charAt(i), ColorDatabase.PLAYER.getName()));
+
+            s = "  JOYRIDE";
+            for (int i = 0; i < s.length(); ++i) jetpackJoyrideImage.setValue(i+1,2, new CharColor(s.charAt(i), ColorDatabase.WHITE.getName()));
+        }
+        return jetpackJoyrideImage;
+    }
 
     public static Matrix<CharColor> getPlayerImage() {
         if (playerImage == null) playerImage = new Matrix<>(1, 1, new CharColor('P', ColorDatabase.PLAYER.getName()));

@@ -50,8 +50,6 @@ public class ElementsController extends GameController {
             this.movementCounter -= movementFrequency;
         }
 
-        System.out.println(this.speedUpCounter);
-
         while (this.speedUpCounter > SPEED_UP_FREQUENCY) {
             changeMovementFrequency();
             this.speedUpCounter -= SPEED_UP_FREQUENCY;

@@ -41,7 +41,10 @@ public class ArenaViewer extends Viewer<Arena> {
 
     private void drawInfo(GUI gui, Player player) {
         gui.drawRectangle(new Position(0, 0), new Dimension(gui.getTerminalWidth(), gui.getTerminalHeight()), Math.min(info.width, info.height), ColorDatabase.INFO.getName());
-        gui.drawText(new Position(0, 0), "Lives: " + player.getLives(), ColorDatabase.INFOTEXT.getName());
-        gui.drawText(new Position(gui.getTerminalWidth()/2, 0), "Coins: " + player.getCoins(), ColorDatabase.INFOTEXT.getName());
+        gui.drawText(new Position(1, 0), "LIVES: ", ColorDatabase.INFOTEXT.getName());
+        gui.drawText(new Position(8, 0), String.valueOf(player.getLives()), ColorDatabase.PLAYER.getName());
+        gui.drawText(new Position(11, 0), "COINS: " + player.getCoins(), ColorDatabase.INFOTEXT.getName());
+        gui.drawText(new Position(18, 0), String.valueOf(player.getCoins()), ColorDatabase.COINS.getName());
+        gui.drawText(new Position(21, 0), "TIME: " + getModel().getArenaBuilder().getInstant()/1000, ColorDatabase.INFOTEXT.getName());
     }
 }

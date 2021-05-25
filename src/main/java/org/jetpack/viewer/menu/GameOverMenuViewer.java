@@ -7,6 +7,8 @@ import org.jetpack.model.menu.GameOverMenu;
 import org.jetpack.model.menu.MainMenu;
 import org.jetpack.viewer.Viewer;
 
+import java.awt.*;
+
 public class GameOverMenuViewer extends Viewer<GameOverMenu> {
     public GameOverMenuViewer(GameOverMenu menu) {
         super(menu);
@@ -14,14 +16,19 @@ public class GameOverMenuViewer extends Viewer<GameOverMenu> {
 
     @Override
     public void drawModel(GUI gui) {
-        int yInitial = (gui.getTerminalHeight() / 2) - 5;
-        gui.drawText(new Position((gui.getTerminalWidth() - 15)/ 2, yInitial), "-- Game Over --", ColorDatabase.DARK_GOLD.getName());
+        int centerX = gui.getTerminalWidth() / 2;
+        int centerY = gui.getTerminalHeight() / 2;
 
-        gui.drawText(new Position((gui.getTerminalWidth() - 9)/ 2, yInitial + 2), "Score: " + getModel().getScore(), ColorDatabase.WHITE.getName());
+        gui.drawRectangle(new Position(0,0), new Dimension(gui.getTerminalWidth(), gui.getTerminalHeight()), 1, ColorDatabase.INFO.getName());
+        gui.drawFillRectangle(new Position(1,1), new Dimension(gui.getTerminalWidth() - 2, gui.getTerminalHeight() - 2), ColorDatabase.BACK.getName());
+
+        gui.drawText(new Position(centerX - 7, centerY - 4), "-- GAMEOVER --", ColorDatabase.GOLD.getName());
+        gui.drawText(new Position(centerX - 5, centerY - 1), "SCORE: ", ColorDatabase.WHITE.getName());
+        gui.drawText(new Position(centerX + 2, centerY - 1), String.valueOf(getModel().getScore()), ColorDatabase.PLAYER.getName());
 
         for (int i = 0; i < getModel().getNumberEntries(); i++)
-            gui.drawText(new Position((gui.getTerminalWidth() - getModel().getEntry(i).length())/ 2, yInitial + 5 + i),
+            gui.drawText(new Position(centerX - 5, centerY + 2 + i),
                     getModel().getEntry(i),
-                    getModel().isSelected(i) ? ColorDatabase.RED.getName() : ColorDatabase.WHITE.getName());
+                    getModel().isSelected(i) ? ColorDatabase.WHITE.getName() : ColorDatabase.INFO.getName());
     }
 }

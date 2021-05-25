@@ -6,7 +6,7 @@ public class GameOverMenu extends Menu {
     long score;
 
     public GameOverMenu(long score) {
-        super(Arrays.asList("Play Again", "Exit"));
+        super(Arrays.asList("PLAY AGAIN", "EXIT"));
         this.score = score;
     }
 

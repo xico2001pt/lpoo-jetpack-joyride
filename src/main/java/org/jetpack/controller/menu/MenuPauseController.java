@@ -3,7 +3,9 @@ package org.jetpack.controller.menu;
 import org.jetpack.controller.Controller;
 import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
+import org.jetpack.model.menu.MainMenu;
 import org.jetpack.model.menu.PauseMenu;
+import org.jetpack.states.MainMenuState;
 import org.jetpack.states.State;
 
 public class MenuPauseController extends Controller<PauseMenu>  {
@@ -26,7 +28,7 @@ public class MenuPauseController extends Controller<PauseMenu>  {
                 break;
             case ENTER:
                 if (getModel().isSelectedResume()) gameLoop.setState(state);
-                else if (getModel().isSelectedExit()) gameLoop.stop();
+                else if (getModel().isSelectedExit()) gameLoop.setState(new MainMenuState(new MainMenu()));
         }
     }
 }

@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class PauseMenu extends Menu {
 
     public PauseMenu() {
-        super(Arrays.asList("Resume", "Exit"));
+        super(Arrays.asList("RESUME", "EXIT"));
     }
 
     public boolean isSelectedResume() {
