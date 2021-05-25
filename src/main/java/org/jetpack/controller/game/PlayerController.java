@@ -28,15 +28,12 @@ public class PlayerController extends GameController {
         counter += elapsed;
         Player player = getModel().getPlayer();
 
-        System.out.println(action);
-
         if (action == GUI.ACTION.POWER_UP1) player.setState(new ImmortalState());
         else if (action == GUI.ACTION.POWER_UP2) player.setState(new DoubleCoinsState());
         else if (action == GUI.ACTION.POWER_UP3) player.setState(new SlowDownState());
-        if (action == GUI.ACTION.MOUSE_PRESSED && actionBefore == GUI.ACTION.NONE) {
+        else if (action == GUI.ACTION.MOUSE_PRESSED && actionBefore == GUI.ACTION.NONE) {
             counter = 0;
             player.setMovement(new UpMovement());
-
         }
         else if (action == GUI.ACTION.NONE && actionBefore == GUI.ACTION.MOUSE_PRESSED) {
             counter = 0;
@@ -48,7 +45,7 @@ public class PlayerController extends GameController {
             counter -= movementFrequency;
         }
 
-        actionBefore = action;
+        if (action == GUI.ACTION.MOUSE_PRESSED || action == GUI.ACTION.NONE) actionBefore = action;
     }
 
     private void movePlayer(Position position) {
