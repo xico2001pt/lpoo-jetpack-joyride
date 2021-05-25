@@ -43,8 +43,7 @@ In this game, the Player's primary goal is to travel as far as possible, while c
 - [x] Movements:
     - [x] Player falls with gravity
     - [x] Movements aside from going left (Obstacles)
-
-- [ ] Life system: player gains lives throughout the game (when 10 coins are collected perhaps)
+    
 - [x] Menus
 - [ ] Levels:
     - [x] Increase the difficulty linearly throughout a play through
