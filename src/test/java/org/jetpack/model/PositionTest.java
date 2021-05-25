@@ -1,51 +1,40 @@
 package org.jetpack.model;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import net.jqwik.api.ForAll;
+import net.jqwik.api.Property;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PositionTest {
 
-    private Position position;
-
-    @BeforeEach
-    void setUp() {
-        position = new Position(5, 2);
+    @Property
+    void getLeft(@ForAll int x, @ForAll int y) {
+        assertEquals(x - 1, new Position(x, y).getLeft().getX());
+        assertEquals(y, new Position(x, y).getLeft().getY());
     }
 
-    @Test
-    void getLeft() {
-        Position p = position.getLeft();
-        assertEquals(4, p.getX());
-        assertEquals(2, p.getY());
+    @Property
+    void getRight(@ForAll int x, @ForAll int y) {
+        assertEquals(x + 1, new Position(x, y).getRight().getX());
+        assertEquals(y, new Position(x, y).getRight().getY());
     }
 
-    @Test
-    void getRight() {
-        Position p = position.getRight();
-        assertEquals(6, p.getX());
-        assertEquals(2, p.getY());
+    @Property
+    void getUp(@ForAll int x, @ForAll int y) {
+        assertEquals(x, new Position(x, y).getUp().getX());
+        assertEquals(y - 1, new Position(x, y).getUp().getY());
     }
 
-    @Test
-    void getUp() {
-        Position p = position.getUp();
-        assertEquals(5, p.getX());
-        assertEquals(1, p.getY());
+    @Property
+    void getDown(@ForAll int x, @ForAll int y) {
+        assertEquals(x, new Position(x, y).getDown().getX());
+        assertEquals(y + 1, new Position(x, y).getDown().getY());
     }
 
-    @Test
-    void getDown() {
-        Position p = position.getDown();
-        assertEquals(5, p.getX());
-        assertEquals(3, p.getY());
-    }
-
-    @Test
-    void getIncrementedPosition() {
-        Position p = position.getIncrementedPosition(3,-1);
-        assertEquals(8, p.getX());
-        assertEquals(1, p.getY());
+    @Property
+    void getIncrementedPosition(@ForAll int x, @ForAll int xInc, @ForAll int yInc) {
+        Position p = new Position(x, 2).getIncrementedPosition(xInc, yInc);
+        assertEquals(x + xInc, p.getX());
+        assertEquals(2 + yInc, p.getY());
     }
 }
