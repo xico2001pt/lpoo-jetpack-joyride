@@ -9,9 +9,9 @@ import org.jetpack.model.elements.movements.MovementStrategy;
 import java.util.Objects;
 
 public abstract class Element {
-    Position position;
-    Matrix<CharColor> image;
-    MovementStrategy movement;
+    private Position position;
+    private Matrix<CharColor> image;
+    private MovementStrategy movement;
 
     public Element(Position position, Matrix<CharColor> image) {
         this.position = position;
@@ -35,12 +35,12 @@ public abstract class Element {
         this.position = position;
     }
 
-    public void setMovement(MovementStrategy movement) {
-        this.movement = movement;
-    }
-
     public MovementStrategy getMovement() {
         return movement;
+    }
+
+    public void setMovement(MovementStrategy movement) {
+        this.movement = movement;
     }
 
     @Override

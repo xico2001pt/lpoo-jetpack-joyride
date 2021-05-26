@@ -7,6 +7,7 @@ import org.jetpack.model.elements.movements.DownMovement;
 import org.jetpack.model.elements.player.playerStates.*;
 
 public class Player extends Element {
+    private static final int POWER_UP_COST = 10;
     private int lives;
     private int nCoins;
     private PlayerState state;
@@ -15,8 +16,8 @@ public class Player extends Element {
         super(position, ImageLibrary.getPlayerImage());
         this.lives = 3;
         this.nCoins = 0;
-        setMovement(new DownMovement());
         this.state = new NormalState();
+        setMovement(new DownMovement());
     }
 
     public int getLives() {
@@ -36,8 +37,8 @@ public class Player extends Element {
     }
 
     public boolean buyPowerUp() {
-        if (nCoins < 10) return false;
-        nCoins -= 10;
+        if (nCoins < POWER_UP_COST) return false;
+        nCoins -= POWER_UP_COST;
         return true;
     }
 

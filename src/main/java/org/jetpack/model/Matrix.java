@@ -36,8 +36,6 @@ public class Matrix<T> {
         return matrix.get(0).size();
     }
 
-
-    // Apenas para debug
     public void print() {
         for (List<T> list : this.matrix) {
             for (T v : list) {

@@ -54,7 +54,11 @@ public class GameLoop {
         this.running = false;
     }
 
-    private GUI.ACTION processInput() throws IOException {
-        return gui.getNextAction();
+    public int getWidth() {
+        return gui.getTerminalWidth();
+    }
+
+    public int getHeight() {
+        return gui.getTerminalHeight();
     }
 }

@@ -19,9 +19,10 @@ public class MainMenuViewer extends Viewer<MainMenu> {
         int centerX = gui.getTerminalWidth() / 2;
         int centerY = gui.getTerminalHeight() / 2;
 
-        gui.drawRectangle(new Position(0,0), new Dimension(gui.getTerminalWidth(), gui.getTerminalHeight()), 1, ColorDatabase.GRAY.getName());
-        gui.drawFillRectangle(new Position(1,1), new Dimension(gui.getTerminalWidth() - 2, gui.getTerminalHeight() - 2), ColorDatabase.DARK_GRAY.getName());
-        //gui.drawFillRectangle(new Position(1,centerY - 5), new Dimension(gui.getTerminalWidth() - 2, 4), ColorDatabase.GHOST_WHITE.getName());
+        gui.drawRectangle(new Position(0,0), new Dimension(gui.getTerminalWidth(), gui.getTerminalHeight()),
+                1, ColorDatabase.GRAY.getName());
+        gui.drawFillRectangle(new Position(1,1), new Dimension(gui.getTerminalWidth() - 2,
+                gui.getTerminalHeight() - 2), ColorDatabase.DARK_GRAY.getName());
         gui.drawImage(new Position(centerX - 5,centerY - 5), ImageLibrary.getJetpackJoyrideImage());
 
         for (int i = 0; i < getModel().getNumberEntries(); i++)
