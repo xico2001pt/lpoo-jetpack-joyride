@@ -2,7 +2,6 @@ package org.jetpack.model.arena;
 
 import org.jetpack.controller.game.CollisionController;
 import org.jetpack.model.elements.Coin;
-import org.jetpack.model.elements.Element;
 import org.jetpack.model.elements.player.Player;
 import org.jetpack.model.elements.obstacles.Obstacle;
 
@@ -56,10 +55,10 @@ public class Arena {
     }
 
     public void addCoins(List<Coin> coins) {
-        for (Coin c: coins) if (CollisionController.checkCollision(coins, c) == null) this.coins.add(c);
+        for (Coin c: coins) if (CollisionController.checkCollision(this.obstacles, c) == null) this.coins.add(c);
     }
 
     public void addObstacles(List<Obstacle> obstacles) {
-        for (Obstacle o: obstacles) if (CollisionController.checkCollision(obstacles, o) == null) this.obstacles.add(o);
+        for (Obstacle o: obstacles) if (CollisionController.checkCollision(this.coins, o) == null) this.obstacles.add(o);
     }
 }
