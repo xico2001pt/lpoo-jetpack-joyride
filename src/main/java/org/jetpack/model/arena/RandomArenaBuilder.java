@@ -14,6 +14,14 @@ import java.util.Random;
 import static java.lang.Math.abs;
 
 public class RandomArenaBuilder extends ArenaBuilder {
+
+    private static final int INITIAL_MIN_INST = 20;
+    private static final int INITIAL_LOWER_BOUND_MAX_INST = 200;
+    private static final int INITIAL_UPPER_BOUND_MAX_INST = 1000;
+    private static final int MIN_INST = 1000;
+    private static final int LOWER_BOUND_MAX_INST = 1500;
+    private static final int UPPER_BOUND_MAX_INST = 2000;
+
     private final Random rng;
 
     // Instants in milliseconds
@@ -25,13 +33,14 @@ public class RandomArenaBuilder extends ArenaBuilder {
 
         this.rng = new Random();
 
-        this.nextCoinInst = (long) (generateInstant(20, generateInstant(200, 1000)) * this.timeCoefficient);
-        this.nextObstacleInst = (long) (generateInstant(20, generateInstant(200, 1000)) * this.timeCoefficient);
+        this.nextCoinInst = (long) (generateInstant(INITIAL_MIN_INST, generateInstant(INITIAL_LOWER_BOUND_MAX_INST,
+                INITIAL_UPPER_BOUND_MAX_INST)) * this.timeCoefficient);
+        this.nextObstacleInst = (long) (generateInstant(INITIAL_MIN_INST, generateInstant(INITIAL_LOWER_BOUND_MAX_INST,
+                INITIAL_UPPER_BOUND_MAX_INST)) * this.timeCoefficient);
     }
 
     @Override
     public List<Coin> getCoins() {
-        // TODO: IMPROVE
         List<Coin> coins = new ArrayList<>();
 
         if (getInstant() >= nextCoinInst) {
@@ -39,7 +48,8 @@ public class RandomArenaBuilder extends ArenaBuilder {
             coins.add(generateCoin());
 
             // Generate new instant
-            nextCoinInst = (long) (generateInstant(1000, generateInstant(1500, 2000)) * this.timeCoefficient) + getInstant();
+            nextCoinInst = (long) (generateInstant(MIN_INST, generateInstant(LOWER_BOUND_MAX_INST, UPPER_BOUND_MAX_INST))
+                    * this.timeCoefficient) + getInstant();
         }
 
         return coins;
@@ -47,7 +57,6 @@ public class RandomArenaBuilder extends ArenaBuilder {
 
     @Override
     public List<Obstacle> getObstacles() {
-        // TODO: IMPROVE
         List<Obstacle> obstacles = new ArrayList<>();
 
         if (getInstant() >= nextObstacleInst) {
@@ -55,7 +64,8 @@ public class RandomArenaBuilder extends ArenaBuilder {
             obstacles.add(generateObstacle());
 
             // Generate new instant
-            nextObstacleInst = (long) (generateInstant(500, generateInstant(1000, 2000)) * this.timeCoefficient) + getInstant();
+            nextObstacleInst = (long) (generateInstant(MIN_INST,
+                    generateInstant(LOWER_BOUND_MAX_INST/2, UPPER_BOUND_MAX_INST)) * this.timeCoefficient) + getInstant();
         }
 
         return obstacles;
@@ -79,15 +89,21 @@ public class RandomArenaBuilder extends ArenaBuilder {
 
         switch (type) {
             case 0: case 1: case 2:
-                return new Laser(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getLaser2Image().getNumberRows())));
+                return new Laser(new Position(getWidth(),
+                        rng.nextInt(getHeight() - ImageLibrary.getLaser2Image().getNumberRows())));
             case 3: case 4: case 5:
-                return new EnergyWall(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getEnergyWall1Image().getNumberRows())));
+                return new EnergyWall(new Position(getWidth(),
+                        rng.nextInt(getHeight() - ImageLibrary.getEnergyWall1Image().getNumberRows())));
             case 6:
-                return new Missile(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getMissileImage().getNumberRows())));
+                return new Missile(new Position(getWidth(),
+                        rng.nextInt(getHeight() - ImageLibrary.getMissileImage().getNumberRows())));
             case 7: case 8:
-                return new ZigZag(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getZigZagImage().getNumberRows())));
+                return new ZigZag(new Position(getWidth(),
+                        rng.nextInt(getHeight() - ImageLibrary.getZigZagImage().getNumberRows())));
             case 9:
-                return new StaticLaser(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getStaticLaserImage(new Dimension(getWidth(), 1)).getNumberRows())), new Dimension(getWidth(), 1));
+                return new StaticLaser(new Position(getWidth(),
+                        rng.nextInt(getHeight() - ImageLibrary.getStaticLaserImage(new Dimension(getWidth(), 1)).getNumberRows())),
+                        new Dimension(getWidth(), 1));
         }
 
         return null;
