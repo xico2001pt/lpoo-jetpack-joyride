@@ -13,7 +13,7 @@ This project was developed by:
     1. [Arena Builder](#i-arena-builder)
     2. [Game Loop](#ii-game-loop)
     3. [Movement Strategy](#iii-movement-strategy)
-    4. [States](#iv-states)
+    4. [States](#iv-game-states)
     5. [Power Ups](#v-power-ups)
 5. [Code smells and refactoring techniques](#code-smells-and-refactoring-techniques)
 6. [Testing](#testing)
@@ -47,15 +47,13 @@ In this game, the Player's primary goal is to travel as far as possible, while c
 - [x] Menus
 - [ ] Levels:
     - [x] Increase the difficulty linearly throughout a play through
-    - [x] Improve Random Infinite 
-    - [ ] Pre-built Levels
+    - [x] Improve Random Infinite
     - [x] Score (Distance)
-- [ ] Power-ups:
+    - [ ] Pre-built Levels
+- [x] Power-ups:
     - [x] Double coins
     - [x] Shield
-    - [x] Slow down time 
-    - [ ] Zero Gravity
-    - [ ] Nitro
+    - [x] Slow down time
 
 ## Design
 ### i. Arena Builder
