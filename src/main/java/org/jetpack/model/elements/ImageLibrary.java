@@ -37,7 +37,7 @@ public final class ImageLibrary {
             jetpackJoyrideImage.setValue(10,2, new CharColor('|', ColorDatabase.GOLD.getName()));
 
             String s = "JETPACK  ";
-            for (int i = 0; i < s.length(); ++i) jetpackJoyrideImage.setValue(i+1,1, new CharColor(s.charAt(i), ColorDatabase.PLAYER.getName()));
+            for (int i = 0; i < s.length(); ++i) jetpackJoyrideImage.setValue(i+1,1, new CharColor(s.charAt(i), ColorDatabase.RED.getName()));
 
             s = "  JOYRIDE";
             for (int i = 0; i < s.length(); ++i) jetpackJoyrideImage.setValue(i+1,2, new CharColor(s.charAt(i), ColorDatabase.WHITE.getName()));
@@ -46,17 +46,17 @@ public final class ImageLibrary {
     }
 
     public static Matrix<CharColor> getPlayerImage() {
-        if (playerImage == null) playerImage = new Matrix<>(1, 1, new CharColor('P', ColorDatabase.PLAYER.getName()));
+        if (playerImage == null) playerImage = new Matrix<>(1, 1, new CharColor('P', ColorDatabase.RED.getName()));
         return playerImage;
     }
 
     public static Matrix<CharColor> getPlayerDoubleCoinStateImage() {
-        if (playerDoubleCoinStateImage == null) playerDoubleCoinStateImage = new Matrix<>(1, 1, new CharColor('P', ColorDatabase.COINS.getName()));
+        if (playerDoubleCoinStateImage == null) playerDoubleCoinStateImage = new Matrix<>(1, 1, new CharColor('P', ColorDatabase.GOLD.getName()));
         return playerDoubleCoinStateImage;
     }
 
     public static Matrix<CharColor> getPlayerImmortalStateImage() {
-        if (playerImmortalStateImage == null) playerImmortalStateImage = new Matrix<>(1, 1, new CharColor('P', ColorDatabase.INFO.getName()));
+        if (playerImmortalStateImage == null) playerImmortalStateImage = new Matrix<>(1, 1, new CharColor('P', ColorDatabase.LIGHT_GRAY.getName()));
         return playerImmortalStateImage;
     }
 
@@ -66,15 +66,15 @@ public final class ImageLibrary {
     }
 
     public static Matrix<CharColor> getCoinImage() {
-        if (coinImage == null) coinImage = new Matrix<>(1, 1, new CharColor('C', ColorDatabase.COINS.getName()));
+        if (coinImage == null) coinImage = new Matrix<>(1, 1, new CharColor('C', ColorDatabase.GOLD.getName()));
         return coinImage;
     }
 
     public static Matrix<CharColor> getLaser1Image() {
         if (laser1Image == null) {
-            laser1Image = new Matrix<>(7, 1, new CharColor('-', ColorDatabase.OSBTACLES.getName()));
-            laser1Image.setValue(0, 0, new CharColor('|', ColorDatabase.OSBTACLES.getName()));
-            laser1Image.setValue(6, 0, new CharColor('|', ColorDatabase.OSBTACLES.getName()));
+            laser1Image = new Matrix<>(7, 1, new CharColor('-', ColorDatabase.GHOST_WHITE.getName()));
+            laser1Image.setValue(0, 0, new CharColor('|', ColorDatabase.GHOST_WHITE.getName()));
+            laser1Image.setValue(6, 0, new CharColor('|', ColorDatabase.GHOST_WHITE.getName()));
         }
         return laser1Image;
     }
@@ -82,40 +82,40 @@ public final class ImageLibrary {
     public static Matrix<CharColor> getLaser2Image() {
         if (laser2Image == null) {
             laser2Image = new Matrix<>(1, 5, new CharColor('|', ColorDatabase.VIBRANT_GREEN.getName()));
-            laser2Image.setValue(0, 0, new CharColor('-', ColorDatabase.OSBTACLES.getName()));
-            laser2Image.setValue(0, 4, new CharColor('-', ColorDatabase.OSBTACLES.getName()));
+            laser2Image.setValue(0, 0, new CharColor('-', ColorDatabase.GHOST_WHITE.getName()));
+            laser2Image.setValue(0, 4, new CharColor('-', ColorDatabase.GHOST_WHITE.getName()));
         }
         return laser2Image;
     }
 
     public static Matrix<CharColor> getEnergyWall1Image() {
-        if (energyWall1Image == null) energyWall1Image = new Matrix<>(2, 5, new CharColor('O', ColorDatabase.OSBTACLES.getName()));
+        if (energyWall1Image == null) energyWall1Image = new Matrix<>(2, 5, new CharColor('O', ColorDatabase.GHOST_WHITE.getName()));
         return energyWall1Image;
     }
 
     public static Matrix<CharColor> getEnergyWall2Image() {
-        if (energyWall2Image == null) energyWall2Image = new Matrix<>(5, 2, new CharColor('O', ColorDatabase.OSBTACLES.getName()));
+        if (energyWall2Image == null) energyWall2Image = new Matrix<>(5, 2, new CharColor('O', ColorDatabase.GHOST_WHITE.getName()));
         return energyWall2Image;
     }
 
     public static Matrix<CharColor> getMissileImage() {
         if (missileImage == null) {
-            missileImage = new Matrix<>(2,1, new CharColor('=', ColorDatabase.OSBTACLES.getName()));
-            missileImage.setValue(0,0, new CharColor('<', ColorDatabase.OSBTACLES.getName()));
+            missileImage = new Matrix<>(2,1, new CharColor('=', ColorDatabase.GHOST_WHITE.getName()));
+            missileImage.setValue(0,0, new CharColor('<', ColorDatabase.GHOST_WHITE.getName()));
         }
         return missileImage;
     }
 
     public static Matrix<CharColor> getZigZagImage() {
-        if (zigZagImage == null) zigZagImage = new Matrix<>(1,1, new CharColor('#', ColorDatabase.OSBTACLES.getName()));
+        if (zigZagImage == null) zigZagImage = new Matrix<>(1,1, new CharColor('#', ColorDatabase.GHOST_WHITE.getName()));
         return zigZagImage;
     }
 
     public static Matrix<CharColor> getStaticLaserImage(Dimension dimension) {
         if (staticLaserImage == null) {
-            staticLaserImage = new Matrix<>(dimension.width, dimension.height, new CharColor('X', ColorDatabase.OSBTACLES.getName()));
-            staticLaserImage.setValue(0, 0, new CharColor('o', ColorDatabase.OSBTACLES.getName()));
-            staticLaserImage.setValue(dimension.width - 1, 0, new CharColor('o', ColorDatabase.OSBTACLES.getName()));
+            staticLaserImage = new Matrix<>(dimension.width, dimension.height, new CharColor('X', ColorDatabase.GHOST_WHITE.getName()));
+            staticLaserImage.setValue(0, 0, new CharColor('o', ColorDatabase.GHOST_WHITE.getName()));
+            staticLaserImage.setValue(dimension.width - 1, 0, new CharColor('o', ColorDatabase.GHOST_WHITE.getName()));
         }
         return staticLaserImage;
     }

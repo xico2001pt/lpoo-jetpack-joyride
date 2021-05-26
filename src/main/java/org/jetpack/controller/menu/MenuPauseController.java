@@ -9,9 +9,9 @@ import org.jetpack.states.MainMenuState;
 import org.jetpack.states.State;
 
 public class MenuPauseController extends Controller<PauseMenu>  {
-    private State state;
+    private final State<?> state;
 
-    public MenuPauseController(PauseMenu menu, State state) {
+    public MenuPauseController(PauseMenu menu, State<?> state) {
         super(menu);
         this.state = state;
     }

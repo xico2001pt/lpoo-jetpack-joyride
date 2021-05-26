@@ -55,22 +55,16 @@ public class ArenaController extends GameController {
     }
 
     private void handleCollisions() {
-        // TODO: code smell. talvez criar obstacle cotroller e coin controller?
-        for (Obstacle obstacle: getModel().getObstacles()) {
-            if (CollisionController.checkElementCollision(obstacle, getModel().getPlayer())) {
-                getModel().getObstacles().remove(obstacle);
-                getModel().getPlayer().takeDamage();
-                break;
-            }
+        Obstacle obstacle = (Obstacle) CollisionController.checkCollision(getModel().getObstacles(), getModel().getPlayer());
+        if (obstacle != null) {
+            getModel().getPlayer().takeDamage();
+            getModel().getObstacles().remove(obstacle);
         }
 
-        for (Coin coin : getModel().getCoins()) {
-            if (CollisionController.checkElementCollision(coin, getModel().getPlayer())) {
-                getModel().getCoins().remove(coin);
-                getModel().getPlayer().addCoin();
-                break;
-            }
+        Coin coin = (Coin) CollisionController.checkCollision(getModel().getCoins(), getModel().getPlayer());
+        if (coin != null) {
+            getModel().getPlayer().addCoin();
+            getModel().getCoins().remove(coin);
         }
     }
-
 }

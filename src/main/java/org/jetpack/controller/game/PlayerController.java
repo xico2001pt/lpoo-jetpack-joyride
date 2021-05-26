@@ -2,6 +2,7 @@ package org.jetpack.controller.game;
 
 import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
+import org.jetpack.model.Pace;
 import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
 import org.jetpack.model.elements.player.Player;
@@ -13,22 +14,20 @@ import org.jetpack.model.elements.player.playerStates.NormalState;
 import org.jetpack.model.elements.player.playerStates.SlowDownState;
 
 public class PlayerController extends GameController {
-    private final long movementFrequency; // Milliseconds it takes to move an element
-    private long movementCounter;
+    private static final long MOVEMENT_PERIOD = 150;
+    private final Pace movementPace;
     private long powerUpCounter;
     private GUI.ACTION actionBefore;
 
     public PlayerController(Arena arena) {
         super(arena);
-        this.movementFrequency = 150;
-        this.movementCounter = 0;
         this.powerUpCounter = 0;
+        this.movementPace = new Pace(MOVEMENT_PERIOD);
     }
 
     @Override
     public void update(GameLoop gameLoop, GUI.ACTION action, long elapsed) {
 
-        movementCounter += elapsed;
         powerUpCounter -= elapsed;
         Player player = getModel().getPlayer();
 
@@ -38,21 +37,20 @@ public class PlayerController extends GameController {
         else if (action == GUI.ACTION.NUMBER2 && player.buyPowerUp()) player.setState(new DoubleCoinsState());
         else if (action == GUI.ACTION.NUMBER3 && player.buyPowerUp()) player.setState(new SlowDownState());
         else if (action == GUI.ACTION.MOUSE_PRESSED && actionBefore == GUI.ACTION.NONE) {
-            movementCounter = 0;
+            movementPace.resetCounter();
             player.setMovement(new UpMovement());
         }
         else if (action == GUI.ACTION.NONE && actionBefore == GUI.ACTION.MOUSE_PRESSED) {
-            movementCounter = 0;
+            movementPace.resetCounter();
             player.setMovement(new DownMovement());
         }
 
         if (action == GUI.ACTION.NUMBER1 || action == GUI.ACTION.NUMBER2 || action == GUI.ACTION.NUMBER3)
             powerUpCounter = player.getState().getDuration();
 
-        while (this.movementCounter > movementFrequency) {
+
+        for (int i = movementPace.update(elapsed); i > 0; --i)
             movePlayer(player.getMovement().move(player.getPosition(), getModel()));
-            movementCounter -= movementFrequency;
-        }
 
         if (action == GUI.ACTION.MOUSE_PRESSED || action == GUI.ACTION.NONE) actionBefore = action;
     }

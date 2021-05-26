@@ -3,6 +3,7 @@ package org.jetpack.controller;
 import org.jetpack.gui.GUI;
 
 public abstract class Controller<T> {
+
     private final T model;
 
     public Controller(T model) {

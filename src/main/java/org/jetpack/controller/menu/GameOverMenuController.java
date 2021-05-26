@@ -26,7 +26,8 @@ public class GameOverMenuController extends Controller<GameOverMenu> {
                 break;
             case ENTER:
                 if (getModel().isSelectedStart()) gameLoop.setState(new ArenaState
-                        (new RandomArenaBuilder(28, 18).createArena()));
+                        (new RandomArenaBuilder(MainMenuController.WIDTH - 2 * MainMenuController.INFO_SIZE,
+                                MainMenuController.HEIGHT - 2 * MainMenuController.INFO_SIZE).createArena()));
                 else if (getModel().isSelectedExit()) gameLoop.setState(new MainMenuState(new MainMenu()));
         }
     }

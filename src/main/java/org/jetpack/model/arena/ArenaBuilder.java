@@ -1,5 +1,6 @@
 package org.jetpack.model.arena;
 
+import org.jetpack.controller.game.ElementsController;
 import org.jetpack.model.elements.Coin;
 import org.jetpack.model.elements.player.Player;
 import org.jetpack.model.elements.obstacles.Obstacle;
@@ -17,7 +18,7 @@ public abstract class ArenaBuilder {
         this.dimension = new Dimension(width, height);
 
         this.instant = 0;
-        this.timeCoefficient = 2;
+        this.timeCoefficient = (float) (ElementsController.MAX_PERIOD / (ElementsController.MAX_PERIOD - ElementsController.MIN_PERIOD));
     }
 
     public Arena createArena() {
@@ -49,7 +50,6 @@ public abstract class ArenaBuilder {
 
     public void setTimeCoefficient(float coefficient) {
         this.timeCoefficient = coefficient;
-        System.out.println(this.timeCoefficient);
     }
 
     protected abstract Player createPlayer();

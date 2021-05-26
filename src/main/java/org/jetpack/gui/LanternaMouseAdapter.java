@@ -4,7 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class LanternaMouseAdapter extends MouseAdapter {
-    LanternaGUI gui;
+    private final LanternaGUI gui;
 
     public LanternaMouseAdapter(LanternaGUI gui) {
         this.gui = gui;

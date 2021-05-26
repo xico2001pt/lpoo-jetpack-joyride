@@ -16,8 +16,8 @@ public class Arena {
 
     private Player player;
 
-    private List<Obstacle> obstacles;
-    private List<Coin> coins;
+    private final List<Obstacle> obstacles;
+    private final List<Coin> coins;
 
     public Arena(int width, int height, ArenaBuilder arenaBuilder) {
         this.dimension = new Dimension(width, height);
@@ -56,15 +56,10 @@ public class Arena {
     }
 
     public void addCoins(List<Coin> coins) {
-        for (Coin c: coins) if (!checkCollision(c, obstacles)) this.coins.add(c);
+        for (Coin c: coins) if (CollisionController.checkCollision(coins, c) == null) this.coins.add(c);
     }
 
     public void addObstacles(List<Obstacle> obstacles) {
-        for (Obstacle o: obstacles) if (!checkCollision(o, coins)) this.obstacles.add(o);
-    }
-
-    private boolean checkCollision(Element element, List<? extends Element> elements) {
-        for (Element e: elements) if (CollisionController.checkElementCollision(e, element)) return true;
-        return false;
+        for (Obstacle o: obstacles) if (CollisionController.checkCollision(obstacles, o) == null) this.obstacles.add(o);
     }
 }

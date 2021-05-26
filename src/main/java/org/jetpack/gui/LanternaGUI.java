@@ -28,8 +28,8 @@ public class LanternaGUI implements GUI {
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
         AWTTerminalFontConfiguration fontConfig = loadSquareFont();
         Terminal terminal = createTerminal(width, height, fontConfig);
-        this.mousePressed = false;
         screen = createScreen(terminal);
+        this.mousePressed = false;
     }
 
     private TerminalScreen createScreen(Terminal terminal) throws IOException {
@@ -125,14 +125,16 @@ public class LanternaGUI implements GUI {
         TextGraphics tg = screen.newTextGraphics();
         tg.setBackgroundColor(TextColor.Factory.fromString(color));
         for (int t = 0; t < thickness; ++t)
-            tg.drawRectangle(new TerminalPosition(position.getX() + t, position.getY() + t), new TerminalSize(dimension.width - 2*t, dimension.height - 2*t), ' ');
+            tg.drawRectangle(new TerminalPosition(position.getX() + t, position.getY() + t),
+                    new TerminalSize(dimension.width - 2*t, dimension.height - 2*t), ' ');
     }
 
     @Override
     public void drawFillRectangle(Position position, Dimension dimension, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setBackgroundColor(TextColor.Factory.fromString(color));
-        tg.fillRectangle(new TerminalPosition(position.getX(), position.getY()), new TerminalSize(dimension.width, dimension.height), ' ');
+        tg.fillRectangle(new TerminalPosition(position.getX(), position.getY()),
+                new TerminalSize(dimension.width, dimension.height), ' ');
     }
 
     @Override

@@ -10,7 +10,7 @@ import java.io.IOException;
 public class GameLoop {
     private final int FPS;
     private final GUI gui;
-    private State currentGameState;
+    private State<?> currentGameState;
     private boolean running;
 
     public GameLoop(int FPS, GUI gui) {
@@ -42,11 +42,11 @@ public class GameLoop {
         gui.close();
     }
 
-    public State getState() {
+    public State<?> getState() {
         return this.currentGameState;
     }
 
-    public void setState(State state) {
+    public void setState(State<?> state) {
         this.currentGameState = state;
     }
 

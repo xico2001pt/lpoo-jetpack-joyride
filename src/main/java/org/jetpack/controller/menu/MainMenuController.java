@@ -8,6 +8,10 @@ import org.jetpack.model.arena.RandomArenaBuilder;
 import org.jetpack.states.ArenaState;
 
 public class MainMenuController extends Controller<MainMenu> {
+    public static final int WIDTH = 30;
+    public static final int HEIGHT = 20;
+    public static final int INFO_SIZE = 1;
+
     public MainMenuController(MainMenu menu) {
         super(menu);
     }
@@ -24,7 +28,7 @@ public class MainMenuController extends Controller<MainMenu> {
                 break;
             case ENTER:
                 if (getModel().isSelectedStart()) gameLoop.setState(new ArenaState
-                        (new RandomArenaBuilder(30-2*1, 20-2*1).createArena()));
+                        (new RandomArenaBuilder(WIDTH - 2* INFO_SIZE, HEIGHT - 2* INFO_SIZE).createArena()));
                 else if (getModel().isSelectedExit()) gameLoop.stop();
         }
     }

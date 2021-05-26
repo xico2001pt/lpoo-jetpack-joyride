@@ -47,7 +47,7 @@ In this game, the Player's primary goal is to travel as far as possible, while c
 - [x] Menus
 - [ ] Levels:
     - [x] Increase the difficulty linearly throughout a play through
-    - [ ] Improve Random Infinite 
+    - [x] Improve Random Infinite 
     - [ ] Pre-built Levels
     - [x] Score (Distance)
 - [ ] Power-ups:

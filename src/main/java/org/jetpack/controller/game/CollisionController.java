@@ -4,8 +4,10 @@ import org.jetpack.model.CharColor;
 import org.jetpack.model.Matrix;
 import org.jetpack.model.Position;
 import org.jetpack.model.elements.Element;
+import org.jetpack.model.elements.obstacles.Obstacle;
 
 import java.awt.*;
+import java.util.List;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -19,14 +21,14 @@ public final class CollisionController {
         return checkBoxCollision(a.getPosition(), dimensionsA, b.getPosition(), dimensionsB) && checkImageCollision(a, b);
     }
 
-    static boolean checkBoxCollision(Position pos1, Dimension d1, Position pos2, Dimension d2) {
+    public static boolean checkBoxCollision(Position pos1, Dimension d1, Position pos2, Dimension d2) {
         return  pos1.getX() < pos2.getX() + d2.getWidth()  &&
                 pos1.getX() + d1.getWidth() > pos2.getX()  &&
                 pos1.getY() < pos2.getY() + d2.getHeight() &&
                 pos1.getY() + d1.getHeight() > pos2.getY();
     }
 
-    static boolean checkImageCollision(Element a, Element b) {
+    public static boolean checkImageCollision(Element a, Element b) {
         Matrix<CharColor> imageA = a.getImage();
         Matrix<CharColor> imageB = b.getImage();
 
@@ -46,5 +48,12 @@ public final class CollisionController {
         }
 
         return false;
+    }
+
+    public static Element checkCollision(List<? extends Element> elements, Element element) {
+        for (Element e: elements)
+            if (checkElementCollision(e, element))
+                return e;
+        return null;
     }
 }

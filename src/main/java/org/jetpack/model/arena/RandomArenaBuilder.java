@@ -75,18 +75,18 @@ public class RandomArenaBuilder extends ArenaBuilder {
     }
 
     private Obstacle generateObstacle() {
-        int type = rng.nextInt(7);
+        int type = rng.nextInt(10);
 
         switch (type) {
-            case 0: case 1:
+            case 0: case 1: case 2:
                 return new Laser(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getLaser2Image().getNumberRows())));
-            case 2: case 3:
+            case 3: case 4: case 5:
                 return new EnergyWall(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getEnergyWall1Image().getNumberRows())));
-            case 4:
-                return new Missile(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getMissileImage().getNumberRows())));
-            case 5:
-                return new ZigZag(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getZigZagImage().getNumberRows())));
             case 6:
+                return new Missile(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getMissileImage().getNumberRows())));
+            case 7: case 8:
+                return new ZigZag(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getZigZagImage().getNumberRows())));
+            case 9:
                 return new StaticLaser(new Position(getWidth(), rng.nextInt(getHeight() - ImageLibrary.getStaticLaserImage(new Dimension(getWidth(), 1)).getNumberRows())), new Dimension(getWidth(), 1));
         }
 
