@@ -98,8 +98,6 @@ The Game Loop pattern allow us to have more control in the way the game runs and
 
 ### iii. Movement Strategy
 
-> Not implemented yet!
-
 #### Problem in context
 
 In order for the objects to have different types of movement, we needed to specify their movement.
@@ -111,7 +109,7 @@ To solve this problem we used the Strategy Pattern. This pattern allows us to is
 
 #### Implementation
 
-> TODO: UML
+![](./images/strategy_pattern.png)
 
 #### Consequences
 
