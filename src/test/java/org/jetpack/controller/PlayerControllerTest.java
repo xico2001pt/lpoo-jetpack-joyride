@@ -40,9 +40,6 @@ class PlayerControllerTest {
 
         // Initialize actionBefore as NONE
         controller.update(gameLoop, GUI.ACTION.NONE, 0);
-        // Initialize MOUSE PRESSED
-        controller.update(gameLoop, GUI.ACTION.MOUSE_PRESSED, 200);
-        // Start player's movement (up)
         controller.update(gameLoop, GUI.ACTION.MOUSE_PRESSED, 200);
 
         assertEquals(new Position(5, 4), arena.getPlayer().getPosition());
