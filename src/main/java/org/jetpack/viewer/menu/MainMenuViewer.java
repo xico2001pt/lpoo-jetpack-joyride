@@ -16,17 +16,16 @@ public class MainMenuViewer extends Viewer<MainMenu> {
 
     @Override
     public void drawModel(GUI gui) {
-        int centerX = gui.getTerminalWidth() / 2;
-        int centerY = gui.getTerminalHeight() / 2;
+        Position center = new Position(gui.getTerminalWidth() / 2, gui.getTerminalHeight() / 2);
 
         gui.drawRectangle(new Position(0,0), new Dimension(gui.getTerminalWidth(), gui.getTerminalHeight()),
                 1, ColorDatabase.GRAY.getName());
         gui.drawFillRectangle(new Position(1,1), new Dimension(gui.getTerminalWidth() - 2,
                 gui.getTerminalHeight() - 2), ColorDatabase.DARK_GRAY.getName());
-        gui.drawImage(new Position(centerX - 5,centerY - 5), ImageLibrary.getJetpackJoyrideImage());
+        gui.drawImage(new Position(center.getX() - 5, center.getY() - 5), ImageLibrary.getJetpackJoyrideImage());
 
         for (int i = 0; i < getModel().getNumberEntries(); i++)
-            gui.drawText(new Position(centerX - 2, centerY + i), getModel().getEntry(i),
+            gui.drawText(new Position(center.getX() - 2, center.getY() + i), getModel().getEntry(i),
                     getModel().isSelected(i) ? ColorDatabase.WHITE.getName() : ColorDatabase.LIGHT_GRAY.getName());
     }
 }

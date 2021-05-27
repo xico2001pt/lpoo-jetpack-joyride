@@ -43,13 +43,15 @@ public class ArenaViewer extends Viewer<Arena> {
     }
 
     private void drawInfo(GUI gui, Player player) {
+
         gui.drawRectangle(new Position(0, 0), new Dimension(gui.getTerminalWidth(), gui.getTerminalHeight()),
                 Math.min(info.width, info.height), ColorDatabase.GRAY.getName());
-        gui.drawText(new Position(1, 0), "LIVES: ", ColorDatabase.WHITE.getName());
-        gui.drawText(new Position(8, 0), String.valueOf(player.getLives()), ColorDatabase.RED.getName());
-        gui.drawText(new Position(11, 0), "COINS: " + player.getCoins(), ColorDatabase.WHITE.getName());
-        gui.drawText(new Position(18, 0), String.valueOf(player.getCoins()), ColorDatabase.GOLD.getName());
-        gui.drawText(new Position(21, 0), "TIME: " + getModel().getArenaBuilder().getInstant()/1000,
-                ColorDatabase.WHITE.getName());
+
+        gui.drawText(new Position(gui.getTerminalWidth() - 11, gui.getTerminalHeight() - 1), "LIVES: ", ColorDatabase.WHITE.getName());
+        gui.drawText(new Position(gui.getTerminalWidth() - 4, gui.getTerminalHeight() - 1), String.valueOf(player.getLives()), ColorDatabase.RED.getName());
+        gui.drawText(new Position(3, gui.getTerminalHeight() - 1), "COINS: " + player.getCoins(), ColorDatabase.WHITE.getName());
+        gui.drawText(new Position(10, gui.getTerminalHeight() - 1), String.valueOf(player.getCoins()), ColorDatabase.GOLD.getName());
+        gui.drawText(new Position(3, 0), "SCORE: ", ColorDatabase.LIGHT_GRAY.getName());
+        gui.drawText(new Position(10, 0), String.valueOf(getModel().getArenaBuilder().getInstant()/1000), ColorDatabase.WHITE.getName());
     }
 }
