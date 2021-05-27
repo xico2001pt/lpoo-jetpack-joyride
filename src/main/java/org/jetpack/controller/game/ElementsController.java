@@ -56,7 +56,7 @@ public class ElementsController extends GameController {
     private void changeMovementFrequency() {
         if (movementPace.getPeriod() > MIN_PERIOD) {
             movementPace.setPeriod(movementPace.getPeriod() - 1);
-            getModel().getArenaBuilder().setTimeCoefficient((float)(movementPace.getPeriod()) / (MAX_PERIOD - MIN_PERIOD));
+            getModel().getArenaBuilder().setTimeCoefficient((float)(movementPace.getPeriod()) / 100);
         }
     }
 

@@ -8,7 +8,7 @@ import java.awt.*;
 import java.io.IOException;
 
 public interface GUI {
-    enum ACTION { UP, DOWN, SPACE, NONE, NUMBER1, NUMBER2, NUMBER3, MOUSE_PRESSED, PAUSE, ENTER, QUIT }
+    enum ACTION { UP, DOWN, NONE, NUMBER1, NUMBER2, NUMBER3, MOUSE_PRESSED, PAUSE, ENTER, QUIT }
 
     int getTerminalWidth();
 

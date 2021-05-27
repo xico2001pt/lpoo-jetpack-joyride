@@ -18,7 +18,7 @@ public abstract class ArenaBuilder {
         this.dimension = new Dimension(width, height);
 
         this.instant = 0;
-        this.timeCoefficient = (float) (ElementsController.MAX_PERIOD / (ElementsController.MAX_PERIOD - ElementsController.MIN_PERIOD));
+        this.timeCoefficient = (float) (ElementsController.MAX_PERIOD / 100);
     }
 
     public Arena createArena() {

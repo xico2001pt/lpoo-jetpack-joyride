@@ -124,7 +124,7 @@ To implement the different states of the game, we used the State Pattern. This p
 
 #### Implementation
 
-![](./images/state_pattern.png)
+![](./images/state_pattern_1.png)
 
 #### Consequences
 
@@ -133,23 +133,22 @@ The creation of different states gives us freedom to differentiate behaviors dep
 
 ### v. Power Ups
 
-> Not implemented yet!
-
 #### Problem in context
 
 The player may have different attributes/stats throughout the game.
 
 #### The pattern
 
-To implement the power-ups we used the Command Pattern. This pattern consists of deriving power-ups from an abstract class while modifying a common function, *execute* in our case, so that they can have different results, change different attributes and/or change the Player's state.
+To implement the power-ups we used the State Pattern. This pattern consists on creating an Interface (or an abstract class), *PlayerState* in our case, and create *powerUp* classes that implement it. The Player class stores the state and changes it's behavior according to it.
 
 #### Implementation
 
-> TODO: UML
+![](./images/state_pattern_2.png)
 
 #### Consequences
 
-> TODO
+With this pattern we can interchange *powerUps*/*playerStates* easily. We can separate the Player from the State, it doesn't need to know it's behavior and it leaves the responsibility to the state itself.
+We wanted to change the Player's appearance depending on the state it encounters itself in. This resulted in a minor inconvenience: since we save the Image of a certain Element in the model itself we found ourselves obligated to save the Image in the State. On the other hand, this eases the implementation of this feature, and, in our opinion, enhances the readability of the code.
 
 ## Code smells and refactoring techniques
 
@@ -179,11 +178,13 @@ As we are using the MVC architecture, this implies that almost every object from
 
 #### Comments
 
-As our project is still in the beginning, it has a lot of comments to help us to understand what we're doing (especially TODO's). This should (and will) be fixed in the final delivery.
+- [x] As our project is still in the beginning, it has a lot of comments to help us to understand what we're doing (especially TODO's). This should (and will) be fixed in the final delivery.
+
 
 #### Duplicate Code
 
-Currently, we have a method that has a lot of code fragments which are identical, as we are still thinking about the structure of that specific part. We think that this can be fixed improving the code structure and creating generic methods. 
+- [x] Currently, we have a method that has a lot of code fragments which are identical, as we are still thinking about the structure of that specific part. We think that this can be fixed improving the code structure and creating generic methods. 
+
 
 #### Data Class
 
@@ -191,18 +192,25 @@ Our game uses a data class to store the image (structure) of the various element
 
 #### Speculative Generality
 
-We have some methods, like checkImageCollision() and some getters and setters, that are not being used, but were created to support anticipated future features. This will obviously be fixed until the final delivery, as these features will be used/implemented.
+- [x] We have some methods, like *checkImageCollision* and some getters and setters, that are not being used, but were created to support anticipated future features. This will obviously be fixed until the final delivery, as these features will be used/implemented.
+
 
 ### Couplers
 
 #### Message Chains
 
-The WindowViewer class calls methods of the ArenaViewer class, that will call some other methods of the ElementViewer class. This is a chain of calls that we would like to improve and simplify until the final delivery, by reviewing the structure of the code.
+- [x] The *WindowViewer* class calls methods of the *ArenaViewer* class, that will call some other methods of the *ElementViewer* class. This is a chain of calls that we would like to improve and simplify until the final delivery, by reviewing the structure of the code.
+
 
 ## Testing
 
+> TODO
+
 ![](./testResults/tests.png)
 ### Test Coverage
+
+> TODO
+
 ![](./testResults/test_coverage.png)
 
 ![](./testResults/pitest.png)

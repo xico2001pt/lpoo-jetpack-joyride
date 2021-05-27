@@ -90,10 +90,10 @@ public class RandomArenaBuilder extends ArenaBuilder {
         switch (type) {
             case 0: case 1: case 2:
                 return new Laser(new Position(getWidth(),
-                        rng.nextInt(getHeight() - ImageLibrary.getLaser2Image().getNumberRows())));
+                        rng.nextInt(getHeight() - ImageLibrary.getLaserImage().getNumberRows())));
             case 3: case 4: case 5:
                 return new EnergyWall(new Position(getWidth(),
-                        rng.nextInt(getHeight() - ImageLibrary.getEnergyWall1Image().getNumberRows())));
+                        rng.nextInt(getHeight() - ImageLibrary.getEnergyWallImage().getNumberRows())));
             case 6:
                 return new Missile(new Position(getWidth(),
                         rng.nextInt(getHeight() - ImageLibrary.getMissileImage().getNumberRows())));

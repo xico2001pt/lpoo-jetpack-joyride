@@ -14,10 +14,8 @@ public final class ImageLibrary {
     private static Matrix<CharColor> playerImmortalStateImage;
     private static Matrix<CharColor> playerSlowDownStateImage;
     private static Matrix<CharColor> coinImage;
-    private static Matrix<CharColor> laser1Image;
-    private static Matrix<CharColor> laser2Image;
-    private static Matrix<CharColor> energyWall1Image;
-    private static Matrix<CharColor> energyWall2Image;
+    private static Matrix<CharColor> laserImage;
+    private static Matrix<CharColor> energyWallImage;
     private static Matrix<CharColor> missileImage;
     private static Matrix<CharColor> zigZagImage;
     private static Matrix<CharColor> staticLaserImage;
@@ -77,36 +75,20 @@ public final class ImageLibrary {
         return coinImage;
     }
 
-    public static Matrix<CharColor> getLaser1Image() {
-        if (laser1Image == null) {
-            laser1Image = new Matrix<>(7, 1,
-                    new CharColor('-', ColorDatabase.GHOST_WHITE.getName()));
-            laser1Image.setValue(0, 0, new CharColor('|', ColorDatabase.GHOST_WHITE.getName()));
-            laser1Image.setValue(6, 0, new CharColor('|', ColorDatabase.GHOST_WHITE.getName()));
-        }
-        return laser1Image;
-    }
-
-    public static Matrix<CharColor> getLaser2Image() {
-        if (laser2Image == null) {
-            laser2Image = new Matrix<>(1, 5,
+    public static Matrix<CharColor> getLaserImage() {
+        if (laserImage == null) {
+            laserImage = new Matrix<>(1, 5,
                     new CharColor('|', ColorDatabase.VIBRANT_GREEN.getName()));
-            laser2Image.setValue(0, 0, new CharColor('-', ColorDatabase.GHOST_WHITE.getName()));
-            laser2Image.setValue(0, 4, new CharColor('-', ColorDatabase.GHOST_WHITE.getName()));
+            laserImage.setValue(0, 0, new CharColor('-', ColorDatabase.GHOST_WHITE.getName()));
+            laserImage.setValue(0, 4, new CharColor('-', ColorDatabase.GHOST_WHITE.getName()));
         }
-        return laser2Image;
+        return laserImage;
     }
 
-    public static Matrix<CharColor> getEnergyWall1Image() {
-        if (energyWall1Image == null) energyWall1Image = new Matrix<>(2, 5,
+    public static Matrix<CharColor> getEnergyWallImage() {
+        if (energyWallImage == null) energyWallImage = new Matrix<>(2, 5,
                 new CharColor('O', ColorDatabase.GHOST_WHITE.getName()));
-        return energyWall1Image;
-    }
-
-    public static Matrix<CharColor> getEnergyWall2Image() {
-        if (energyWall2Image == null) energyWall2Image = new Matrix<>(5, 2,
-                new CharColor('O', ColorDatabase.GHOST_WHITE.getName()));
-        return energyWall2Image;
+        return energyWallImage;
     }
 
     public static Matrix<CharColor> getMissileImage() {

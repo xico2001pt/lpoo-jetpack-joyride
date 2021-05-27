@@ -8,6 +8,7 @@ import org.jetpack.gui.GUI;
 import java.io.IOException;
 
 public class GameLoop {
+    public static final int INFO_SIZE = 1;
     private final int FPS;
     private final GUI gui;
     private State<?> currentGameState;

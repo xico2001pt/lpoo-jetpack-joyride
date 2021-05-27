@@ -46,6 +46,7 @@ public class Player extends Element {
         setImage(state.getImage());
         this.state = state;
     }
+    
     public PlayerState getState() {
         return this.state;
     }
