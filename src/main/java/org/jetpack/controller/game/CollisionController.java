@@ -4,7 +4,6 @@ import org.jetpack.model.CharColor;
 import org.jetpack.model.Matrix;
 import org.jetpack.model.Position;
 import org.jetpack.model.elements.Element;
-import org.jetpack.model.elements.obstacles.Obstacle;
 
 import java.awt.*;
 import java.util.List;

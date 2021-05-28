@@ -15,7 +15,7 @@ class ElementViewerTest {
     private ElementViewer viewer;
     private GUI gui;
 
-/*    @BeforeEach
+    /*@BeforeEach
     void setUp() {
         element = new Laser(new Position(0, 0));
         viewer = new ElementViewer();

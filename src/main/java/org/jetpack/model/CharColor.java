@@ -1,7 +1,5 @@
 package org.jetpack.model;
 
-import org.jetpack.gui.ColorDatabase;
-
 public class CharColor {
     private Character character;
     private String color;

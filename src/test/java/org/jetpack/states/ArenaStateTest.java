@@ -1,4 +1,4 @@
-package org.jetpack.controller.state;
+package org.jetpack.states;
 
 import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
@@ -6,19 +6,15 @@ import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
 import org.jetpack.model.arena.ArenaBuilder;
 import org.jetpack.model.elements.player.Player;
-import org.jetpack.states.ArenaState;
-import org.jetpack.states.State;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.awt.*;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 class ArenaStateTest {
 
     @Test
-    void update() throws FontFormatException, IOException, URISyntaxException {
+    void update() throws IOException {
         ArenaBuilder arenaBuilder = Mockito.mock(ArenaBuilder.class);
         Arena arena = new Arena(10, 10, arenaBuilder);
         arena.setPlayer(new Player(new Position(5, 5)));

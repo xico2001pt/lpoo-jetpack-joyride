@@ -1,6 +1,6 @@
-package org.jetpack.controller;
+package org.jetpack.controller.game;
 
-import org.jetpack.controller.game.ArenaController;
+import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
 import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
