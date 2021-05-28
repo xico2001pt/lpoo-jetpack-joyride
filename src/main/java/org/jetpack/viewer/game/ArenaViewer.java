@@ -57,7 +57,7 @@ public class ArenaViewer extends Viewer<Arena> {
                 ColorDatabase.GOLD.getName());
 
         int instant = (int) (getModel().getArenaBuilder().getInstant()/1000);
-        gui.drawText(new Position(gui.getTerminalWidth() - 4 - String.valueOf(instant).length(),
-                gui.getTerminalHeight() - 1), instant + "s", ColorDatabase.WHITE.getName());
+        gui.drawText(new Position(gui.getTerminalWidth() - 7 - String.valueOf(instant).length(),
+                gui.getTerminalHeight() - 1), instant + " sec", ColorDatabase.WHITE.getName());
     }
 }
