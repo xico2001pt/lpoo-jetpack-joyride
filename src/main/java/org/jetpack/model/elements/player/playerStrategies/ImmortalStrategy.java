@@ -1,10 +1,10 @@
-package org.jetpack.model.elements.player.playerStates;
+package org.jetpack.model.elements.player.playerStrategies;
 
 import org.jetpack.model.CharColor;
 import org.jetpack.model.Matrix;
 import org.jetpack.model.elements.ImageLibrary;
 
-public class ImmortalState implements PlayerState {
+public class ImmortalStrategy implements PlayerStrategy {
     @Override
     public int damageTaken() { return 0; }
 

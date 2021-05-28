@@ -1,9 +1,9 @@
-package org.jetpack.model.elements.player.playerStates;
+package org.jetpack.model.elements.player.playerStrategies;
 
 import org.jetpack.model.CharColor;
 import org.jetpack.model.Matrix;
 
-public interface PlayerState {
+public interface PlayerStrategy {
     int damageTaken();
     int coinTaken();
     long getDuration();

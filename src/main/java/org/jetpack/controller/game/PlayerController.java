@@ -8,10 +8,10 @@ import org.jetpack.model.arena.Arena;
 import org.jetpack.model.elements.player.Player;
 import org.jetpack.model.elements.movements.DownMovement;
 import org.jetpack.model.elements.movements.UpMovement;
-import org.jetpack.model.elements.player.playerStates.DoubleCoinsState;
-import org.jetpack.model.elements.player.playerStates.ImmortalState;
-import org.jetpack.model.elements.player.playerStates.NormalState;
-import org.jetpack.model.elements.player.playerStates.SlowDownState;
+import org.jetpack.model.elements.player.playerStrategies.DoubleCoinsStrategy;
+import org.jetpack.model.elements.player.playerStrategies.ImmortalStrategy;
+import org.jetpack.model.elements.player.playerStrategies.NormalStrategy;
+import org.jetpack.model.elements.player.playerStrategies.SlowDownStrategy;
 
 public class PlayerController extends GameController {
     private static final long MOVEMENT_PERIOD = 150;
@@ -31,11 +31,11 @@ public class PlayerController extends GameController {
         powerUpCounter -= elapsed;
         Player player = getModel().getPlayer();
 
-        if (powerUpCounter <= 0) player.setState(new NormalState());
+        if (powerUpCounter <= 0) player.setState(new NormalStrategy());
 
-        if (action == GUI.ACTION.NUMBER1 && player.buyPowerUp()) player.setState(new ImmortalState());
-        else if (action == GUI.ACTION.NUMBER2 && player.buyPowerUp()) player.setState(new DoubleCoinsState());
-        else if (action == GUI.ACTION.NUMBER3 && player.buyPowerUp()) player.setState(new SlowDownState());
+        if (action == GUI.ACTION.NUMBER1 && player.buyPowerUp()) player.setState(new ImmortalStrategy());
+        else if (action == GUI.ACTION.NUMBER2 && player.buyPowerUp()) player.setState(new DoubleCoinsStrategy());
+        else if (action == GUI.ACTION.NUMBER3 && player.buyPowerUp()) player.setState(new SlowDownStrategy());
         else if (action == GUI.ACTION.MOUSE_PRESSED && actionBefore == GUI.ACTION.NONE) {
             movementPace.resetCounter();
             player.setMovement(new UpMovement());

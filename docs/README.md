@@ -139,7 +139,7 @@ The player should have different attributes/stats/power-ups throughout the cours
 
 #### The pattern
 
-To implement the power-ups we used the State Pattern. This pattern consists on creating an Interface (or an abstract class), *PlayerState* in our case, and implementing it accordingly in the various power-ups that we want  to feature. The Player class stores the state and changes it's behavior according to it.
+To implement the power-ups we used the Strategy Pattern. This pattern consists on creating an Interface (or an abstract class), *PlayerState* in our case, and implementing it accordingly in the various power-ups that we want  to feature. The Player class stores the state and changes it's behavior according to it.
 
 #### Implementation
 

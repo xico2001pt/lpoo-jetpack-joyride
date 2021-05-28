@@ -1,10 +1,10 @@
-package org.jetpack.model.elements.player.playerStates;
+package org.jetpack.model.elements.player.playerStrategies;
 
 import org.jetpack.model.CharColor;
 import org.jetpack.model.Matrix;
 import org.jetpack.model.elements.ImageLibrary;
 
-public class DoubleCoinsState implements PlayerState {
+public class DoubleCoinsStrategy implements PlayerStrategy {
     @Override
     public int damageTaken() { return 1; }
 

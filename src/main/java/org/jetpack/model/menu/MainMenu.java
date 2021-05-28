@@ -4,14 +4,18 @@ import java.util.Arrays;
 
 public class MainMenu extends Menu {
     public MainMenu() {
-        super(Arrays.asList("START", "EXIT"));
+        super(Arrays.asList("START", "INSTRUCTIONS", "EXIT"));
     }
 
     public boolean isSelectedStart() {
         return isSelected(0);
     }
 
-    public boolean isSelectedExit() {
+    public boolean isSelectedInstructions() {
         return isSelected(1);
+    }
+
+    public boolean isSelectedExit() {
+        return isSelected(2);
     }
 }

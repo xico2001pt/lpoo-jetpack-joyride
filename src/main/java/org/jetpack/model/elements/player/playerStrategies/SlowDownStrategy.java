@@ -1,10 +1,10 @@
-package org.jetpack.model.elements.player.playerStates;
+package org.jetpack.model.elements.player.playerStrategies;
 
 import org.jetpack.model.CharColor;
 import org.jetpack.model.Matrix;
 import org.jetpack.model.elements.ImageLibrary;
 
-public class NormalState implements PlayerState {
+public class SlowDownStrategy implements PlayerStrategy {
     @Override
     public int damageTaken() { return 1; }
 
@@ -12,10 +12,8 @@ public class NormalState implements PlayerState {
     public int coinTaken() { return 1; }
 
     @Override
-    public long getDuration() {
-        return Long.MAX_VALUE;
-    }
+    public long getDuration() { return 10000; }
 
     @Override
-    public Matrix<CharColor> getImage() { return ImageLibrary.getPlayerImage(); }
+    public Matrix<CharColor> getImage() { return ImageLibrary.getPlayerSlowDownStateImage(); }
 }

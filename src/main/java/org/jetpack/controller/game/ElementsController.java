@@ -5,7 +5,7 @@ import org.jetpack.gui.GUI;
 import org.jetpack.model.Pace;
 import org.jetpack.model.arena.Arena;
 import org.jetpack.model.elements.Element;
-import org.jetpack.model.elements.player.playerStates.SlowDownState;
+import org.jetpack.model.elements.player.playerStrategies.SlowDownStrategy;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class ElementsController extends GameController {
 
         this.slowDownCounter -= elapsed;
 
-        if (action == GUI.ACTION.NUMBER3 && getModel().getPlayer().getState() instanceof SlowDownState) {
+        if (action == GUI.ACTION.NUMBER3 && getModel().getPlayer().getState() instanceof SlowDownStrategy) {
             slowDownCounter = getModel().getPlayer().getState().getDuration();
             this.movementPeriodBackup = movementPace.getPeriod();
             movementPace.setPeriod(MAX_PERIOD);

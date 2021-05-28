@@ -22,7 +22,7 @@ public class PauseMenuViewer extends Viewer<PauseMenu> {
         gui.drawFillRectangle(new Position(1,1), new Dimension(gui.getTerminalWidth() - 2,
                 gui.getTerminalHeight() - 2), ColorDatabase.DARK_GRAY.getName());
 
-        gui.drawText(new Position(center.getX() - 6, center.getY() - 3), "-- Paused --", ColorDatabase.GOLD.getName());
+        gui.drawText(new Position(center.getX() - 6, center.getY() - 3), "-- PAUSED --", ColorDatabase.GOLD.getName());
 
         for (int i = 0; i < getModel().getNumberEntries(); i++)
             gui.drawText(new Position(center.getX() - 3, center.getY() - 1 + i), getModel().getEntry(i),
