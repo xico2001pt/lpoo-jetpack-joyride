@@ -67,7 +67,7 @@ To solve this problem, we implemented a Factory Method that creates specific Are
 
 #### Implementation
 
-To implement the Factory Method we created an abstract class, ArenaBuilder, that specifies what each arena must be able to create (player, coins, obstacles, etc). Then, various options of building an arena can implement/override the methods of the abstract class accordingly. If, for some reason, later we want to add new methods to create arenas, we only need to specify the target platform when the application starts. This way, the wanted arena builder is instantiated and used throughout the rest of the program, not having to worry with the specific type in use.
+To implement the Factory Method we created an abstract class, *ArenaBuilder*, that specifies what each arena creator must be able to create (player, coins, obstacles, etc). Then, various strategies of building an arena can implement/override the methods of the abstract class accordingly. If, for some reason, we want to add new methods to create arenas afterwards, we only need to specify the target platform when the application starts. This way, the wanted arena builder is instantiated and used throughout the rest of the program, not having to worry with the specific type in use.
 
 ![](./images/factory_pattern.png)
 
@@ -78,15 +78,15 @@ By using the Factory Method, each target platform has its own isolated concrete 
 ### ii. Game Loop
 #### Problem in context
 
-In order to control the main cycle of the game, we need a way to make sure the game runs properly, processes the input and renders accordingly with a certain amount of frames per seconds (that won't interfere in the game itself).
+In order to control the main cycle of the game, we need a way to make sure the game runs properly, processes the input and renders accordingly with a certain amount of frames per second.
 
 #### The pattern
 
-A game loop runs continuously during the gameplay. Each turn it processes the user input without blocking it, updates the game state and renders the game. It tracks the passage of time to control the rate of gameplay.
+The pattern Game Loop runs continuously during the gameplay. Each turn it processes the user input without blocking it, updates the game state, renders the game and tracks the passage of time to control the rate of the gameplay.
 
 #### Implementation
 
-To implement the Game Loop pattern we created a class, GameLoop, that contains the three main methods stated above, and some other utility functions.
+To implement the Game Loop pattern we created a class, *GameLoop*, that contains the three main methods stated above, and some other utility functions.
 
 ![](./images/game_loop.png)
 
@@ -99,7 +99,7 @@ The Game Loop pattern allow us to have more control in the way the game runs and
 #### Problem in context
 
 In order for the objects to have different types of movement, we needed to specify their movement.
-This information could be placed in model, in each object's class, but it would be much to know about, and it would not concern the element itself.
+This information could be placed in model, in each object's class, but this shouldn't be a concern to the element, hence why we implemented this design pattern.
 
 #### The pattern
 
@@ -111,16 +111,16 @@ To solve this problem we used the Strategy Pattern. This pattern allows us to is
 
 #### Consequences
 
-With this pattern, we can eliminate the possibility of differentiating each behavior with conditional statements and substitute them with classes that have different implementation accordingly. In this way, each object does not have to know its type of movement.
+With this pattern, we can eliminate the possibility of differentiating each behavior with conditional statements and substitute them with classes that have different implementation accordingly. Each object does not have to know its type of movement.
 
 ### iv. Game States
 #### Problem in context
 
-To switch from different states smoothly as the game proceeded. This is useful for the menus and power-ups in the game.
+We wanted to switch from different states smoothly as the game proceeded, from the Menus to the Game itself for instance.
 
 #### The pattern
 
-To implement the different states of the game, we used the State Pattern. This pattern allows the implementation of each state as subclass. If so, we can switch from different states only by switching to another class/state.
+To implement the different states of the game, as the name implies, we used the State Pattern. This pattern allows the implementation of each state as subclass. If so, we can switch from different states only by switching to another class/state.
 
 #### Implementation
 
@@ -129,17 +129,17 @@ To implement the different states of the game, we used the State Pattern. This p
 #### Consequences
 
 This pattern facilitates the creation of more states for the game and changes to the ones already created.
-The creation of different states gives us freedom to differentiate behaviors depending on the actual stage in the game. There's also no need to use flags or complex if statements, however, this means that there will be more classes in the game.
+The creation of different states gives us freedom to differentiate behaviors depending on the actual stage in the game. There's also no need to use flags or complex if statements. However, this means that there will be more classes in the game.
 
 ### v. Power Ups
 
 #### Problem in context
 
-The player may have different attributes/stats throughout the game.
+The player should have different attributes/stats/power-ups throughout the course of the game.
 
 #### The pattern
 
-To implement the power-ups we used the State Pattern. This pattern consists on creating an Interface (or an abstract class), *PlayerState* in our case, and create *powerUp* classes that implement it. The Player class stores the state and changes it's behavior according to it.
+To implement the power-ups we used the State Pattern. This pattern consists on creating an Interface (or an abstract class), *PlayerState* in our case, and implementing it accordingly in the various power-ups that we want  to feature. The Player class stores the state and changes it's behavior according to it.
 
 #### Implementation
 
@@ -147,8 +147,8 @@ To implement the power-ups we used the State Pattern. This pattern consists on c
 
 #### Consequences
 
-With this pattern we can interchange *powerUps*/*playerStates* easily. We can separate the Player from the State, it doesn't need to know it's behavior and it leaves the responsibility to the state itself.
-We wanted to change the Player's appearance depending on the state it encounters itself in. This resulted in a minor inconvenience: since we save the Image of a certain Element in the model itself we found ourselves obligated to save the Image in the State. On the other hand, this eases the implementation of this feature, and, in our opinion, enhances the readability of the code.
+With this pattern we can interchange *powerUps*/*playerStates* easily. We can separate the Player from the State, since it doesn't need to know it's behavior, leaving the responsibility to the state itself.
+We wanted to change the Player's appearance depending on the state it encounters itself in, this resulted in a minor inconvenience: since we save the Image of a certain Element in the model itself we found ourselves obligated to save the Image in the State. On the other hand, this eases the implementation of this feature, and, in our opinion, enhances the readability of the code.
 
 ## Code smells and refactoring techniques
 
