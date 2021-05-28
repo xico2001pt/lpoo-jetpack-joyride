@@ -14,7 +14,7 @@ import java.io.IOException;
 class ArenaStateTest {
 
     @Test
-    void update() throws IOException {
+    void step() throws IOException {
         ArenaBuilder arenaBuilder = Mockito.mock(ArenaBuilder.class);
         Arena arena = new Arena(10, 10, arenaBuilder);
         arena.setPlayer(new Player(new Position(5, 5)));
