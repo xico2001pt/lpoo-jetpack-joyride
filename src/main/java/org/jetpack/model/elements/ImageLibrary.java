@@ -109,7 +109,7 @@ public final class ImageLibrary {
     public static Matrix<CharColor> getStaticLaserImage(Dimension dimension) {
         if (staticLaserImage == null) {
             staticLaserImage = new Matrix<>(dimension.width, dimension.height,
-                    new CharColor('X', ColorDatabase.GHOST_WHITE.getName()));
+                    new CharColor('X', ColorDatabase.WHITE.getName()));
             staticLaserImage.setValue(0, 0, new CharColor('o', ColorDatabase.GHOST_WHITE.getName()));
             staticLaserImage.setValue(dimension.width - 1, 0,
                     new CharColor('o', ColorDatabase.GHOST_WHITE.getName()));

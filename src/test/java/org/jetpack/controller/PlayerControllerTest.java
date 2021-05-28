@@ -29,7 +29,6 @@ class PlayerControllerTest {
 
     @Test
     void updateNone() {
-
         controller.update(gameLoop, GUI.ACTION.NONE, 0);
         assertEquals(new Position(5, 5), arena.getPlayer().getPosition());
     }
