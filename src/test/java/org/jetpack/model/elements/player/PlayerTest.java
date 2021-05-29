@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
 
-
     @Test
     void buyPowerUpNoMoney() {
         Position position = Mockito.mock(Position.class);
