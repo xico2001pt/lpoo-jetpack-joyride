@@ -20,7 +20,6 @@ class RandomArenaBuilderTest {
         Arena arena = builder.createArena();
         assertEquals(30, arena.getWidth());
         assertEquals(20, arena.getHeight());
-        // TODO: Test creation of Player
     }
 
     @Test

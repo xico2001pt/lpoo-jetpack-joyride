@@ -46,8 +46,10 @@ class CollisionControllerTest {
         Element element1 = new Laser(new Position(5, 5)); element1.setImage(image);
         Element element2 = new Laser(new Position(3, 6)); element2.setImage(image);
 
-        assertTrue(CollisionController.checkBoxCollision(element1.getPosition(), new Dimension(element1.getImage().getNumberCol(),
-                element2.getImage().getNumberRows()), element2.getPosition(), new Dimension(element2.getImage().getNumberCol(),
+        assertTrue(CollisionController.checkBoxCollision(element1.getPosition(),
+                new Dimension(element1.getImage().getNumberCol(),
+                element2.getImage().getNumberRows()), element2.getPosition(),
+                new Dimension(element2.getImage().getNumberCol(),
                 element2.getImage().getNumberRows())));
     }
 

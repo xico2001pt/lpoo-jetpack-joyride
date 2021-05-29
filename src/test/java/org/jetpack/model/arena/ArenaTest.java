@@ -21,7 +21,6 @@ class ArenaTest {
 
     @BeforeEach
     void setUp() {
-
         ArenaBuilder builder = Mockito.mock(ArenaBuilder.class);
         arena = new Arena(20, 20, builder);
     }

@@ -22,7 +22,7 @@ class ArenaStateTest {
         GUI gui = Mockito.mock(GUI.class);
         GameLoop gameLoop = new GameLoop(30, gui);
 
-        State arenaState = new ArenaState(arena);
+        State<?> arenaState = new ArenaState(arena);
         arenaState.step(gameLoop, gui, 1000);
 
         Mockito.verify(arenaBuilder, Mockito.times(1)).incrementInstant(1000);

@@ -11,7 +11,7 @@ class MatrixTest {
 
     @BeforeEach
     void setUp() {
-        matrix = new Matrix<Character>(5, 3, 'I');
+        matrix = new Matrix<>(5, 3, 'I');
     }
 
     @Test
