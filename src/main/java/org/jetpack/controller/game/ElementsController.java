@@ -42,13 +42,13 @@ public class ElementsController extends GameController {
             movementPace.setPeriod(MAX_PERIOD);
         }
 
-        for (int i = movementPace.update(elapsed); i > 0; --i) {
+        for (long i = movementPace.update(elapsed); i > 0; --i) {
             moveElements(getModel().getObstacles());
             moveElements(getModel().getCoins());
         }
 
         if (this.slowDownCounter <= 0) {
-            for (int i = speedUpPace.update(elapsed); i > 0; --i)
+            for (long i = speedUpPace.update(elapsed); i > 0; --i)
                 changeMovementFrequency();
         }
     }

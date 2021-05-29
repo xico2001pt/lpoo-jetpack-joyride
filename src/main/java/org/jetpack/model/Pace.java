@@ -21,17 +21,19 @@ public class Pace {
         this.counter = counter;
     }
 
+    public long getCounter() {
+        return this.counter;
+    }
+
     public void resetCounter() {
         this.counter = 0;
     }
 
-    public int update(long elapsed) {
-        int paces = 0;
+    public long update(long elapsed) {
         counter += elapsed;
-        while (counter >= period) {
-            paces++;
-            counter -= period;
-        }
+        long paces = counter / period;
+        counter -= paces * period;
+
         return paces;
     }
 }

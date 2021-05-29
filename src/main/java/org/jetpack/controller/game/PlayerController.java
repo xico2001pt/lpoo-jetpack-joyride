@@ -49,7 +49,7 @@ public class PlayerController extends GameController {
             powerUpCounter = player.getState().getDuration();
 
 
-        for (int i = movementPace.update(elapsed); i > 0; --i)
+        for (long i = movementPace.update(elapsed); i > 0; --i)
             movePlayer(player.getMovement().move(player.getPosition(), getModel()));
 
         if (action == GUI.ACTION.MOUSE_PRESSED || action == GUI.ACTION.NONE) actionBefore = action;
