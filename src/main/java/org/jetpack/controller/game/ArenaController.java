@@ -30,7 +30,7 @@ public class ArenaController extends GameController {
         if (getModel().getPlayer().getLives() <= 0)
             gameLoop.setState(new GameOverMenuState(new GameOverMenu(getModel().getArenaBuilder().getInstant()/1000)));
         else if (action == GUI.ACTION.QUIT)
-            gameLoop.setState(new MainMenuState(new MainMenu()));
+            gameLoop.stop();
         else if (action == GUI.ACTION.PAUSE)
             gameLoop.setState(new PauseMenuState(new PauseMenu(), gameLoop.getState()));
 

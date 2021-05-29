@@ -32,6 +32,9 @@ public class MainMenuController extends Controller<MainMenu> {
                 else if (getModel().isSelectedInstructions()) gameLoop.setState(
                         new InstructionsMenuState(new InstructionsMenu()));
                 else if (getModel().isSelectedExit()) gameLoop.stop();
+                break;
+            case QUIT:
+                gameLoop.stop();
         }
     }
 }

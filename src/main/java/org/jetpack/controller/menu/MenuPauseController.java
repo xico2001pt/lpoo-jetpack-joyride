@@ -29,6 +29,9 @@ public class MenuPauseController extends Controller<PauseMenu>  {
             case ENTER:
                 if (getModel().isSelectedResume()) gameLoop.setState(state);
                 else if (getModel().isSelectedExit()) gameLoop.setState(new MainMenuState(new MainMenu()));
+                break;
+            case QUIT:
+                gameLoop.stop();
         }
     }
 }

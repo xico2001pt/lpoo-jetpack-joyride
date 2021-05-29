@@ -14,5 +14,6 @@ public class InstructionsMenuController extends Controller<InstructionsMenu> {
     @Override
     public void update(GameLoop gameLoop, GUI.ACTION action, long elapsed) {
         if (action == GUI.ACTION.ENTER) gameLoop.setState(new MainMenuState(new MainMenu()));
+        else if (action == GUI.ACTION.QUIT) gameLoop.stop();
     }
 }

@@ -29,6 +29,9 @@ public class GameOverMenuController extends Controller<GameOverMenu> {
                         (new RandomArenaBuilder(gameLoop.getWidth() - 2 * GameLoop.INFO_SIZE,
                                 gameLoop.getHeight()  - 2 * GameLoop.INFO_SIZE).createArena()));
                 else if (getModel().isSelectedExit()) gameLoop.setState(new MainMenuState(new MainMenu()));
+                break;
+            case QUIT:
+                gameLoop.stop();
         }
     }
 }
