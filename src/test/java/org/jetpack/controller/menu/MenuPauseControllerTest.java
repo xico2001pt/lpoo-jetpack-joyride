@@ -3,12 +3,10 @@ package org.jetpack.controller.menu;
 import org.jetpack.controller.GameLoop;
 import org.jetpack.gui.GUI;
 import org.jetpack.gui.LanternaGUI;
-import org.jetpack.model.arena.Arena;
 import org.jetpack.model.menu.PauseMenu;
 import org.jetpack.states.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.io.IOException;
