@@ -22,6 +22,8 @@ class MainMenuControllerTest {
     @BeforeEach
     void setUp() {
         gui = Mockito.mock(LanternaGUI.class);
+        Mockito.when(gui.getTerminalWidth()).thenReturn(30);
+        Mockito.when(gui.getTerminalHeight()).thenReturn(30);
         gameLoop = new GameLoop(10, gui);
         // Just reassuring
         gameLoop.setState(new MainMenuState(new MainMenu()));
