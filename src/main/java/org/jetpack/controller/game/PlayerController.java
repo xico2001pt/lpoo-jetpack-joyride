@@ -31,11 +31,11 @@ public class PlayerController extends GameController {
         powerUpCounter -= elapsed;
         Player player = getModel().getPlayer();
 
-        if (powerUpCounter <= 0) player.setState(new NormalStrategy());
+        if (powerUpCounter <= 0) player.setStrategy(new NormalStrategy());
 
-        if (action == GUI.ACTION.NUMBER1 && player.buyPowerUp()) player.setState(new ImmortalStrategy());
-        else if (action == GUI.ACTION.NUMBER2 && player.buyPowerUp()) player.setState(new DoubleCoinsStrategy());
-        else if (action == GUI.ACTION.NUMBER3 && player.buyPowerUp()) player.setState(new SlowDownStrategy());
+        if (action == GUI.ACTION.NUMBER1 && player.buyPowerUp()) player.setStrategy(new ImmortalStrategy());
+        else if (action == GUI.ACTION.NUMBER2 && player.buyPowerUp()) player.setStrategy(new DoubleCoinsStrategy());
+        else if (action == GUI.ACTION.NUMBER3 && player.buyPowerUp()) player.setStrategy(new SlowDownStrategy());
         else if (action == GUI.ACTION.MOUSE_PRESSED && actionBefore == GUI.ACTION.NONE) {
             movementPace.resetCounter();
             player.setMovement(new UpMovement());

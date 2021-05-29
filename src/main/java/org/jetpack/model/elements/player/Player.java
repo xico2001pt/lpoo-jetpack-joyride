@@ -42,7 +42,7 @@ public class Player extends Element {
         return true;
     }
 
-    public void setState(PlayerStrategy state) {
+    public void setStrategy(PlayerStrategy state) {
         setImage(state.getImage());
         this.state = state;
     }
