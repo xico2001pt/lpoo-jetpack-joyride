@@ -10,13 +10,14 @@ import java.io.IOException;
 class GameLoopTest {
 
     @Test
-    void run() throws IOException {
+    void runExit() throws IOException {
         LanternaGUI gui = Mockito.mock(LanternaGUI.class);
-        Mockito.when(gui.getNextAction()).thenReturn(GUI.ACTION.DOWN, GUI.ACTION.ENTER);
+        // Exit in menu, so it does not enter the game
+        Mockito.when(gui.getNextAction()).thenReturn(GUI.ACTION.DOWN, GUI.ACTION.DOWN, GUI.ACTION.ENTER);
 
         GameLoop gameLoop = new GameLoop(10, gui);
 
         gameLoop.run();
-        Mockito.verify(gui, Mockito.times(2)).getNextAction();
+        Mockito.verify(gui, Mockito.times(3)).getNextAction();
     }
 }
