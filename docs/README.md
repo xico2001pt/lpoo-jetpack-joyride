@@ -223,9 +223,130 @@ Our game uses a data class to store the image (structure) of the various element
 
 ## Testing
 
-> TODO
-
 ![](./testResults/tests.png)
+
+### Jqwik Tests
+
+```
+timestamp = 2021-05-30T17:39:04.095931900, PlayerTest:takeDamage = 
+                              |--------------------jqwik--------------------
+tries = 4                     | # of calls to property
+checks = 4                    | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = PREVIOUS_SEED | use the previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -4885071859622138674   | random seed to reproduce generated values
+
+
+timestamp = 2021-05-30T17:39:04.163935400, PlayerTest:addCoin = 
+                              |--------------------jqwik--------------------
+tries = 4                     | # of calls to property
+checks = 4                    | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = PREVIOUS_SEED | use the previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = 3423937253069352147    | random seed to reproduce generated values
+
+
+timestamp = 2021-05-30T17:39:04.311943200, PlayerTest:movement = 
+                              |--------------------jqwik--------------------
+tries = 6                     | # of calls to property
+checks = 6                    | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = PREVIOUS_SEED | use the previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = 3183002813649430711    | random seed to reproduce generated values
+
+
+timestamp = 2021-05-30T17:39:05.015078100, PaceTest:testUpdate = 
+                              |--------------------jqwik--------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = PREVIOUS_SEED | use the previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 64         | # of all combined edge cases
+edge-cases#tried = 64         | # of edge cases tried in current run
+seed = -4583084724403146003   | random seed to reproduce generated values
+
+
+timestamp = 2021-05-30T17:39:05.573118500, PositionTest:getIncrementedPosition = 
+                              |--------------------jqwik--------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = PREVIOUS_SEED | use the previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 729        | # of all combined edge cases
+edge-cases#tried = 172        | # of edge cases tried in current run
+seed = -7798245107177343178   | random seed to reproduce generated values
+
+
+timestamp = 2021-05-30T17:39:05.833137800, PositionTest:getDown = 
+                              |--------------------jqwik--------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = PREVIOUS_SEED | use the previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 81         | # of all combined edge cases
+edge-cases#tried = 79         | # of edge cases tried in current run
+seed = 6076542933718054498    | random seed to reproduce generated values
+
+
+timestamp = 2021-05-30T17:39:06.103162900, PositionTest:getLeft = 
+                              |--------------------jqwik--------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = PREVIOUS_SEED | use the previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 81         | # of all combined edge cases
+edge-cases#tried = 64         | # of edge cases tried in current run
+seed = -2617487701907794906   | random seed to reproduce generated values
+
+
+timestamp = 2021-05-30T17:39:06.248172700, PositionTest:getUp = 
+                              |--------------------jqwik--------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = PREVIOUS_SEED | use the previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 81         | # of all combined edge cases
+edge-cases#tried = 68         | # of edge cases tried in current run
+seed = 2281043458650245405    | random seed to reproduce generated values
+
+
+timestamp = 2021-05-30T17:39:06.468188600, PositionTest:getRight = 
+                              |--------------------jqwik--------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = PREVIOUS_SEED | use the previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 81         | # of all combined edge cases
+edge-cases#tried = 80         | # of edge cases tried in current run
+seed = 3203805707839883331    | random seed to reproduce generated values
+```
+
+
+
 ### Test Coverage
 
 > TODO
