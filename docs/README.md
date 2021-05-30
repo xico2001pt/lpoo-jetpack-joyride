@@ -385,3 +385,12 @@ seed = 3203805707839883331    | random seed to reproduce generated values
 ![](./testResults/pitest.png)
 
 [Link to the reports in HTML format](testResults/html/index.html)
+
+## Self-Evaluation
+
+|    Contributors     | Work Percentage |
+| :-----------------: | :-------------: |
+|   Adriano Soares    |       33%       |
+|   Catarina Pires    |       33%       |
+| Francisco Cerqueira |       33%       |
+
