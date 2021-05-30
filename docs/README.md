@@ -7,74 +7,73 @@ This project was developed by:
 
 ## Table of contents
 1. [Description](#description)
-2. [Implemented features](#implemented-features)
-3. [Planned features](#planned-features)
+2. [Implemented Features](#implemented-features)
+3. [Planned Features](#planned-features)
 4. [Design](#design)
     1. [Arena Builder](#i-arena-builder)
     2. [Game Loop](#ii-game-loop)
     3. [Movement Strategy](#iii-movement-strategy)
     4. [States](#iv-game-states)
     5. [Power Ups](#v-power-ups)
-5. [Code smells and refactoring techniques](#code-smells-and-refactoring-techniques)
+5. [Code Smells and Refactoring Techniques](#code-smells-and-refactoring-techniques)
 6. [Testing](#testing)
 
 ## Description
 
-In this game, the Player's primary goal is to travel as far as possible, while collecting coins to buy useful power-ups, and avoiding hazards such as Energy Walls and Laser Beams.
+In this game, the Player's primary goal is to travel as far as possible, while collecting coins to buy useful power-ups, and avoiding hazards such as Energy Walls and Laser Beams. The Menus are navigable with the `Keyboard Arrows` and `Enter Key`, while the Player is controlled with the `Left Mouse Button`.
 
 ![game](./images/game.gif)
 
 ### Power Ups
 
-**Immortal:**
+Throughout the game, when the Player has at least 10 coins, he can buy a power-up from the three available.
+
+#### Immortal `Number 1 Key`:
 
 ![immortal](./images/immortal.gif)
 
-**Double Coins:**
+#### Double Coins `Number 2 Key`:
 
 ![double-coins](./images/double-coins.gif)
 
-**Slow Down Effect:**
+#### Slow Down Effect `Number 3 Key`:
 
 ![slow-down](./images/slow-down.gif)
 
-## Implemented features
+## Implemented Features
 
 - [x] Movable Objects:
-  - [x] Player
-  - [x] Coins
-  - [x] Obstacles (Laser and EnergyWall)
+  - [x] [Player](../src/main/java/org/jetpack/model/elements/player/Player.java)
+  - [x] [Coins](../src/main/java/org/jetpack/model/elements/Coin.java)
+  - [x] [Obstacles](../src/main/java/org/jetpack/model/elements/obstacles)
 
-- [x] Arena Builder - we created a random arena builder (RandomArenaBuilder)
-- [x] Information bar - we created a window that has the player's information and, inside it, is the arena where the game runs
-- [x] Collisions - box and detailed image collision
+- [x] ArenaBuilder - a random arena builder for instance ([RandomArenaBuilder](../src/main/java/org/jetpack/model/arena/RandomArenaBuilder.java))
+- [x] Collisions - box collisions and detailed image collision ([CollisionController](../src/main/java/org/jetpack/controller/game/CollisionController.java))
 
-## Planned features
+## Planned Features
 
-- [x]  Objects:
+> **NOTE:** These features are now implemented!
+
+- [x]  Other Objects:
     - [x] Static obstacles
-    - [x] Obstacle with different movements
-
+    - [x] Obstacles with different movements
 - [x] Movements:
     - [x] Player falls with gravity
     - [x] Movements aside from going left (Obstacles)
-    
 - [x] Menus
     - [x] Main Menu
     - [x] Instructions Menu
     - [x] Pause Menu
-    - [x] GameOver Menu
-    
+    - [x] Game-Over Menu
 - [x] Levels:
     - [x] Increase the difficulty linearly throughout a play through
     - [x] Improve Random Infinite
     - [x] Score (Distance)
     - [x] Buy Power-up with coins
-    
 - [x] Power-ups:
-    - [x] Double coins
-    - [x] Shield
-    - [x] Slow down time
+    - [x] Immortal state
+    - [x] Double-coins
+    - [x] Slow-down effect
 
 ## Design
 ### i. Arena Builder
@@ -84,7 +83,7 @@ To allow the creation of an Arena of multiple ways, randomly or by reading it fr
 
 #### The pattern
 
-To solve this problem, we implemented a Factory Method that creates specific Arenas depending on the form of arena creation we want.
+To solve this problem, we implemented a Factory Method that creates specific Arenas depending on the sort of arena creation we want.
 
 #### Implementation
 
@@ -121,7 +120,7 @@ These classes can be found in the following files:
 
 #### Consequences
 
-The Game Loop pattern allow us to have more control in the way the game runs and separate each processing.
+The Game Loop pattern allow us to have more control in the way the game runs and separate each processing required by the game.
 
 ### iii. Movement Strategy
 
@@ -132,7 +131,7 @@ This information could be placed in model, in each object's class, but this shou
 
 #### The pattern
 
-To solve this problem we used the Strategy Pattern. This pattern allows us to isolate the distinct movements into classes away from the object, making them interchangeable. With this, we are able to separate the movement algorithm from the objects, so we can easily switch their behaviors and add new ones.
+To solve this problem we used the Strategy Pattern. This pattern allows us to isolate the distinct movements into classes away from the object, making them interchangeable. With this, we are able to separate the movement algorithm from the objects, so we can easily switch their behaviors and add new ones. The *Element* stores the *MovementStrategy* and reacts accordingly.
 
 #### Implementation
 
@@ -152,11 +151,11 @@ With this pattern, we can eliminate the possibility of differentiating each beha
 ### iv. Game States
 #### Problem in context
 
-We wanted to switch from different states smoothly as the game proceeded, from the Menus to the Game for instance.
+We wanted to switch from different states smoothly as the game proceeded, transitioning from the Menus to the Game for instance.
 
 #### The pattern
 
-To implement the different states of the game, as the name implies, we used the State Pattern. This pattern allows the implementation of each state as subclass. By doing so, we can switch from different states only by switching to another class/state. Each state has a controller and a viewer, the controller is responsible to transit from one state to another, as the design pattern implies.
+To implement the different states of the game, as the name implies, we used the State Pattern. This pattern allows the implementation of each state as subclass. By doing so, we can switch from different states only by switching to another class/state. Each state has a controller and a viewer, the controller is responsible to transit from one state to another, as the design pattern explicitly requires.
 
 #### Implementation
 
