@@ -84,7 +84,7 @@ To allow the creation of an Arena of multiple ways, randomly or by reading it fr
 
 #### The pattern
 
-To solve this problem, we implemented a Factory Method that creates specific Arenas depending on the what form of arena creation we want.
+To solve this problem, we implemented a Factory Method that creates specific Arenas depending on the form of arena creation we want.
 
 #### Implementation
 
@@ -107,8 +107,6 @@ The pattern Game Loop runs continuously during the gameplay. Each turn it proces
 
 #### Implementation
 
-To implement the Game Loop pattern we created a class, *GameLoop*, that contains the three main methods stated above, and some other utility functions.
-
 ![](./images/game_loop.png)
 
 #### Consequences
@@ -120,7 +118,7 @@ The Game Loop pattern allow us to have more control in the way the game runs and
 #### Problem in context
 
 In order for the objects to have different types of movement, we needed to specify their movement.
-This information could be placed in model, in each object's class, but this shouldn't be a concern to the element, hence why we implemented this design pattern.
+This information could be placed in model, in each object's class, but this shouldn't be a concern to the element, it would be a violation of the Single Responsibility Principle, hence why we implemented this design pattern.
 
 #### The pattern
 
@@ -132,16 +130,16 @@ To solve this problem we used the Strategy Pattern. This pattern allows us to is
 
 #### Consequences
 
-With this pattern, we can eliminate the possibility of differentiating each behavior with conditional statements and substitute them with classes that have different implementation accordingly. Each object does not have to know its type of movement.
+With this pattern, we can eliminate the possibility of differentiating each behavior with conditional statements and substitute them with classes that have different implementation accordingly. Each object doesn't have to know its type of movement.
 
 ### iv. Game States
 #### Problem in context
 
-We wanted to switch from different states smoothly as the game proceeded, from the Menus to the Game itself for instance.
+We wanted to switch from different states smoothly as the game proceeded, from the Menus to the Game for instance.
 
 #### The pattern
 
-To implement the different states of the game, as the name implies, we used the State Pattern. This pattern allows the implementation of each state as subclass. If so, we can switch from different states only by switching to another class/state.
+To implement the different states of the game, as the name implies, we used the State Pattern. This pattern allows the implementation of each state as subclass. By doing so, we can switch from different states only by switching to another class/state. Each state has a controller that regulates the switching of the states with the GameLoop has the context/model.
 
 #### Implementation
 
@@ -160,7 +158,7 @@ The player should have different attributes/stats/power-ups throughout the cours
 
 #### The pattern
 
-To implement the power-ups we used the Strategy Pattern. This pattern consists on creating an Interface (or an abstract class), *PlayerState* in our case, and implementing it accordingly in the various power-ups that we want  to feature. The Player class stores the state and changes it's behavior according to it.
+To implement the power-ups we used the Strategy Pattern. This pattern consists on creating an Interface (or an abstract class), *PlayerStrategy* in our case, and implementing it accordingly in the various power-ups that we want  to feature. The Player class stores the strategy and changes it's behavior according to it.
 
 #### Implementation
 
@@ -168,8 +166,8 @@ To implement the power-ups we used the Strategy Pattern. This pattern consists o
 
 #### Consequences
 
-With this pattern we can interchange *powerUps*/*playerStates* easily. We can separate the Player from the State, since it doesn't need to know it's behavior, leaving the responsibility to the state itself.
-We wanted to change the Player's appearance depending on the state it encounters itself in, this resulted in a minor inconvenience: since we save the Image of a certain Element in the model itself we found ourselves obligated to save the Image in the State. On the other hand, this eases the implementation of this feature, and, in our opinion, enhances the readability of the code.
+With this pattern we can interchange *powerUps*/*playerStrategies* easily. We can separate the Player from the Strategy, since it doesn't need to know it's behavior, leaving the responsibility to the state itself.
+We wanted to change the Player's appearance depending on the strategy it encounters itself in, this resulted in a minor inconvenience: since we save the Image of a certain Element in the model itself we found ourselves obligated to save the Image in the Strategy. On the other hand, this eases the implementation of this feature, and, in our opinion, enhances the readability of the code.
 
 ## Code smells and refactoring techniques
 
