@@ -17,6 +17,7 @@ This project was developed by:
     5. [Power Ups](#v-power-ups)
 5. [Code Smells and Refactoring Techniques](#code-smells-and-refactoring-techniques)
 6. [Testing](#testing)
+7. [Self-evaluation](#self-evaluation)
 
 ## Description
 
@@ -386,7 +387,7 @@ seed = 3203805707839883331    | random seed to reproduce generated values
 
 [Link to the reports in HTML format](testResults/html/index.html)
 
-## Self-Evaluation
+## Self-evaluation
 
 |    Contributors     | Work Percentage |
 | :-----------------: | :-------------: |
