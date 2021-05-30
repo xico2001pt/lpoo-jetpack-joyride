@@ -32,4 +32,6 @@ application {
 
 pitest {
     junit5PluginVersion = '0.12'
+    excludedClasses = ['org.jetpack.gui.*', 'org.jetpack.viewer.*', 'org.jetpack.model.elements.obstacles.*',
+                       'org.jetpack.Game', 'org.jetpack.model.ImageLibrary']
 }
