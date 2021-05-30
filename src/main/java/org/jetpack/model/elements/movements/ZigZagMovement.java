@@ -4,8 +4,8 @@ import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
 
 public class ZigZagMovement extends MovementStrategy {
-    private boolean up;
-    private int counter;
+    private boolean up;     // True if obstacle is going up, false if going down
+    private int counter;    // Timer Counter
 
     public ZigZagMovement() {
         this.up = true;

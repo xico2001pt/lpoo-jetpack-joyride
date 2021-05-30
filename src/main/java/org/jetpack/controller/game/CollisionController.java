@@ -31,6 +31,8 @@ public final class CollisionController {
         Matrix<CharColor> imageA = a.getImage();
         Matrix<CharColor> imageB = b.getImage();
 
+        // Adjusting coordinates to the common area between the two image boxes
+        // To minimize the number of checks
         int xMin = max(a.getPosition().getX(), b.getPosition().getX());
         int xMax = min(a.getPosition().getX() + imageA.getNumberCol(), b.getPosition().getX() + imageB.getNumberCol());
         int yMin = max(a.getPosition().getY(), b.getPosition().getY());
