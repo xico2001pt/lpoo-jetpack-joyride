@@ -46,7 +46,7 @@ public class PlayerController extends GameController {
         }
 
         if (action == GUI.ACTION.NUMBER1 || action == GUI.ACTION.NUMBER2 || action == GUI.ACTION.NUMBER3)
-            powerUpCounter = player.getState().getDuration();
+            powerUpCounter = player.getStrategy().getDuration();
 
 
         for (long i = movementPace.update(elapsed); i > 0; --i)

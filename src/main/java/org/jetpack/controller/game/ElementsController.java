@@ -36,8 +36,8 @@ public class ElementsController extends GameController {
 
         this.slowDownCounter -= elapsed;
 
-        if (action == GUI.ACTION.NUMBER3 && getModel().getPlayer().getState() instanceof SlowDownStrategy) {
-            slowDownCounter = getModel().getPlayer().getState().getDuration();
+        if (action == GUI.ACTION.NUMBER3 && getModel().getPlayer().getStrategy() instanceof SlowDownStrategy) {
+            slowDownCounter = getModel().getPlayer().getStrategy().getDuration();
             this.movementPeriodBackup = movementPace.getPeriod();
             movementPace.setPeriod(MAX_PERIOD);
         }

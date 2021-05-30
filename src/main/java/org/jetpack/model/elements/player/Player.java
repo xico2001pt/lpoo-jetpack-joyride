@@ -10,13 +10,13 @@ public class Player extends Element {
     private static final int POWER_UP_COST = 10;
     private int lives;
     private int nCoins;
-    private PlayerStrategy state;
+    private PlayerStrategy strategy;
 
     public Player(Position position) {
         super(position, ImageLibrary.getPlayerImage());
         this.lives = 3;
         this.nCoins = 0;
-        this.state = new NormalStrategy();
+        this.strategy = new NormalStrategy();
         setMovement(new DownMovement());
     }
 
@@ -25,7 +25,7 @@ public class Player extends Element {
     }
 
     public void takeDamage() {
-        lives -= state.damageTaken();
+        lives -= strategy.damageTaken();
     }
 
     public int getCoins() {
@@ -33,7 +33,7 @@ public class Player extends Element {
     }
 
     public void addCoin() {
-        nCoins += state.coinTaken();
+        nCoins += strategy.coinTaken();
     }
 
     public boolean buyPowerUp() {
@@ -44,11 +44,11 @@ public class Player extends Element {
 
     public void setStrategy(PlayerStrategy state) {
         setImage(state.getImage());
-        this.state = state;
+        this.strategy = state;
     }
     
-    public PlayerStrategy getState() {
-        return this.state;
+    public PlayerStrategy getStrategy() {
+        return this.strategy;
     }
 
     @Override
