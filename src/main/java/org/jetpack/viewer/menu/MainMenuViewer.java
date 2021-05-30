@@ -23,11 +23,10 @@ public class MainMenuViewer extends Viewer<MainMenu> {
         gui.drawFillRectangle(new Position(1,1), new Dimension(gui.getTerminalWidth() - 2,
                 gui.getTerminalHeight() - 2), ColorDatabase.DARK_GRAY.getName());
 
-        gui.drawImage(new Position(center.getX() - 6, center.getY() - 5), ImageLibrary.getJetpackJoyrideImage());
+        gui.drawImage(new Position(center.getX() - 6, center.getY() - 6), ImageLibrary.getJetpackJoyrideImage());
 
         for (int i = 0; i < getModel().getNumberEntries(); i++)
-            gui.drawText(new Position(center.getX() - getModel().getEntry(i).length()/2
-                            , center.getY() + i), getModel().getEntry(i),
+            gui.drawText(new Position(center.getX() - 6, center.getY() + 2*i), getModel().getEntry(i),
                     getModel().isSelected(i) ? ColorDatabase.WHITE.getName() : ColorDatabase.LIGHT_GRAY.getName());
     }
 }
