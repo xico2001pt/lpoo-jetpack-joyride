@@ -93,10 +93,10 @@ To implement the Factory Method we created an abstract class, *ArenaBuilder*, th
 ![](./images/factory_pattern.png)
 
 These classes can be found in the following files:
-- [ArenaBuilder](src/main/java/org/jetpack/model/arena/ArenaBuilder.java)
-- [RandomArenaBuilder](src/main/java/org/jetpack/model/arena/RandomArenaBuilder.java)
-- [Arena](src/main/java/org/jetpack/model/arena/Arena.java)
-- [ArenaController](src/main/java/org/jetpack/controller/game/ArenaController.java)
+- [ArenaBuilder](../src/main/java/org/jetpack/model/arena/ArenaBuilder.java)
+- [RandomArenaBuilder](../src/main/java/org/jetpack/model/arena/RandomArenaBuilder.java)
+- [Arena](../src/main/java/org/jetpack/model/arena/Arena.java)
+- [ArenaController](../src/main/java/org/jetpack/controller/game/ArenaController.java)
 
 #### Consequences
 
@@ -116,8 +116,8 @@ The pattern Game Loop runs continuously during the gameplay. Each turn it proces
 ![](./images/game_loop.png)
 
 These classes can be found in the following files:
-- [Game](src/main/java/org/jetpack/Game.java)
-- [GameLoop](src/main/java/org/jetpack/controller/GameLoop.java)
+- [Game](../src/main/java/org/jetpack/Game.java)
+- [GameLoop](../src/main/java/org/jetpack/controller/GameLoop.java)
 
 #### Consequences
 
@@ -139,11 +139,11 @@ To solve this problem we used the Strategy Pattern. This pattern allows us to is
 ![](./images/strategy_pattern_movements.png)
 
 These classes can be found in the following files:
-- [Element](src/main/java/org/jetpack/model/elements/Element.java)
-- [MovementStrategy](src/main/java/org/jetpack/model/elements/movements/MovementStrategy.java)
-- [ZigZagMovement](src/main/java/org/jetpack/model/elements/movements/ZigZagMovement.java)
-- [UpMovement](src/main/java/org/jetpack/model/elements/movements/UpMovement.java)
-- [DownMovement](src/main/java/org/jetpack/model/elements/movements/DownMovement.java)
+- [Element](../src/main/java/org/jetpack/model/elements/Element.java)
+- [MovementStrategy](../src/main/java/org/jetpack/model/elements/movements/MovementStrategy.java)
+- [ZigZagMovement](../src/main/java/org/jetpack/model/elements/movements/ZigZagMovement.java)
+- [UpMovement](../src/main/java/org/jetpack/model/elements/movements/UpMovement.java)
+- [DownMovement](../src/main/java/org/jetpack/model/elements/movements/DownMovement.java)
 
 #### Consequences
 
@@ -163,10 +163,10 @@ To implement the different states of the game, as the name implies, we used the 
 ![](./images/state_pattern.png)
 
 These classes can be found in the following files:
-- [GameLoop](src/main/java/org/jetpack/controller/GameLoop.java)
-- [State](src/main/java/org/jetpack/states/State.java)
-- [MainMenuState](src/main/java/org/jetpack/states/MainMenuState.java)
-- [ArenaState](src/main/java/org/jetpack/states/ArenaState.java)
+- [GameLoop](../src/main/java/org/jetpack/controller/GameLoop.java)
+- [State](../src/main/java/org/jetpack/states/State.java)
+- [MainMenuState](../src/main/java/org/jetpack/states/MainMenuState.java)
+- [ArenaState](../src/main/java/org/jetpack/states/ArenaState.java)
 
 #### Consequences
 
@@ -188,12 +188,12 @@ To implement the power-ups we used the Strategy Pattern. This pattern consists o
 ![](./images/strategy_pattern_powerups.png)
 
 These classes can be found in the following files:
-- [Player](src/main/java/org/jetpack/model/elements/player/Player.java)
-- [PlayerStrategy](src/main/java/org/jetpack/model/elements/player/playerStrategies/DoubleCoinStrategy.java)
-- [DoubleCoinStrategy](src/main/java/org/jetpack/model/elements/player/playerStrategies/DoubleCoinStrategy.java)
-- [SlowDownStrategy](src/main/java/org/jetpack/model/elements/player/playerStrategies/SlowDownStrategy.java)
-- [ImmortalStrategy](src/main/java/org/jetpack/model/elements/player/playerStrategies/ImmortalStrategy.java)
-- [NormalStrategy](src/main/java/org/jetpack/model/elements/player/playerStrategies/NormalStrategy.java)
+- [Player](../src/main/java/org/jetpack/model/elements/player/Player.java)
+- [PlayerStrategy](../src/main/java/org/jetpack/model/elements/player/playerStrategies/DoubleCoinStrategy.java)
+- [DoubleCoinStrategy](../src/main/java/org/jetpack/model/elements/player/playerStrategies/DoubleCoinStrategy.java)
+- [SlowDownStrategy](../src/main/java/org/jetpack/model/elements/player/playerStrategies/SlowDownStrategy.java)
+- [ImmortalStrategy](../src/main/java/org/jetpack/model/elements/player/playerStrategies/ImmortalStrategy.java)
+- [NormalStrategy](../src/main/java/org/jetpack/model/elements/player/playerStrategies/NormalStrategy.java)
 
 #### Consequences
 
@@ -206,11 +206,11 @@ We wanted to change the Player's appearance depending on the strategy it encount
 
 #### Primitive Obsession and Data Clump
 
-- [x] Currently, the size of the arena is represented as two integers, which are used several times in different parts of the code. This code smell can be fixed by creating a class which will be responsible for managing these variables.
+- [x] The size of the arena was represented as two integers, which are used several times in different parts of the code. This code smell was fixed by using a class Dimension which is responsible for managing these variables.
 
 #### Long Parameter List
 
-- [x]  The method checkBoxCollision() has eight arguments, receiving two points and two dimensions. This issue can be solved by changing the given parameters to classes that'll group the variables.
+- [x]  The method *checkBoxCollision*([CollisionController](../src/main/java/org/jetpack/controller/game/CollisionController.java)) has eight arguments, receiving two points and two dimensions. This issue can be solved by changing the given parameters to classes that'll group the variables. ([Position](../src/main/java/org/jetpack/model/Position.java))
 
 ### Object-Orientation Abusers
 
@@ -222,7 +222,7 @@ The method responsible to interpret the user's input has a lot of if statements 
 
 #### Parallel Inheritance Hierarchies
 
-As we are using the MVC architecture, this implies that almost every object from the Model should have a controller and viewer class. Each game state also need to have a correspondent controller and viewer. We thought a lot about this code smell and we haven't encountered an easy fix for this problem without violating the SOLID principles yet.
+As we are using the MVC architecture, this implies that almost every object from the Model should have a controller and viewer class. Each game state also need to have a correspondent controller and viewer. We thought a lot about this code smell and we haven't encountered an easy fix for this problem without violating the SOLID principles.
 
 ### Dispensables
 
@@ -233,12 +233,14 @@ As we are using the MVC architecture, this implies that almost every object from
 
 #### Duplicate Code
 
-- [x] Currently, we have a method that has a lot of code fragments which are identical, as we are still thinking about the structure of that specific part. We think that this can be fixed improving the code structure and creating generic methods. 
+- [x] We had a method that has a lot of code fragments which are identical, as we were still thinking about the structure of that specific part. We thought that this could be fixed by improving the code structure and creating generic methods. 
+So, we created a class with only static methods that detects all the collisions (images, elements and boxes) ([CollisionController](../src/main/java/org/jetpack/controller/game/CollisionController.java)).
 
 
 #### Data Class
 
-Our game uses a data class to store the image (structure) of the various elements. We think that with this singleton our code is more organized.
+Our game uses data classes to store the image (structure) of the various elements and some useful colors ([ImageLibrary](../src/main/java/org/jetpack/model/elements/ImageLibrary.java) and [ColorDatabase](../src/main/java/org/jetpack/gui/ColorDatebase.java)).
+We think that with this singleton our code is more organized.
 
 #### Speculative Generality
 
@@ -250,6 +252,7 @@ Our game uses a data class to store the image (structure) of the various element
 #### Message Chains
 
 - [x] The *WindowViewer* class calls methods of the *ArenaViewer* class, that will call some other methods of the *ElementViewer* class. This is a chain of calls that we would like to improve and simplify until the final delivery, by reviewing the structure of the code.
+We simplified it by eliminating the WindowViewer as it didn't have a strong purpose and moved the display of the information bar to the ArenaViewer.
 
 
 ## Testing
