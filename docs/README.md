@@ -139,7 +139,7 @@ We wanted to switch from different states smoothly as the game proceeded, from t
 
 #### The pattern
 
-To implement the different states of the game, as the name implies, we used the State Pattern. This pattern allows the implementation of each state as subclass. By doing so, we can switch from different states only by switching to another class/state. Each state has a controller that regulates the switching of the states with the GameLoop has the context/model.
+To implement the different states of the game, as the name implies, we used the State Pattern. This pattern allows the implementation of each state as subclass. By doing so, we can switch from different states only by switching to another class/state. Each state has a controller and a viewer, the controller is responsible to transit from one state to another, as the design pattern implies.
 
 #### Implementation
 
@@ -345,14 +345,10 @@ edge-cases#tried = 80         | # of edge cases tried in current run
 seed = 3203805707839883331    | random seed to reproduce generated values
 ```
 
-
-
 ### Test Coverage
 
-> TODO
-
-![](./testResults/test_coverage.png)
+![](./testResults/coverage_tests.png)
 
 ![](./testResults/pitest.png)
 
-[Link to the reports in HTML format](testResults/html)
+[Link to the reports in HTML format](testResults/html/index.html)
