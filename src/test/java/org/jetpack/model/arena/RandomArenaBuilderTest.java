@@ -1,5 +1,7 @@
 package org.jetpack.model.arena;
 
+import org.jetpack.model.elements.Coin;
+import org.jetpack.model.elements.obstacles.Obstacle;
 import org.jetpack.model.elements.player.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,12 +37,18 @@ class RandomArenaBuilderTest {
     void getCoins() {
         builder.incrementInstant(2000);
         assertTrue(builder.getCoins().size() > 0);
+        for (Coin coin : builder.getCoins()) {
+            assert(coin != null);
+        }
     }
 
     @Test
     void getObstacles() {
         builder.incrementInstant(2000);
         assertTrue(builder.getObstacles().size() > 0);
+        for (Obstacle obstacle : builder.getObstacles()) {
+            assert(obstacle != null);
+        }
     }
 
     @Test

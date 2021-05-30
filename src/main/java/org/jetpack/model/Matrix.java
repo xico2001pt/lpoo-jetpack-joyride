@@ -35,13 +35,4 @@ public class Matrix<T> {
     public int getNumberCol() {
         return matrix.get(0).size();
     }
-
-    public void print() {
-        for (List<T> list : this.matrix) {
-            for (T v : list) {
-                System.out.print(v + " ");
-            }
-            System.out.println();
-        }
-    }
 }
