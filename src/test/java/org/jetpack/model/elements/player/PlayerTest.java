@@ -3,6 +3,10 @@ package org.jetpack.model.elements.player;
 import net.jqwik.api.*;
 import net.jqwik.api.constraints.Positive;
 import org.jetpack.model.Position;
+import org.jetpack.model.arena.Arena;
+import org.jetpack.model.arena.ArenaBuilder;
+import org.jetpack.model.arena.RandomArenaBuilder;
+import org.jetpack.model.elements.movements.*;
 import org.jetpack.model.elements.player.playerStrategies.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -52,9 +56,28 @@ class PlayerTest {
         assertEquals(player.getCoins() - strategy.coinTaken(), initialCoins);
     }
 
+    @Property
+    void movement(@ForAll("getMovement") MovementStrategy strategy) {
+        ArenaBuilder builder = new RandomArenaBuilder(10,10);
+        Arena arena = builder.createArena();
+
+        Player player = arena.getPlayer();
+        Position initial = player.getPosition();
+        player.setMovement(strategy);
+        player.setPosition(player.getMovement().move(player.getPosition(), arena));
+
+        assertEquals(player.getPosition(), initial.getIncrementedPosition(player.getMovement().move(initial, arena)));
+    }
+
     @Provide
     Arbitrary<PlayerStrategy> getStrategy() {
         return Arbitraries.of(new DoubleCoinsStrategy(), new ImmortalStrategy(), new NormalStrategy(),
                 new SlowDownStrategy());
+    }
+
+    @Provide
+    Arbitrary<MovementStrategy> getMovement() {
+        return Arbitraries.of(new DownMovement(), new LinearMovement(), new StaticMovement(), new UpMovement(),
+                new MissileMovement(), new ZigZagMovement());
     }
 }
