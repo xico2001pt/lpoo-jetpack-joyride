@@ -32,7 +32,7 @@ public class InstructionsMenuViewer extends Viewer<InstructionsMenu> {
         gui.drawText(new Position(4, 11), "SLOW-DOWN    number 3", ColorDatabase.WHITE.getName());
         gui.drawText(new Position(center.getX() - 9, 14), "10 COINS = 10 SECS", ColorDatabase.WHITE.getName());
 
-        gui.drawText(new Position(gui.getTerminalWidth() - 6, gui.getTerminalHeight() - 3), getModel().getEntry(0),
-                ColorDatabase.WHITE.getName());
+        gui.drawText(new Position(gui.getTerminalWidth() - 6, gui.getTerminalHeight() - 3),
+                getModel().getEntry(0), ColorDatabase.WHITE.getName());
     }
 }

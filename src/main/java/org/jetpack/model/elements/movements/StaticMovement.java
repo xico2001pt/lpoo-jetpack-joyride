@@ -4,7 +4,7 @@ import org.jetpack.model.Position;
 import org.jetpack.model.arena.Arena;
 
 public class StaticMovement extends MovementStrategy {
-    private int counter;
+    private int counter;    // Timer counter
 
     public StaticMovement() {
         this.counter = 0;

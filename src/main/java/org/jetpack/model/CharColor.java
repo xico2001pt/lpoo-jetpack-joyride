@@ -1,8 +1,8 @@
 package org.jetpack.model;
 
 public class CharColor {
-    private Character character;
-    private String color;
+    private final Character character;
+    private final String color;
 
     public CharColor(Character character, String color) {
         this.character = character;

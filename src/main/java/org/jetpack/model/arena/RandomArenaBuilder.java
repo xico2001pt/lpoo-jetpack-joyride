@@ -87,6 +87,7 @@ public class RandomArenaBuilder extends ArenaBuilder {
     private Obstacle generateObstacle() {
         int type = rng.nextInt(10);
 
+        // Different probabilities to generate each obstacle
         switch (type) {
             case 0: case 1: case 2:
                 return new Laser(new Position(getWidth(),
@@ -102,8 +103,9 @@ public class RandomArenaBuilder extends ArenaBuilder {
                         rng.nextInt(getHeight() - ImageLibrary.getZigZagImage().getNumberRows())));
             case 9:
                 return new StaticLaser(new Position(getWidth(),
-                        rng.nextInt(getHeight() - ImageLibrary.getStaticLaserImage(new Dimension(getWidth(), 1)).getNumberRows())),
-                        new Dimension(getWidth(), 1));
+                        rng.nextInt(getHeight() -
+                                ImageLibrary.getStaticLaserImage(new Dimension(getWidth(), 1)).getNumberRows())),
+                                    new Dimension(getWidth(), 1));
         }
 
         return null;

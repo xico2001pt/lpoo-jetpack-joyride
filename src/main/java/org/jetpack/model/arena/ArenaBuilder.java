@@ -10,7 +10,6 @@ import java.util.List;
 
 public abstract class ArenaBuilder {
     private final Dimension dimension;
-
     private long instant;
     protected float timeCoefficient;
 

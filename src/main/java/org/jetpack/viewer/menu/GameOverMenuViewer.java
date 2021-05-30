@@ -22,8 +22,10 @@ public class GameOverMenuViewer extends Viewer<GameOverMenu> {
         gui.drawFillRectangle(new Position(1,1), new Dimension(gui.getTerminalWidth() - 2,
                 gui.getTerminalHeight() - 2), ColorDatabase.DARK_GRAY.getName());
 
-        gui.drawText(new Position(center.getX() - 7, center.getY() - 4), "-- GAMEOVER --", ColorDatabase.GOLD.getName());
-        gui.drawText(new Position(center.getX() - 5, center.getY() - 1), "SCORE: ", ColorDatabase.WHITE.getName());
+        gui.drawText(new Position(center.getX() - 7, center.getY() - 4), "-- GAMEOVER --",
+                ColorDatabase.GOLD.getName());
+        gui.drawText(new Position(center.getX() - 5, center.getY() - 1), "SCORE: ",
+                ColorDatabase.WHITE.getName());
         gui.drawText(new Position(center.getX() + 2, center.getY() - 1), String.valueOf(getModel().getScore()),
                 ColorDatabase.RED.getName());
 

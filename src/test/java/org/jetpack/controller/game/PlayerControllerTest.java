@@ -36,7 +36,6 @@ class PlayerControllerTest {
 
     @Test
     void updateUp() {
-
         // Initialize actionBefore as NONE
         controller.update(gameLoop, GUI.ACTION.NONE, 0);
         controller.update(gameLoop, GUI.ACTION.MOUSE_PRESSED, 200);
