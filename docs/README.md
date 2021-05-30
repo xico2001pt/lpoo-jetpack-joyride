@@ -19,9 +19,24 @@ This project was developed by:
 6. [Testing](#testing)
 
 ## Description
-In this game, the Player's primary goal is to travel as far as possible, while collecting coins, and avoiding hazards such as Energy Walls and Laser Beams.
 
-![](./images/gameplay.gif)
+In this game, the Player's primary goal is to travel as far as possible, while collecting coins to buy useful power-ups, and avoiding hazards such as Energy Walls and Laser Beams.
+
+![game](./images/game.gif)
+
+### Power Ups
+
+**Immortal:**
+
+![immortal](./images/immortal.gif)
+
+**Double Coins:**
+
+![double-coins](./images/double-coins.gif)
+
+**Slow Down Effect:**
+
+![slow-down](./images/slow-down.gif)
 
 ## Implemented features
 
