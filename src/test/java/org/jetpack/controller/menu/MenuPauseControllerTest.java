@@ -21,6 +21,8 @@ class MenuPauseControllerTest {
     @BeforeEach
     void setUp() {
         gui = Mockito.mock(LanternaGUI.class);
+        Mockito.when(gui.getTerminalWidth()).thenReturn(30);
+        Mockito.when(gui.getTerminalHeight()).thenReturn(20);
         gameLoop = new GameLoop(10, gui);
     }
 

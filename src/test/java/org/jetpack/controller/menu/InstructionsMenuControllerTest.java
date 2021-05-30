@@ -18,6 +18,9 @@ class InstructionsMenuControllerTest {
     @Test
     void transitionToMainMenu() throws IOException {
         GUI gui = Mockito.mock(LanternaGUI.class);
+        Mockito.when(gui.getTerminalWidth()).thenReturn(30);
+        Mockito.when(gui.getTerminalHeight()).thenReturn(20);
+
         GameLoop gameLoop = new GameLoop(10, gui);
         gameLoop.setState(new InstructionsMenuState(new InstructionsMenu()));
 

@@ -23,7 +23,7 @@ class MainMenuControllerTest {
     void setUp() {
         gui = Mockito.mock(LanternaGUI.class);
         Mockito.when(gui.getTerminalWidth()).thenReturn(30);
-        Mockito.when(gui.getTerminalHeight()).thenReturn(30);
+        Mockito.when(gui.getTerminalHeight()).thenReturn(20);
         gameLoop = new GameLoop(10, gui);
         // Just reassuring
         gameLoop.setState(new MainMenuState(new MainMenu()));
@@ -48,5 +48,6 @@ class MainMenuControllerTest {
         Mockito.when(gui.getNextAction()).thenReturn(GUI.ACTION.DOWN, GUI.ACTION.DOWN, GUI.ACTION.ENTER);
         gameLoop.run();
         assertTrue(gameLoop.getState() instanceof MainMenuState);
+        Mockito.verify(gui, Mockito.times(1)).close();
     }
 }

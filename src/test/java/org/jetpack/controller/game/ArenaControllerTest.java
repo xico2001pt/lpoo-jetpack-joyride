@@ -8,6 +8,7 @@ import org.jetpack.model.arena.ArenaBuilder;
 import org.jetpack.model.elements.Coin;
 import org.jetpack.model.elements.player.Player;
 import org.jetpack.model.elements.obstacles.Laser;
+import org.jetpack.states.GameOverMenuState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -74,5 +75,25 @@ class ArenaControllerTest {
 
         assertEquals(arena.getPlayer().getLives(), initial_lives);
         assertEquals(arena.getPlayer().getCoins(), initial_coins);
+    }
+
+    @Test
+    void losePlayer() {
+        arena.getPlayer().takeDamage();
+        arena.getPlayer().takeDamage();
+        arena.getPlayer().takeDamage();
+
+        assertEquals(arena.getPlayer().getLives(), 0);
+
+        ArenaController controller = new ArenaController(arena);
+        controller.update(gameLoop, GUI.ACTION.NONE, 1);
+        Mockito.verify(gameLoop, Mockito.times(1)).setState(Mockito.any(GameOverMenuState.class));
+    }
+
+    @Test
+    void quitPlayer() {
+        ArenaController controller = new ArenaController(arena);
+        controller.update(gameLoop, GUI.ACTION.QUIT, 1);
+        Mockito.verify(gameLoop, Mockito.times(1)).stop();
     }
 }
