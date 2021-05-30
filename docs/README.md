@@ -93,10 +93,10 @@ To implement the Factory Method we created an abstract class, *ArenaBuilder*, th
 ![](./images/factory_pattern.png)
 
 These classes can be found in the following files:
-- [ArenaBuilder](src/main/java/org.jetpack/model/arena/ArenaBuilder.java)
-- [RandomArenaBuilder](src/main/java/org.jetpack/model/arena/RandomArenaBuilder.java)
-- [Arena](src/main/java/org.jetpack/model/arena/Arena.java)
-- [ArenaController](src/main/java/org.jetpack/controller/game/ArenaController.java)
+- [ArenaBuilder](src/main/java/org/jetpack/model/arena/ArenaBuilder.java)
+- [RandomArenaBuilder](src/main/java/org/jetpack/model/arena/RandomArenaBuilder.java)
+- [Arena](src/main/java/org/jetpack/model/arena/Arena.java)
+- [ArenaController](src/main/java/org/jetpack/controller/game/ArenaController.java)
 
 #### Consequences
 
@@ -116,8 +116,8 @@ The pattern Game Loop runs continuously during the gameplay. Each turn it proces
 ![](./images/game_loop.png)
 
 These classes can be found in the following files:
-- [Game](src/main/java/org.jetpack/Game.java)
-- [GameLoop](src/main/java/org.jetpack/controller/GameLoop.java)
+- [Game](src/main/java/org/jetpack/Game.java)
+- [GameLoop](src/main/java/org/jetpack/controller/GameLoop.java)
 
 #### Consequences
 
@@ -139,11 +139,11 @@ To solve this problem we used the Strategy Pattern. This pattern allows us to is
 ![](./images/strategy_pattern_movements.png)
 
 These classes can be found in the following files:
-- [Element](src/main/java/org.jetpack/model/elements/Element.java)
-- [MovementStrategy](src/main/java/org.jetpack/model/elements/movements/MovementStrategy.java)
-- [ZigZagMovement](src/main/java/org.jetpack/model/elements/movements/ZigZagMovement.java)
-- [UpMovement](src/main/java/org.jetpack/model/elements/movements/UpMovement.java)
-- [DownMovement](src/main/java/org.jetpack/model/elements/movements/DownMovement.java)
+- [Element](src/main/java/org/jetpack/model/elements/Element.java)
+- [MovementStrategy](src/main/java/org/jetpack/model/elements/movements/MovementStrategy.java)
+- [ZigZagMovement](src/main/java/org/jetpack/model/elements/movements/ZigZagMovement.java)
+- [UpMovement](src/main/java/org/jetpack/model/elements/movements/UpMovement.java)
+- [DownMovement](src/main/java/org/jetpack/model/elements/movements/DownMovement.java)
 
 #### Consequences
 
@@ -163,10 +163,10 @@ To implement the different states of the game, as the name implies, we used the 
 ![](./images/state_pattern.png)
 
 These classes can be found in the following files:
-- [GameLoop](src/main/java/org.jetpack/controller/GameLoop.java)
-- [State](src/main/java/org.jetpack/states/State.java)
-- [MainMenuState](src/main/java/org.jetpack/states/MainMenuState.java)
-- [ArenaState](src/main/java/org.jetpack/states/ArenaState.java)
+- [GameLoop](src/main/java/org/jetpack/controller/GameLoop.java)
+- [State](src/main/java/org/jetpack/states/State.java)
+- [MainMenuState](src/main/java/org/jetpack/states/MainMenuState.java)
+- [ArenaState](src/main/java/org/jetpack/states/ArenaState.java)
 
 #### Consequences
 
@@ -188,12 +188,12 @@ To implement the power-ups we used the Strategy Pattern. This pattern consists o
 ![](./images/strategy_pattern_powerups.png)
 
 These classes can be found in the following files:
-- [Player](src/main/java/org.jetpack/model/elements/player/Player.java)
-- [PlayerStrategy](src/main/java/org.jetpack/model/elements/player/playerStrategies/DoubleCoinStrategy.java)
-- [DoubleCoinStrategy](src/main/java/org.jetpack/model/elements/player/playerStrategies/DoubleCoinStrategy.java)
-- [SlowDownStrategy](src/main/java/org.jetpack/model/elements/player/playerStrategies/SlowDownStrategy.java)
-- [ImmortalStrategy](src/main/java/org.jetpack/model/elements/player/playerStrategies/ImmortalStrategy.java)
-- [NormalStrategy](src/main/java/org.jetpack/model/elements/player/playerStrategies/NormalStrategy.java)
+- [Player](src/main/java/org/jetpack/model/elements/player/Player.java)
+- [PlayerStrategy](src/main/java/org/jetpack/model/elements/player/playerStrategies/DoubleCoinStrategy.java)
+- [DoubleCoinStrategy](src/main/java/org/jetpack/model/elements/player/playerStrategies/DoubleCoinStrategy.java)
+- [SlowDownStrategy](src/main/java/org/jetpack/model/elements/player/playerStrategies/SlowDownStrategy.java)
+- [ImmortalStrategy](src/main/java/org/jetpack/model/elements/player/playerStrategies/ImmortalStrategy.java)
+- [NormalStrategy](src/main/java/org/jetpack/model/elements/player/playerStrategies/NormalStrategy.java)
 
 #### Consequences
 
