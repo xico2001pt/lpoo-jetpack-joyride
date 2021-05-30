@@ -32,7 +32,7 @@ In this game, the Player's primary goal is to travel as far as possible, while c
 
 - [x] Arena Builder - we created a random arena builder (RandomArenaBuilder)
 - [x] Information bar - we created a window that has the player's information and, inside it, is the arena where the game runs
-- [x] Collisions
+- [x] Collisions - box and detailed image collision
 
 ## Planned features
 
@@ -45,11 +45,17 @@ In this game, the Player's primary goal is to travel as far as possible, while c
     - [x] Movements aside from going left (Obstacles)
     
 - [x] Menus
-- [ ] Levels:
+    - [x] Main Menu
+    - [x] Instructions Menu
+    - [x] Pause Menu
+    - [x] GameOver Menu
+    
+- [x] Levels:
     - [x] Increase the difficulty linearly throughout a play through
     - [x] Improve Random Infinite
     - [x] Score (Distance)
-    - [ ] Pre-built Levels
+    - [x] Buy Power-up with coins
+    
 - [x] Power-ups:
     - [x] Double coins
     - [x] Shield

@@ -44,6 +44,11 @@ class PlayerTest {
 
         player.takeDamage();
         assertEquals(player.getLives() + strategy.damageTaken(), initialLives);
+
+        if (strategy instanceof ImmortalStrategy)
+            assertEquals(strategy.damageTaken(), 0);
+        else
+            assertEquals(strategy.damageTaken(), 1);
     }
 
     @Property
@@ -54,6 +59,11 @@ class PlayerTest {
 
         player.addCoin();
         assertEquals(player.getCoins() - strategy.coinTaken(), initialCoins);
+
+        if (strategy instanceof DoubleCoinsStrategy)
+            assertEquals(strategy.coinTaken(), 2);
+        else
+            assertEquals(strategy.coinTaken(), 1);
     }
 
     @Property
