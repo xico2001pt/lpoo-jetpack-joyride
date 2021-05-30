@@ -126,7 +126,7 @@ To solve this problem we used the Strategy Pattern. This pattern allows us to is
 
 #### Implementation
 
-![](./images/strategy_pattern.png)
+![](./images/strategy_pattern_movements.png)
 
 #### Consequences
 
@@ -162,7 +162,7 @@ To implement the power-ups we used the Strategy Pattern. This pattern consists o
 
 #### Implementation
 
-![](./images/state_pattern_2.png)
+![](./images/strategy_pattern_powerups.png)
 
 #### Consequences
 
